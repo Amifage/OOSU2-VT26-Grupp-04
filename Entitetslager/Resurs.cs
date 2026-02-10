@@ -12,8 +12,9 @@ namespace Entitetslager
         private string Namn { get; set; }
         private string Typ { get; set; }
         private string Kapacitet { get; set; }
-        private List<Utrustning> Utrustning { get; set; } // // public virtual ICollection<Resurs> resurs {get; set;} en navigational property, en resurs kan ha många utrustningar. detta är relationen mellan resurs och utrsutning.
         private string Status { get; set; }
+
+        public virtual ICollection<Utrustning> utrustning { get; set; } //En navigational property till utrsutning
         private DateTime SenastUppdaterad { get; set; }
     }
 }

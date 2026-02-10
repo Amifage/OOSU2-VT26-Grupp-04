@@ -12,17 +12,17 @@ namespace Datalager
     public class SamverketContext : DbContext
     {
 
-        public DbSet<Utrustning> utrustning { get; set; }
+        /* public DbSet<Utrustning> utrustning { get; set; }*/ //Skapar Utrustning table i sql databasen
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseLazyLoadingProxies()
-                .UseSqlServer(
-                "Server=localhost;Database=oosu2604;Trusted_Connection=True;");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder
+        //        .UseLazyLoadingProxies()
+        //        .UseSqlServer(
+        //        "Server=localhost;Database=oosu2604;Trusted_Connection=True;");
+        //}
 
-        
+
 
         // här behöver det stå något som typ: public DbSet<Utrustning> utrustning {get; set;} för att skapa ett table för utrsutning.
     }

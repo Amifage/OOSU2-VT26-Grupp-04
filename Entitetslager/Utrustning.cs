@@ -9,14 +9,18 @@ namespace Entitetslager
     public class Utrustning
     {
         private int Inventerienummer { get; set; }
-        private string Namn { get; set; }
-        private string Kategori { get; set; }
-        private string Skick { get; set; }
-        
-        
-        private int ResursID { get; set; } // denna hänger ihop med nedan
 
-        // Utrustning behöver ha en navigational property till resursID för att koppla ihop dom.
-        // public virtual Resurs resurs {get; set;}
+        private string Namn { get; set; }
+
+        private string Kategori { get; set; }
+
+        private string Skick { get; set; }
+
+
+        private int? ResursID { get; set; } // denna hänger ihop med nedan, kan vara 0
+
+        public virtual Resurs resurs { get; set; } //Detta är en navigational property för att koppla ihop till resursID, hänger ihop emd ovan
+
+
     }
 }
