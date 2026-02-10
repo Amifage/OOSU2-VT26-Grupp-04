@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entitetslager
 {
     public class Resurs
     {
-        public int ResursID { get; set; }
+        [Key] public int ResursID { get; set; }
         public string Namn { get; set; }
         public string Typ { get; set; }
         public string Kapacitet { get; set; }

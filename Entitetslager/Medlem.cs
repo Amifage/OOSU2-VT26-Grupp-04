@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entitetslager
 {
     public class Medlem
     {
-        public int MedlemID {get; set; }
+        [Key] public int MedlemID {get; set; }
         public string Namn { get; set; }
         public string Epost { get; set; }
         public string Telefonnummer { get; set; }
