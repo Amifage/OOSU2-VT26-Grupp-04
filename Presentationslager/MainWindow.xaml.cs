@@ -19,6 +19,7 @@ namespace Presentationslager
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void LoggaInButton_Click(object sender, RoutedEventArgs e)
