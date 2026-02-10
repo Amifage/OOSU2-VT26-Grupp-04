@@ -13,8 +13,10 @@
             //samverketContext.Database.EnsureDeleted(); Ska vi ha denna????
             samverketContext.Database.EnsureCreated();
 
-            
-        
+            Seed.Populate(samverketContext);
+
+
+
         }
         
     }

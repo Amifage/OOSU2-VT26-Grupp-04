@@ -3,98 +3,84 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entitetslager;
 
 namespace Datalager
 {
     public class Seed
     {
 
-        //Här bör vi lägga till all utrustning som ska läsas in i databasen.
+        SamverketContext samverketContext = new SamverketContext();
+        
+        Utrustning utrustning = new Utrustning();
 
-        // Vi behöver kanske lägga in DbContext dbContext = new DbContext(); någonstans
+        public static void Populate(SamverketContext samverketContext)
+        {
 
+            samverketContext.Utrustning.Add(new Utrustning()
+            {
 
+                Namn = "Whiteboard",
 
-        //public static void Populate(SamverketContext samverketContext)
-        //{
+                Kategori = "Whiteboard",
 
-        //    SamverketContext.Utrustning.Add(new Utrustning()
+                Skick = "Bra",
 
-        //    {
+                ResursID = null
 
-        //        Inventarienummer = 1001,
+            });
 
-        //        Namn = "Whiteboard",
-
-        //        Kategori = "Whiteboard",
-
-        //        Skick = "Bra",
-
-        //        ResursID = 1
-
-        //    });
-
-            //    SamverketContext.SaveChanges();
+            samverketContext.SaveChanges();
 
 
-            //    SamverketContext.Utrustning.Add(new Utrustning()
+            samverketContext.Utrustning.Add(new Utrustning()
+            {
 
-            //    {
+                Namn = "Projektor",
 
-            //        Inventarienummer = 2001,
+                Kategori = "Projektor",
 
-            //        Namn = "Projektor",
+                Skick = "Trasig",
 
-            //        Kategori = "Projektor",
+                ResursID = null
 
-            //        Skick = "Trasig",
+            });
 
-            //        ResursID = null
+            samverketContext.SaveChanges();
 
-            //    });
+            samverketContext.Utrustning.Add(new Utrustning()
+            {
 
-            //    SamverketContext.SaveChanges();
+                Namn = "Dator",
 
-            //    SamverketContext.Utrustning.Add(new Utrustning()
+                Kategori = "Skärm",
 
-            //    {
+                Skick = "Sliten",
 
-            //        Inventarienummer = 3001,
+                ResursID = null
 
-            //        Namn = "Dator",
+            });
 
-            //        Kategori = "Skärm",
+            samverketContext.SaveChanges();
 
-            //        Skick = "Sliten",
+            samverketContext.Utrustning.Add(new Utrustning()
+            {
 
-            //        ResursID = 1
+                Namn = "TV",
 
-            //    });
+                Kategori = "Skärm",
 
-            //    SamverketContext.SaveChanges();
+                Skick = "Bra",
 
-            //    SamverketContext.Utrustning.Add(new Utrustning()
+                ResursID = null
 
-            //    {
+            });
 
-            //        Inventarienummer = 3002,
-
-            //        Namn = "TV",
-
-            //        Kategori = "Skärm",
-
-            //        Skick = "Bra",
-
-            //        ResursID = 2
-
-            //    });
-
-            //    SamverketContext.SaveChanges();
-
-            //}
-
-
-            //  Vi behöver göra en ovan för varje utrustning som finns.
+            samverketContext.SaveChanges();
 
         }
+
+
+        
+    }
 }
