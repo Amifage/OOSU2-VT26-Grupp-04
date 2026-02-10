@@ -8,9 +8,9 @@ namespace Entitetslager
 {
     public class Personal
     {
-        private int PersonalID { get; set; }
-        private string Namn { get; set; }
-        private string Roll { get; set; }
-        private string Lösenord { get; set; }
+        public int PersonalID { get; set; }
+        public string Namn { get; set; }
+        public string Roll { get; set; }
+        public string Lösenord { get; set; }
     }
 }
