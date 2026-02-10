@@ -2,9 +2,15 @@
 {
     public class UnitOfWork
     {
-        SamverketContext samverketContext = new SamverketContext();
+        private SamverketContext samverketContext;
 
-        //samverketContext.Database.EnsureDeleted();
-        //samverketContext.Database.EnsureCreated();
+        public UnitOfWork()
+        {
+            SamverketContext samverketContext = new SamverketContext();
+
+            samverketContext.Database.EnsureDeleted();
+            samverketContext.Database.EnsureCreated();
+        }
+        
     }
 }
