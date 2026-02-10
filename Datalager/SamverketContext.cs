@@ -22,9 +22,5 @@ namespace Datalager
                 "Server=sqlutb4-db.hb.se, 56077;Database=oosu2604;Trusted_Connection=True;");
         }
 
-
-
-        //här behöver det stå något som typ: public DbSet<Utrustning> utrustning { get; set; }
-        //för att skapa ett table för utrsutning.
     }
 }
