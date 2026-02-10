@@ -4,7 +4,7 @@
     {
         SamverketContext samverketContext = new SamverketContext();
 
-        samverketContext.Database.EnsureDeleted();
-        samverketContext.Database.EnsureCreated();
+        //samverketContext.Database.EnsureDeleted();
+        //samverketContext.Database.EnsureCreated();
     }
 }
