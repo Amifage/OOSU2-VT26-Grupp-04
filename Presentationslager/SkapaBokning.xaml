@@ -1,0 +1,58 @@
+﻿<Window x:Class="Presentationslager.SkapaBokning"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Presentationslager"
+        mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
+        Title="Skapa Bokning" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <!--1 - 6 är auto-->
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="Skapa bokning"  FontFamily="Segoe Script" FontSize="28" Grid.ColumnSpan="3" Margin="15"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="2"  Text="Fyll i MedlemsID" Margin="5"/>
+        <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Width="200" Margin="5"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="3"  Text="Välj resurs" Margin="5"/>
+        <ComboBox x:Name="VäljresursComboBox" Grid.Column="2" Grid.Row="3" Margin="5"/>
+
+
+        <Calendar Grid.Column="2" Grid.Row="4" x:Name="BokningsCalander" DisplayMode="Month" SelectionMode="SingleDate"     />
+
+        <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Tid:" VerticalAlignment="Center" />
+            <ComboBox x:Name="TimmarComboBox" Width="60" />
+            <TextBlock Text=":" VerticalAlignment="Center" />
+            <ComboBox x:Name="MinuterComboBox" Width="60" />
+
+
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
