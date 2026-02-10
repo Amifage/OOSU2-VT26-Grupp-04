@@ -8,13 +8,13 @@ namespace Entitetslager
 {
     public class Resurs
     {
-        private int ResursID { get; set; }
-        private string Namn { get; set; }
-        private string Typ { get; set; }
-        private string Kapacitet { get; set; }
-        private string Status { get; set; }
+        public int ResursID { get; set; }
+        public string Namn { get; set; }
+        public string Typ { get; set; }
+        public string Kapacitet { get; set; }
+        public string Status { get; set; }
 
         public virtual ICollection<Utrustning> utrustning { get; set; } //En navigational property till utrsutning
-        private DateTime SenastUppdaterad { get; set; }
+        public DateTime SenastUppdaterad { get; set; }
     }
 }

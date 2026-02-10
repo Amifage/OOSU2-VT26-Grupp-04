@@ -8,16 +8,16 @@ namespace Entitetslager
 {
     public class Utrustning
     {
-        private int Inventerienummer { get; set; }
+        public int Inventerienummer { get; set; }
 
-        private string Namn { get; set; }
+        public string Namn { get; set; }
 
-        private string Kategori { get; set; }
+        public string Kategori { get; set; }
 
-        private string Skick { get; set; }
+        public string Skick { get; set; }
 
 
-        private int? ResursID { get; set; } // denna hänger ihop med nedan, kan vara 0
+        public int? ResursID { get; set; } // denna hänger ihop med nedan, kan vara 0
 
         public virtual Resurs resurs { get; set; } //Detta är en navigational property för att koppla ihop till resursID, hänger ihop emd ovan
 

@@ -8,13 +8,13 @@ namespace Entitetslager
 {
     public class Medlem
     {
-        private int MedlemID {get; set; }
-        private string Namn { get; set; }
-        private string Epost { get; set; }
-        private string Telefonnummer { get; set; }
-        private string Medlemsnivå { get; set; }
-        private string Betalstatus { get; set; }
-        private DateTime SenastUppdaterad { get; set; }
+        public int MedlemID {get; set; }
+        public string Namn { get; set; }
+        public string Epost { get; set; }
+        public string Telefonnummer { get; set; }
+        public string Medlemsnivå { get; set; }
+        public string Betalstatus { get; set; }
+        public DateTime SenastUppdaterad { get; set; }
 
     }
 }
