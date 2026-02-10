@@ -7,10 +7,14 @@
 
         public UnitOfWork()
         {
-            SamverketContext samverketContext = new SamverketContext();
 
-            samverketContext.Database.EnsureDeleted();
+            samverketContext = new SamverketContext();
+
+            //samverketContext.Database.EnsureDeleted(); Ska vi ha denna????
             samverketContext.Database.EnsureCreated();
+
+            
+        
         }
         
     }

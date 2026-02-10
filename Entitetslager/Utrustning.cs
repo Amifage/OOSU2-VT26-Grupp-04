@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entitetslager
 {
     public class Utrustning
     {
-        public int Inventerienummer { get; set; }
+        [Key] public int Inventarienummer { get; set; }
 
         public string Namn { get; set; }
 
