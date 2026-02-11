@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Affärslagret;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace Presentationslager
     /// </summary>
     public partial class RegistreraResurs : Window
     {
+        private readonly ResursController _resursController = new ResursController();
+
         public RegistreraResurs()
         {
             InitializeComponent();
