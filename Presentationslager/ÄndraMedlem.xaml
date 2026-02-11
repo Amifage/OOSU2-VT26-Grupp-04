@@ -60,7 +60,7 @@
             <ComboBoxItem Content="Obetald"/>
             <ComboBoxItem Content="Betald"/>
         </ComboBox>
-        <Button x:Name="SparaNyMedlemButton" Grid.Column="2" Grid.Row="8" Margin="5" Content="Spara" />
+        <Button x:Name="SparaÄndringarMeldem" Grid.Column="2" Grid.Row="8" Margin="5" Content="Spara" />
 
     </Grid>
 </Window>

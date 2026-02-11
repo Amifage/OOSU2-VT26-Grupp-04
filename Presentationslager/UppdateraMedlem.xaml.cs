@@ -24,14 +24,11 @@ namespace Presentationslager
             InitializeComponent();
         }
 
-        private void GetMedlemIDButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ÄndraMedlem ÄndraMedlemFönster = new ÄndraMedlem();
+            ÄndraMedlemFönster.Show();
+                
         }
     }
 }

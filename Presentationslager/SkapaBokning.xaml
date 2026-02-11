@@ -32,7 +32,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="Skapa bokning"  FontFamily="Segoe Script" FontSize="28" Grid.ColumnSpan="3" Margin="15"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="Skapa bokning"  FontFamily="Segoe Script" FontSize="28" Grid.ColumnSpan="3" Margin="15" Foreground="HotPink"/>
 
         <TextBlock Grid.Column="1" Grid.Row="2"  Text="Fyll i MedlemsID" Margin="5"/>
         <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Width="200" Margin="5"/>
