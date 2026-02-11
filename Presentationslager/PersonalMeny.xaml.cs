@@ -49,8 +49,8 @@ namespace Presentationslager
 
         private void UppdateraMedlemButton_Click(object sender, RoutedEventArgs e)
         {
-            UppdateraMedlem UppdateraMedlemfönster = new UppdateraMedlem();
-            UppdateraMedlemfönster.Show();
+            UppdateraMedlem HämtaMedlemfönster = new UppdateraMedlem();
+            HämtaMedlemfönster.Show();
         }
 
         private void HanteraBokningButton_Click(object sender, RoutedEventArgs e)

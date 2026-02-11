@@ -38,5 +38,11 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Uppdatera Medlem" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
+        <TextBlock Grid.Column= "1" Grid.Row="2"  Text= "Skriv MedlemsID som du vill ändra" Margin="5"/>
+        <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Margin="4" Width="200"/>
+
+        <Button x:Name="SumbitMedlemIDButton" Grid.Column="2" Grid.Row="4" Content="Hämta" Margin="5" Click="SumbitMedlemIDButton_Click" />
+
+
     </Grid>
 </Window>

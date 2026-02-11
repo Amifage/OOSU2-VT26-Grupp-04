@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace Presentationslager
 {
     /// <summary>
-    /// Interaction logic for UppdateraMedlem.xaml
+    /// Interaction logic for ÄndraMedlem.xaml
     /// </summary>
-    public partial class UppdateraMedlem : Window
+    public partial class ÄndraMedlem : Window
     {
-        public UppdateraMedlem()
+        public ÄndraMedlem()
         {
             InitializeComponent();
-        }
-
-        private void GetMedlemIDButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
