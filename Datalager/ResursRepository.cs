@@ -19,7 +19,7 @@ namespace Datalager
 
         public void Add(Resurs resurs)
         {
-            samverketContext.Medlem.Add(resurs);
+            samverketContext.Resurs.Add(resurs);
         }
     }
 }

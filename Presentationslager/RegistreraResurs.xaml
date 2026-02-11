@@ -35,7 +35,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Registrera Resurs" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
         <TextBlock Grid.Column="1" Grid.Row="2"  Text="Resurs Namn" Margin="5"/>
-        <TextBox x:Name="MedlemsEfternamnTextBox" Grid.Column="2" Grid.Row="2" Width="200" Margin="5"/>
+        <TextBox x:Name="ResursNamnTextBox" Grid.Column="2" Grid.Row="2" Width="200" Margin="5"/>
 
         <TextBlock Grid.Column="1"
             Grid.Row="3"
@@ -49,27 +49,8 @@
         </ComboBox>
         <TextBlock Grid.Column="1" Grid.Row="4"  Text="Resurs Kapacitet" Margin="5"/>
         <TextBox x:Name="ResursKapacitetTextBox" Grid.Column="2" Grid.Row="4" Width="200" Margin="5"/>
-        <TextBlock Grid.Column="1" Grid.Row="5"  Text="Utrustning" Margin="5"/>
-        <!-- Temp för utrustning och status -->
-        <ComboBox x:Name="ResursUtrustningsComboBox"
-          Grid.Column="2"
-          Grid.Row="5"
-          Width="200"
-          Margin="5">
-            <ComboBoxItem Content="Projektor"/>
-            <ComboBoxItem Content="Whiteboard"/>
-            <ComboBoxItem Content="Skärm"/>
-        </ComboBox>
-        <TextBlock Grid.Column="1" Grid.Row="6"  Text="Status" Margin="5"/>
-        <ComboBox x:Name="ResursStatusComboBox"
-          Grid.Column="2"
-          Grid.Row="6"
-          Width="200"
-          Margin="5">
-            <ComboBoxItem Content="Bokad"/>
-            <ComboBoxItem Content="Ledig"/>
-            <ComboBoxItem Content="Otillgänglig"/>
-        </ComboBox>
+  
+
 
         <Button x:Name="SparaNyResursButton" Grid.Column="2" Grid.Row="8" Margin="5" Content="Spara" Click="SparaNyResursButton_Click" />
     </Grid>

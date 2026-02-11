@@ -37,8 +37,8 @@ namespace Presentationslager
                 string epost = MedlemsEpostTextBox.Text.Trim().ToLower();
                 string telefon = MedlemsTelefonnummerTextBox.Text.Trim().ToLower(); //Kolla efter metod fårn tiidgare arbete som kontrollerar så inga bokstäver följer med
 
-                string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
-                string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
+                string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower();
+                string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower() ;
 
                 // Validering
                 if (string.IsNullOrWhiteSpace(namn) || string.IsNullOrWhiteSpace(epost) || string.IsNullOrWhiteSpace(telefon))
