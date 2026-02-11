@@ -33,13 +33,15 @@ namespace Presentationslager
         private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
         {
             ÄndraMedlem ÄndraMedlemFönster = new ÄndraMedlem();
-            ÄndraMedlemFönster.Show();
+            
 
             if (!int.TryParse(MedlemsIDTextBox.Text?.Trim(), out int id))
             {
                 MessageBox.Show("Skriv ett giltigt medlems-ID (heltal).");
                 return;
             }
+
+
 
             // 2) Hämta medlem via controller
             Medlem? medlem = _medlemController.HamtaMedlemById(id);
@@ -50,6 +52,17 @@ namespace Presentationslager
                 MessageBox.Show("Ingen medlem hittades med det ID:t.");
                 return;
             }
+            MessageBox.Show(
+               $"Medlem från DB:\n\n" +
+               $"ID: {medlem.MedlemID}\n" +
+               $"Namn: {medlem.Namn}\n" +
+               $"Epost: {medlem.Epost}\n" +
+               $"Telefon: {medlem.Telefonnummer}\n" +
+               $"Medlemsnivå: {medlem.Medlemsnivå}\n" +
+               $"Betalstatus: {medlem.Betalstatus}");
+
+
+            // ÄndraMedlemFönster.Show();
 
 
         }
