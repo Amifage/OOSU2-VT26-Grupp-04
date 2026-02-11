@@ -14,8 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Entitetslager;
-using Affärslagret;
+
 
 namespace Presentationslager
 {
@@ -49,12 +48,10 @@ namespace Presentationslager
                 return;
             }
 
-      
+            
             NamnTextBox.Text = medlem.Namn;
             EpostTextBox.Text = medlem.Epost ?? "";
             TelefonTextBox.Text = medlem.Telefonnummer ?? "";
-
-
 
 
         }
