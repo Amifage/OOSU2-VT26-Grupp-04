@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Datalager
 {
-    public class MedlemRepsoitory
+    public class BokningRepository
     {
     }
 }

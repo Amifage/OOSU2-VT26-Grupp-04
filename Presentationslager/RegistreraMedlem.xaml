@@ -38,7 +38,7 @@
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Registrera Medlem" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
         <TextBlock Grid.Column="1" Grid.Row="3"  Text="Fyll i medlemens Fullständiga Namn/ Företagsnamn " Margin="5"/>
-        <TextBox x:Name="MedlemsNamnTextBox" Grid.Column="2" Grid.Row="3" Width="200" Margin="5"/>
+        <TextBox x:Name="MedlemNamnTextBox" Grid.Column="2" Grid.Row="3" Width="200" Margin="5"/>
         <TextBlock Grid.Column="1" Grid.Row="4"  Text="Fyll i medlemens Epost" Margin="5"/>
         <TextBox x:Name="MedlemsEpostTextBox" Grid.Column="2" Grid.Row="4" Width="200" Margin="5"/>
         <TextBlock Grid.Column="1" Grid.Row="5"  Text="Fyll i medlemens Telefonnummer" Margin="5"/>

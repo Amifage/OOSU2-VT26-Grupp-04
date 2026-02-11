@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entitetslager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Affärslagret;
 
 namespace Presentationslager
 {
@@ -19,6 +21,8 @@ namespace Presentationslager
     /// </summary>
     public partial class RegistreraMedlem : Window
     {
+        private readonly MedlemController _medlemController = new MedlemController();
+
         public RegistreraMedlem()
         {
             InitializeComponent();
@@ -27,6 +31,62 @@ namespace Presentationslager
         private void SparaNyMedlemButton_Click(object sender, RoutedEventArgs e)
         {
 
+            try
+            {
+                string namn = MedlemNamnTextBox.Text?.Trim();
+                string epost = MedlemsEpostTextBox.Text?.Trim();
+                string telefon = MedlemsTelefonnummerTextBox.Text?.Trim();
+
+                string medlemsniva = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
+                string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
+
+                // Validering
+                if (string.IsNullOrWhiteSpace(namn)) //Här behöver epost och teelfon också valideras
+                {
+                    MessageBox.Show("Du måste fylla i namn/företagsnamn.");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(medlemsniva) || string.IsNullOrWhiteSpace(betalstatus))
+                {
+                    MessageBox.Show("Välj medlemsnivå och betalstatus.");
+                    return;
+                }
+
+                var nyMedlem = new Medlem
+                {
+                    Namn = namn,
+                    Epost = string.IsNullOrWhiteSpace(epost) ? null : epost,
+                    Telefonnummer = string.IsNullOrWhiteSpace(telefon) ? null : telefon,
+                    Medlemsnivå = medlemsniva,
+                    Betalstatus = betalstatus,
+                    SenastUppdaterad = DateTime.Now
+                };
+
+                _medlemController.SkapaMedlem(nyMedlem);
+
+                MessageBox.Show("Medlemmen har skapats!");
+
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fel vid sparning: " + ex.Message);
+            }
+
+
         }
+
+
+
+                         
     }
+
+
+
+
+
+
+
+    
+    
 }

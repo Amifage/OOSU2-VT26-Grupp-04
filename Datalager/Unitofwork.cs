@@ -1,27 +1,47 @@
-﻿namespace Datalager
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+
+namespace Datalager
 {
-    public class UnitOfWork
+    public class UnitOfWork : IDisposable
     {
-        private SamverketContext samverketContext;
+        private readonly SamverketContext samverketContext;
+
+        public MedlemRepository MedlemRepository { get; }
+        public BokningRepository BokningRepository { get; }
+        public ResursRepository ResursRepository { get; }
+        public StatistikRepository StatistikRepository { get; }
 
 
-        public UnitOfWork()
+        public UnitOfWork(SamverketContext context) //Varför gör vi såhär
         {
+            samverketContext = context ?? throw new ArgumentNullException(nameof(context));
 
-            samverketContext = new SamverketContext();
 
-            //samverketContext.Database.EnsureDeleted(); Vi ska inte ha denna då vi ej har behörighet att ta bort databasen
+            //samverketContext = new SamverketContext(); ???
             samverketContext.Database.EnsureCreated();
+
+            MedlemRepository = new MedlemRepository(samverketContext);
+            //BokningRepository = new BokningRepository(samverketContext);
+            //ResursRepository = new ResursRepository(samverketContext);
+            //StatistikRepository = new StatistikRepository(samverketContext);
 
             Seed.PopulatePersonal(samverketContext);
             Seed.PopulateMedlem(samverketContext);
-            Seed.PopulateResurs(samverketContext);  
+            Seed.PopulateResurs(samverketContext);
             Seed.PopulateUtrustning(samverketContext);
             Seed.PopulateBokning(samverketContext);
 
-
-
         }
         
+        public int Save()
+        {
+            return samverketContext.SaveChanges();
+        }
+        public void Dispose()
+        {
+            samverketContext.Dispose();
+        }           
+
     }
 }
