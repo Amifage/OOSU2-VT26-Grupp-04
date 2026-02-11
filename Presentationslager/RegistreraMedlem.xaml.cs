@@ -55,8 +55,8 @@ namespace Presentationslager
                 var nyMedlem = new Medlem
                 {
                     Namn = namn,
-                    Epost = string.IsNullOrWhiteSpace(epost) ? null : epost,
-                    Telefonnummer = string.IsNullOrWhiteSpace(telefon) ? null : telefon,
+                    Epost = epost,
+                    Telefonnummer = telefon,
                     Medlemsnivå = medlemsnivå,
                     Betalstatus = betalstatus,
                     SenastUppdaterad = DateTime.Now

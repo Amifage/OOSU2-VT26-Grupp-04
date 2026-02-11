@@ -25,7 +25,7 @@ namespace Datalager
                 .UseSqlServer(
                 "Server=sqlutb4-db.hb.se,56077;" +
                 "Database=oosu2604;" +
-                "User Id=oosu2604;" + //Inloggningsuppfifter
+                "User Id=oosu2604;" + //Inloggningsuppgifter
                 "Password=RKW148;" +
                 "Encrypt=True;" +
                 "TrustServerCertificate=True;");

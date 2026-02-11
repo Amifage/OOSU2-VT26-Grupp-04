@@ -13,17 +13,15 @@ namespace Datalager
         public StatistikRepository StatistikRepository { get; }
 
 
-        public UnitOfWork(SamverketContext context) //Varför gör vi såhär
+        public UnitOfWork(SamverketContext context)
         {
             samverketContext = context ?? throw new ArgumentNullException(nameof(context));
 
-
-            //samverketContext = new SamverketContext(); ???
             samverketContext.Database.EnsureCreated();
 
             MedlemRepository = new MedlemRepository(samverketContext);
             //BokningRepository = new BokningRepository(samverketContext);
-            //ResursRepository = new ResursRepository(samverketContext);
+            ResursRepository = new ResursRepository(samverketContext);
             //StatistikRepository = new StatistikRepository(samverketContext);
 
             Seed.PopulatePersonal(samverketContext);

@@ -10,15 +10,6 @@ namespace Affärslagret
 {
     public class MedlemController
     {
-        //private readonly UnitOfWork _unitOfWork;
-        //private readonly SamverketContext samverketContext;
-
-        //public MedlemController()
-        //{
-            //_unitOfWork = new UnitOfWork(samverketContext);
-            
-
-        //}
 
         public void SkapaMedlem(Medlem medlem)
         {
