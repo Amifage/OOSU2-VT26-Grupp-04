@@ -24,6 +24,9 @@ namespace Presentationslager
             InitializeComponent();
         }
 
+        private void SparaNyMedlemButton_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
