@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Entitetslager;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Entitetslager;
 
 namespace Datalager
 {
@@ -21,7 +22,7 @@ namespace Datalager
             samverketContext.Medlem.Add(medlem);
         }
 
-        public Medlem HämtaMedlem(int id)
+        public Medlem? HämtaMedlem(int id)
         {
             return samverketContext.Medlem.FirstOrDefault(m => m.MedlemID == id);
         }

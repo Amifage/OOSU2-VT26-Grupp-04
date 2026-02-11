@@ -20,10 +20,10 @@ namespace Affärslagret
 
         }
 
-        public List<Medlem> HämtaAllaMedlemmar()
+        public Medlem? HamtaMedlemById(int id)
         {
-            using var _unitOfWork = new UnitOfWork(new SamverketContext());
-            return _unitOfWork.MedlemRepository.HämtaMedlem();
+            using var uow = new UnitOfWork(new SamverketContext());
+            return uow.MedlemRepository.HämtaMedlem(id);
         }
 
     }

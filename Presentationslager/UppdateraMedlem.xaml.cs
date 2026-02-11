@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Affärslagret;
+using Datalager;
+using Entitetslager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Entitetslager;
+using Affärslagret;
 
 namespace Presentationslager
 {
@@ -19,6 +24,7 @@ namespace Presentationslager
     /// </summary>
     public partial class UppdateraMedlem : Window
     {
+        private readonly MedlemController _medlemController = new MedlemController();
         public UppdateraMedlem()
         {
             InitializeComponent();
@@ -28,7 +34,24 @@ namespace Presentationslager
         {
             ÄndraMedlem ÄndraMedlemFönster = new ÄndraMedlem();
             ÄndraMedlemFönster.Show();
-                
+
+            if (!int.TryParse(MedlemsIDTextBox.Text?.Trim(), out int id))
+            {
+                MessageBox.Show("Skriv ett giltigt medlems-ID (heltal).");
+                return;
+            }
+
+            // 2) Hämta medlem via controller
+            Medlem? medlem = _medlemController.HamtaMedlemById(id);
+
+            // 3) Hantera om den inte finns
+            if (medlem == null)
+            {
+                MessageBox.Show("Ingen medlem hittades med det ID:t.");
+                return;
+            }
+
+
         }
     }
 }
