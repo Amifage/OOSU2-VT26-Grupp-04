@@ -21,6 +21,11 @@ namespace Datalager
             samverketContext.Medlem.Add(medlem);
         }
 
+        public Medlem HämtaMedlem(int id)
+        {
+            return samverketContext.Medlem.FirstOrDefault(m => m.MedlemID == id);
+        }
+
 
 
     }
