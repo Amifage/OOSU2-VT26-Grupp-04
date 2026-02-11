@@ -68,8 +68,9 @@ namespace Presentationslager
                 medlem.Namn = NamnTextBox.Text.Trim().ToLower();
                 medlem.Epost = string.IsNullOrWhiteSpace(EpostTextBox.Text) ? null: EpostTextBox.Text.Trim().ToLower();
                 medlem.Telefonnummer = string.IsNullOrWhiteSpace(TelefonTextBox.Text) ? null : TelefonTextBox.Text.Trim();
+                medlem.SenastUppdaterad = DateTime.Now;
 
-                 int rows = _medlemController.UppdateraMedlem(medlem);
+              int rows = _medlemController.UppdateraMedlem(medlem);
 
                  MessageBox.Show(rows == 1 ? "Medlem uppdaterad!" : "Något gick fel");
         }

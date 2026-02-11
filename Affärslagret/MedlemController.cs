@@ -30,8 +30,6 @@ namespace Affärslagret
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
 
-            medlem.SenastUppdaterad = DateTime.Now;
-
             _unitOfWork.MedlemRepository.Update(medlem);
             return _unitOfWork.Save();
         }
