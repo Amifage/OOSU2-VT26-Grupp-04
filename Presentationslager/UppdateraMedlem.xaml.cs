@@ -24,6 +24,7 @@ namespace Presentationslager
     public partial class UppdateraMedlem : Window
     {
         private readonly MedlemController _medlemController = new MedlemController();
+        private Medlem? medlem;
         public UppdateraMedlem()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace Presentationslager
                 return;
             }
 
-            Medlem? medlem = _medlemController.HamtaMedlemById(id);
+            medlem = _medlemController.HamtaMedlemById(id);
 
           
             if (medlem == null)
@@ -58,7 +59,19 @@ namespace Presentationslager
 
         private void SparaÄndradMedlemButton_Click(object sender, RoutedEventArgs e)
         {
+            if (medlem == null)
+            {
+                MessageBox.Show("Hämta medlem först");
+                return;
+            }
 
+                medlem.Namn = NamnTextBox.Text.Trim().ToLower();
+                medlem.Epost = string.IsNullOrWhiteSpace(EpostTextBox.Text) ? null: EpostTextBox.Text.Trim().ToLower();
+                medlem.Telefonnummer = string.IsNullOrWhiteSpace(TelefonTextBox.Text) ? null : TelefonTextBox.Text.Trim();
+
+                 int rows = _medlemController.UppdateraMedlem(medlem);
+
+                 MessageBox.Show(rows == 1 ? "Medlem uppdaterad!" : "Något gick fel");
         }
     }
 }

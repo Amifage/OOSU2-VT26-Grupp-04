@@ -23,7 +23,7 @@ namespace Affärslagret
         public Medlem? HamtaMedlemById(int id)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
-            return _unitOfWork.MedlemRepository.(id);
+            return _unitOfWork.MedlemRepository.HämtaMedlem(id);
         }
 
         public int UppdateraMedlem(Medlem medlem)
