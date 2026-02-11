@@ -79,6 +79,7 @@ namespace Datalager
                 Telefonnummer = "076 000 00 00",
                 Medlemsnivå = "Guld",
                 Betalstatus = "Betald",
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -91,6 +92,7 @@ namespace Datalager
                 Telefonnummer = "076 111 11 11",
                 Medlemsnivå = "Silver",
                 Betalstatus = "Obetald",
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -103,6 +105,7 @@ namespace Datalager
                 Telefonnummer = "076 222 22 22",
                 Medlemsnivå = "Platinum",
                 Betalstatus = "Betald",
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -122,6 +125,7 @@ namespace Datalager
                 Typ = "Konferensrum",
                 Kapacitet = 10,
                 Status = "Ledig",
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -133,6 +137,7 @@ namespace Datalager
                 Typ = "Mötesrum",
                 Kapacitet = 5,
                 Status = "Bokad",
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -144,6 +149,7 @@ namespace Datalager
                 Typ = "Kontorsrum",
                 Kapacitet = 2,
                 Status = "Ledig",
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -236,6 +242,7 @@ namespace Datalager
                 ResursID = 1,
                 Starttid = DateTime.Parse("2026-02-15 10:00"),
                 Sluttid = DateTime.Parse("2026-02-15 11:00"),
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -247,6 +254,7 @@ namespace Datalager
                 ResursID = 2,
                 Starttid = DateTime.Parse("2026-02-17 13:00"),
                 Sluttid = DateTime.Parse("2026-02-17 14:30"),
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
@@ -258,6 +266,7 @@ namespace Datalager
                 ResursID = 3,
                 Starttid = DateTime.Parse("2026-02-20 12:00"),
                 Sluttid = DateTime.Parse("2026-02-20 14:00"),
+                SenastUppdaterad = DateTime.Now,
             });
 
             samverketContext.SaveChanges();
