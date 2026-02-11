@@ -23,5 +23,10 @@ namespace Presentationslager
         {
             InitializeComponent();
         }
+
+        private void SparaNyResursButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -70,5 +70,7 @@
             <ComboBoxItem Content="Ledig"/>
             <ComboBoxItem Content="Otillgänglig"/>
         </ComboBox>
+
+        <Button x:Name="SparaNyResursButton" Grid.Column="2" Grid.Row="8" Margin="5" Content="Spara" Click="SparaNyResursButton_Click" />
     </Grid>
 </Window>
