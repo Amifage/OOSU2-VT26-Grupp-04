@@ -22,8 +22,18 @@ namespace Affärslagret
 
         public Medlem? HamtaMedlemById(int id)
         {
-            using var uow = new UnitOfWork(new SamverketContext());
-            return uow.MedlemRepository.(id);
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            return _unitOfWork.MedlemRepository.(id);
+        }
+
+        public int UppdateraMedlem(Medlem medlem)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
+            medlem.SenastUppdaterad = DateTime.Now;
+
+            _unitOfWork.MedlemRepository.Update(medlem);
+            return _unitOfWork.Save();
         }
 
     }
