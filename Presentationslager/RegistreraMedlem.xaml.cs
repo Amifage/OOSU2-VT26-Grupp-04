@@ -62,9 +62,9 @@ namespace Presentationslager
                     SenastUppdaterad = DateTime.Now
                 };
 
-                var rows = _medlemController.SkapaMedlem(nyMedlem);
+                _medlemController.SkapaMedlem(nyMedlem);
 
-                MessageBox.Show($"Medlemmen har sparats. Rows {rows}");
+                MessageBox.Show($"Medlemmen har sparats!");
 
               
             }

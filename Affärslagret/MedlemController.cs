@@ -20,12 +20,12 @@ namespace Affärslagret
 
         //}
 
-        public int SkapaMedlem(Medlem medlem)
+        public void SkapaMedlem(Medlem medlem)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             _unitOfWork.MedlemRepository.Add(medlem);
-            int rows = _unitOfWork.Save();
-            return _unitOfWork.Save();
+            _unitOfWork.Save();
+           
 
         }
 
