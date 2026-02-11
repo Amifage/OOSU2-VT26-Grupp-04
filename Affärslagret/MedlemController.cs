@@ -20,5 +20,11 @@ namespace Affärslagret
 
         }
 
+        public List<Medlem> HämtaAllaMedlemmar()
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            return _unitOfWork.MedlemRepository.HämtaMedlem();
+        }
+
     }
 }
