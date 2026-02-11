@@ -55,7 +55,10 @@ namespace Presentationslager
             TelefonTextBox.Text = medlem.Telefonnummer ?? "";
 
 
+        }
 
+        private void SparaÄndradMedlemButton_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

@@ -8,6 +8,7 @@
 
     Title="Uppdatera Medlem" Height="450" Width="800">
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <!--1 - 6 är auto-->
             <ColumnDefinition Width="20"/>
@@ -52,10 +53,7 @@
         <TextBlock Grid.Column="1" Grid.Row="8" Text="Medlemens telefonnummer" Margin="5" />
 
         <TextBox Grid.Column="2" Grid.Row="8" x:Name="TelefonTextBox" Width="200"/>
-
-
-        
-
+        <Button x:Name="SparaÄndradMedlemButton" Grid.Column="2" Grid.Row="9" Content="Spara" Margin="5" Click="SparaÄndradMedlemButton_Click" />
 
     </Grid>
 </Window>
