@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="istockphoto-1192884194-170667a.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Affärslagret\Affärslagret.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="istockphoto-1192884194-170667a.jpg" />
   </ItemGroup>
 
 </Project>

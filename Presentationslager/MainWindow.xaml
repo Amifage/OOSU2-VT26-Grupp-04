@@ -39,6 +39,10 @@
 
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Lösenord" Margin="5"/>
 
+        <Image Grid.Column="4" Grid.Row="5" Source="/istockphoto-1192884194-170667a.jpg" Margin="5" Width="200" >
+            
+        </Image>
+
         <TextBox x:Name="LösenordTextBox" Grid.Column="2" Grid.Row="3" Width="200" Margin="5"/>
 
         <Button x:Name="LoggaInButton" Content="Logga in" Grid.Column=" 2" Grid.Row="4" Margin="10" Click="LoggaInButton_Click" />
