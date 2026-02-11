@@ -11,11 +11,152 @@ namespace Datalager
     {
 
         SamverketContext samverketContext = new SamverketContext();
-        
-        Utrustning utrustning = new Utrustning();
 
-        public static void Populate(SamverketContext samverketContext)
+        Personal personal = new Personal();
+        Medlem medlem = new Medlem();
+        Resurs resurs = new Resurs();
+        Utrustning utrustning = new Utrustning();
+        Bokning bokning = new Bokning();    
+
+        #region Populate Personal
+        public static void PopulatePersonal(SamverketContext samverketContext)
         {
+            if (samverketContext.Personal.Any())
+                return;
+
+            samverketContext.Personal.Add(new Personal()
+            {
+
+                Namn = "Sara",
+
+                Roll = "Administratör",
+
+                Lösenord = "123"
+
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Personal.Add(new Personal()
+            {
+
+                Namn = "Amanda",
+
+                Roll = "Receptionist",
+
+                Lösenord = "456"
+
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Personal.Add(new Personal()
+            {
+
+                Namn = "Gabbe",
+
+                Roll = "Reparatör",
+
+                Lösenord = "789"
+
+            });
+
+            samverketContext.SaveChanges();
+        }
+        #endregion
+
+        #region Populate Medlem
+        public static void PopulateMedlem(SamverketContext samverketContext)
+        {
+            if (samverketContext.Medlem.Any())
+                return;
+
+            samverketContext.Medlem.Add(new Medlem()
+            {
+
+                Namn = "Sara",
+                Epost = "Sara@gmail.com",
+                Telefonnummer = "076 000 00 00",
+                Medlemsnivå = "Guld",
+                Betalstatus = "Betald",
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Medlem.Add(new Medlem()
+            {
+
+                Namn = "Amanda",
+                Epost = "Amanda@gmail.com",
+                Telefonnummer = "076 111 11 11",
+                Medlemsnivå = "Silver",
+                Betalstatus = "Obetald",
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Medlem.Add(new Medlem()
+            {
+
+                Namn = "Gabbe",
+                Epost = "Gabbe@gmail.com",
+                Telefonnummer = "076 222 22 22",
+                Medlemsnivå = "Platinum",
+                Betalstatus = "Betald",
+            });
+
+            samverketContext.SaveChanges();
+        }
+        #endregion
+
+        #region Populate Resurs
+        public static void PopulateResurs(SamverketContext samverketContext)
+        {
+            if (samverketContext.Resurs.Any())
+                return;
+
+            samverketContext.Resurs.Add(new Resurs()
+            {
+
+                Namn = "Katten",
+                Typ = "Konferensrum",
+                Kapacitet = 10,
+                Status = "Ledig",
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Resurs.Add(new Resurs()
+            {
+
+                Namn = "Hunden",
+                Typ = "Mötesrum",
+                Kapacitet = 5,
+                Status = "Bokad",
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Resurs.Add(new Resurs()
+            {
+
+                Namn = "Hästen",
+                Typ = "Kontorsrum",
+                Kapacitet = 2,
+                Status = "Ledig",
+            });
+
+            samverketContext.SaveChanges();
+
+
+        }
+        #endregion
+
+        #region Populate Utrustning
+        public static void PopulateUtrustning(SamverketContext samverketContext)
+        {
+            if (samverketContext.Utrustning.Any())
+                return;
 
             samverketContext.Utrustning.Add(new Utrustning()
             {
@@ -26,7 +167,7 @@ namespace Datalager
 
                 Skick = "Bra",
 
-                ResursID = null
+                ResursID = 1
 
             });
 
@@ -57,7 +198,7 @@ namespace Datalager
 
                 Skick = "Sliten",
 
-                ResursID = null
+                ResursID = 2
 
             });
 
@@ -72,7 +213,7 @@ namespace Datalager
 
                 Skick = "Bra",
 
-                ResursID = null
+                ResursID = 1
 
             });
 
@@ -80,7 +221,47 @@ namespace Datalager
 
         }
 
+        #endregion
 
-        
+        #region Populate Bokning
+        public static void PopulateBokning(SamverketContext samverketContext)
+        {
+            if (samverketContext.Bokning.Any())
+                return;
+
+            samverketContext.Bokning.Add(new Bokning()
+            {
+
+                MedlemsID = 1,
+                ResursID = 1,
+                Starttid = DateTime.Parse("2026-02-15 10:00"),
+                Sluttid = DateTime.Parse("2026-02-15 11:00"),
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Bokning.Add(new Bokning()
+            {
+
+                MedlemsID = 2,
+                ResursID = 2,
+                Starttid = DateTime.Parse("2026-02-17 13:00"),
+                Sluttid = DateTime.Parse("2026-02-17 14:30"),
+            });
+
+            samverketContext.SaveChanges();
+
+            samverketContext.Bokning.Add(new Bokning()
+            {
+
+                MedlemsID = 3,
+                ResursID = 3,
+                Starttid = DateTime.Parse("2026-02-20 12:00"),
+                Sluttid = DateTime.Parse("2026-02-20 14:00"),
+            });
+
+            samverketContext.SaveChanges();
+        }
+#endregion
     }
 }

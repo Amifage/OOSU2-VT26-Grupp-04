@@ -12,7 +12,7 @@ namespace Entitetslager
         [Key] public int ResursID { get; set; }
         public string Namn { get; set; }
         public string Typ { get; set; }
-        public string Kapacitet { get; set; }
+        public int Kapacitet { get; set; } //Denna är ändrat till en int
         public string Status { get; set; }
 
         public virtual ICollection<Utrustning> utrustning { get; set; } //En navigational property till utrsutning
