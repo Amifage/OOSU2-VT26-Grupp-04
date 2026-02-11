@@ -10,21 +10,22 @@ namespace Affärslagret
 {
     public class MedlemController
     {
-        private readonly UnitOfWork _unitOfWork;
-        private readonly SamverketContext samverketContext;
+        //private readonly UnitOfWork _unitOfWork;
+        //private readonly SamverketContext samverketContext;
 
-        public MedlemController()
-        {
-            _unitOfWork = new UnitOfWork(samverketContext);
+        //public MedlemController()
+        //{
+            //_unitOfWork = new UnitOfWork(samverketContext);
             
 
-        }
+        //}
 
-        public void SkapaMedlem(Medlem medlem)
+        public int SkapaMedlem(Medlem medlem)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             _unitOfWork.MedlemRepository.Add(medlem);
-            _unitOfWork.Save();
+            int rows = _unitOfWork.Save();
+            return _unitOfWork.Save();
 
         }
 

@@ -37,7 +37,7 @@ namespace Presentationslager
                 string epost = MedlemsEpostTextBox.Text?.Trim();
                 string telefon = MedlemsTelefonnummerTextBox.Text?.Trim();
 
-                string medlemsniva = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
+                string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
                 string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
                 // Validering
@@ -46,7 +46,7 @@ namespace Presentationslager
                     MessageBox.Show("Du måste fylla i namn/företagsnamn.");
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(medlemsniva) || string.IsNullOrWhiteSpace(betalstatus))
+                if (string.IsNullOrWhiteSpace(medlemsnivå) || string.IsNullOrWhiteSpace(betalstatus))
                 {
                     MessageBox.Show("Välj medlemsnivå och betalstatus.");
                     return;
@@ -57,14 +57,14 @@ namespace Presentationslager
                     Namn = namn,
                     Epost = string.IsNullOrWhiteSpace(epost) ? null : epost,
                     Telefonnummer = string.IsNullOrWhiteSpace(telefon) ? null : telefon,
-                    Medlemsnivå = medlemsniva,
+                    Medlemsnivå = medlemsnivå,
                     Betalstatus = betalstatus,
                     SenastUppdaterad = DateTime.Now
                 };
 
-                _medlemController.SkapaMedlem(nyMedlem);
+                var rows = _medlemController.SkapaMedlem(nyMedlem);
 
-                MessageBox.Show("Medlemmen har skapats!");
+                MessageBox.Show($"Medlemmen har sparats. Rows {rows}");
 
               
             }

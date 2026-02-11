@@ -9,9 +9,9 @@ namespace Affärslagret
 {
     public class DatabasController
     {
-      public DatabasController() 
+        public DatabasController() 
         {
-            var uow = new UnitOfWork();
+            var uow = new UnitOfWork(new SamverketContext());
         }
       
         
