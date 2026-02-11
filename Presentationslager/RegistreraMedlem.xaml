@@ -34,19 +34,6 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Registrera Medlem" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
-        <TextBlock Grid.Column="1"
-           Grid.Row="2"
-           Text="Välj företag eller privatperson"
-           Margin="5"/>
-
-        <ComboBox x:Name="MedlemstypComboBox"
-          Grid.Column="2"
-          Grid.Row="2"
-          Width="200"
-          Margin="5">
-            <ComboBoxItem Content="Privatperson"/>
-            <ComboBoxItem Content="Företag"/>
-        </ComboBox>
 
         <TextBlock Grid.Column="1" Grid.Row="3"  Text="Fyll i medlemens Fullständiga Namn/ Företagsnamn " Margin="5"/>
         <TextBox x:Name="MedlemsEfternamnTextBox" Grid.Column="2" Grid.Row="3" Width="200" Margin="5"/>
