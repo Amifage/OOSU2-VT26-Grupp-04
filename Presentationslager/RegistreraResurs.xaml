@@ -48,7 +48,7 @@
             <ComboBoxItem Content="Konferenssal"/>
         </ComboBox>
         <TextBlock Grid.Column="1" Grid.Row="4"  Text="Resurs Kapacitet" Margin="5"/>
-        <TextBox x:Name="MedlemsEpostTextBox" Grid.Column="2" Grid.Row="4" Width="200" Margin="5"/>
+        <TextBox x:Name="ResursKapacitetTextBox" Grid.Column="2" Grid.Row="4" Width="200" Margin="5"/>
         <TextBlock Grid.Column="1" Grid.Row="5"  Text="Utrustning" Margin="5"/>
         <!-- Temp för utrustning och status -->
         <ComboBox x:Name="ResursUtrustningsComboBox"
