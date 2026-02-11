@@ -27,6 +27,11 @@ namespace Datalager
             return samverketContext.Medlem.FirstOrDefault(m => m.MedlemID == id);
         }
 
+        public void Update(Medlem medlem)
+        {
+            samverketContext.Medlem.Update(medlem);
+        }
+
 
 
     }
