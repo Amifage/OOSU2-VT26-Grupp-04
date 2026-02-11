@@ -33,17 +33,17 @@ namespace Presentationslager
 
             try
             {
-                string namn = MedlemNamnTextBox.Text?.Trim();
-                string epost = MedlemsEpostTextBox.Text?.Trim();
-                string telefon = MedlemsTelefonnummerTextBox.Text?.Trim();
+                string namn = MedlemNamnTextBox.Text.Trim().ToLower();
+                string epost = MedlemsEpostTextBox.Text.Trim().ToLower();
+                string telefon = MedlemsTelefonnummerTextBox.Text.Trim().ToLower(); //Kolla efter metod fårn tiidgare arbete som kontrollerar så inga bokstäver följer med
 
                 string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
                 string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
                 // Validering
-                if (string.IsNullOrWhiteSpace(namn)) //Här behöver epost och teelfon också valideras
+                if (string.IsNullOrWhiteSpace(namn) || string.IsNullOrWhiteSpace(epost) || string.IsNullOrWhiteSpace(telefon))
                 {
-                    MessageBox.Show("Du måste fylla i namn/företagsnamn.");
+                    MessageBox.Show("Du måste fylla i samtliga uppgifter.");
                     return;
                 }
                 if (string.IsNullOrWhiteSpace(medlemsnivå) || string.IsNullOrWhiteSpace(betalstatus))
@@ -76,6 +76,5 @@ namespace Presentationslager
         }
                          
     }
-    
-    
+
 }
