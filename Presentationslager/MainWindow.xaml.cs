@@ -28,6 +28,7 @@ namespace Presentationslager
         {
             PersonalMeny personalMeny = new PersonalMeny();
             personalMeny.Show();
+            this.Close();
         }
     }
 }
