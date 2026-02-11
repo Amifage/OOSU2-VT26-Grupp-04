@@ -73,20 +73,9 @@ namespace Presentationslager
                 MessageBox.Show("Fel vid sparning: " + ex.Message);
             }
 
-
         }
-
-
-
                          
     }
-
-
-
-
-
-
-
     
     
 }
