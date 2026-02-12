@@ -23,6 +23,7 @@ namespace Presentationslager
         {
             InitializeComponent();
             new DatabasController();
+            personalController = new PersonalController();
 
         }
 
@@ -35,16 +36,7 @@ namespace Presentationslager
             string namn = EmailTextBox.Text.Trim().ToLower();
             string lösenord = LösenordTextBox.Text.Trim().ToLower();
 
-            var inloggning = new Personal
-            {
-                Namn = namn,
-                Lösenord = lösenord
-            }
-
-            personalController.ValideraInloggning(inloggning);
-           
-          
-
+            var personal = personalController.ValideraInloggning(namn, lösenord);   
            
 
             this.Close();
