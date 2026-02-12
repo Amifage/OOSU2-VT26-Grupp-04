@@ -11,6 +11,7 @@ namespace Datalager
         public BokningRepository BokningRepository { get; }
         public ResursRepository ResursRepository { get; }
         public StatistikRepository StatistikRepository { get; }
+        public PersonalRepository PersonalRepository { get; }
 
 
         public UnitOfWork(SamverketContext context)
@@ -23,6 +24,7 @@ namespace Datalager
             //BokningRepository = new BokningRepository(samverketContext);
             ResursRepository = new ResursRepository(samverketContext);
             //StatistikRepository = new StatistikRepository(samverketContext);
+            PersonalRepository = new PersonalRepository(samverketContext);
 
             Seed.PopulatePersonal(samverketContext);
             Seed.PopulateMedlem(samverketContext);
