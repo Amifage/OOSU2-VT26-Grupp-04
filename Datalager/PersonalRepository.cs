@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entitetslager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,11 @@ namespace Datalager
         public PersonalRepository(SamverketContext context)
         {
             samverketContext = context;
+        }
+        public Personal? ValideraInloggning(string namn, string lösenord)
+        {
+            return samverketContext.Personal
+                .FirstOrDefault(p => p.Namn == namn && p.Lösenord == lösenord);
         }
     }
 }

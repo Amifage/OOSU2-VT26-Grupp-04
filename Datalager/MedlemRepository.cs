@@ -32,11 +32,7 @@ namespace Datalager
             samverketContext.Medlem.Update(medlem);
         }
 
-        //public Medlem? ValideraInloggning(string namn, string losenord)
-        //{
-        //    return samverketContext.Medlem
-        //        .FirstOrDefault(m => m.Namn == namn && m.Losenord == losenord);
-        //}
+        
 
     }
     
