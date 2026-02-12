@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Affärslagret;
+using Entitetslager;
 
 namespace Presentationslager
 {
@@ -28,6 +29,8 @@ namespace Presentationslager
         {
             PersonalMeny personalMeny = new PersonalMeny();
             personalMeny.Show();
+            //_medlemController.SkapaMedlem(nyMedlem);
+            //_personalController.Validera
             this.Close();
         }
     }
