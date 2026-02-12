@@ -32,11 +32,24 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Uppdatera Resurs" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
+
+        <TextBlock Grid.Column= "1" Grid.Row="2"  Text= "Skriv ResursID som du vill ändra" Margin="5"/>
+        <TextBox x:Name="ResursIDTextBox" Grid.Column="2" Grid.Row="2" Margin="4" Width="200"/>
+        <Button x:Name="SumbitResursIDButton" Grid.Column="2" Grid.Row="3" Content="Hämta" Margin="5" Click="SumbitResursIDButton_Click"  />
+        <TextBlock Grid.Column="1" Grid.Row="6" Text="Resurserns namn" Margin="5" />
+        <TextBox Grid.Column="2" Grid.Row="6" x:Name="NamnTextBox" Width="200" Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" Text="Resursens typ" Margin="5" />
+        <TextBox Grid.Column="2" Grid.Row="7" x:Name="TypTextBox" Width="200" Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="8" Text="Kapacitet" Margin="5" />
+        <TextBox Grid.Column="2" Grid.Row="8" x:Name="KapacitetTextBox" Width="200" Margin="5"/>
+        <Button x:Name="SparaÄndradResursButton" Grid.Column="2" Grid.Row="9" Content="Spara" Margin="5" Click="SparaÄndradResursButton_Click" />
 
     </Grid>
 </Window>

@@ -21,5 +21,16 @@ namespace Datalager
         {
             samverketContext.Resurs.Add(resurs);
         }
+
+        public Resurs? Hämtaresurs (int id)
+        {
+            return samverketContext.Resurs.FirstOrDefault(r => r.ResursID == id);
+        }
+
+        public void Update(Resurs resurs)
+        {
+            samverketContext.Resurs.Update(resurs);
+        }
+      
     }
 }

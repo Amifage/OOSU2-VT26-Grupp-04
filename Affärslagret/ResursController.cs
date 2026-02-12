@@ -16,7 +16,20 @@ namespace Affärslagret
             _unitOfWork.ResursRepository.Add(resurs);
             _unitOfWork.Save();
 
+        }
+      
+        public Resurs? HamtaResursById (int id)
+        {
+            using var _unitofwork = new UnitOfWork(new SamverketContext());
+            return _unitofwork.ResursRepository.Hämtaresurs(id);
+        }
 
+       
+        public int UppdateraResurs(Resurs resurs)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            _unitOfWork.ResursRepository.Update(resurs);
+            return _unitOfWork.Save();
         }
     }
 }
