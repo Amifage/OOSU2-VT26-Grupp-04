@@ -29,17 +29,28 @@ namespace Presentationslager
 
         private void LoggaInButton_Click(object sender, RoutedEventArgs e)
         {
-            PersonalMeny personalMeny = new PersonalMeny();
-            personalMeny.Show();
+            
 
 
-            string namn = EmailTextBox.Text.Trim().ToLower();
-            string lösenord = LösenordTextBox.Text.Trim().ToLower();
+            string namn = EmailTextBox.Text.Trim();
+            string lösenord = LösenordTextBox.Password.Trim().ToLower();
 
-            var personal = personalController.ValideraInloggning(namn, lösenord);   
-           
+            var personal = personalController.ValideraInloggning(namn, lösenord);
 
-            this.Close();
+            if (personal != null)
+            {
+                PersonalMeny personalMeny= new PersonalMeny();
+                
+                personalMeny.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Fel namn eller lösenord");
+
+            }
+        }
+
+            
         }
     }
-}
