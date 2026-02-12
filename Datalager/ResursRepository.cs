@@ -31,6 +31,5 @@ namespace Datalager
         {
             samverketContext.Resurs.Update(resurs);
         }
-      
     }
 }

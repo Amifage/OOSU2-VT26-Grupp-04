@@ -15,8 +15,7 @@ namespace Affärslagret
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             _unitOfWork.MedlemRepository.Add(medlem);
-            _unitOfWork.Save();
-           
+            _unitOfWork.Save();       
 
         }
 

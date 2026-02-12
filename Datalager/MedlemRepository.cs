@@ -31,10 +31,7 @@ namespace Datalager
         {
             samverketContext.Medlem.Update(medlem);
         }
-
-        
-
-    }
-    
+       
+    }    
     
 }

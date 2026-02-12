@@ -61,11 +61,6 @@ namespace Presentationslager
                 return;
             }
 
-            int rows = _resursController.UppdateraResurs(resurs);
-
-
-            MessageBox.Show(rows == 1 ? "Resurs uppdaterad!" : "Något gick fel");
-
             resurs.Namn =NamnTextBox.Text.Trim().ToLower();
             resurs.Typ = TypTextBox.Text.Trim().ToLower();
             if (int.TryParse(KapacitetTextBox.Text, out int antal))
@@ -79,6 +74,12 @@ namespace Presentationslager
             }
             resurs.SenastUppdaterad = DateTime.Now;
 
+            int rows = _resursController.UppdateraResurs(resurs);
+
+
+            MessageBox.Show(rows == 1 ? "Resurs uppdaterad!" : "Något gick fel");
+
+            this.Close();
         }
     }
 }

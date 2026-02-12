@@ -33,7 +33,6 @@ namespace Presentationslager
         private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
         {
 
-
             if (!int.TryParse(MedlemsIDTextBox.Text?.Trim(), out int id))
             {
                 MessageBox.Show("Skriv ett giltigt medlems-ID (heltal).");
@@ -41,19 +40,16 @@ namespace Presentationslager
             }
 
             medlem = _medlemController.HamtaMedlemById(id);
-
-          
+         
             if (medlem == null)
             {
                 MessageBox.Show("Ingen medlem hittades med det ID:t.");
                 return;
             }
-
             
             NamnTextBox.Text = medlem.Namn;
             EpostTextBox.Text = medlem.Epost ?? "";
             TelefonTextBox.Text = medlem.Telefonnummer ?? "";
-
 
         }
 
