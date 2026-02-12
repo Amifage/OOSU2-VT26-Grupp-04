@@ -18,6 +18,7 @@ namespace Presentationslager
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly PersonalController personalController = new PersonalController();
         public MainWindow()
         {
             InitializeComponent();
@@ -29,8 +30,23 @@ namespace Presentationslager
         {
             PersonalMeny personalMeny = new PersonalMeny();
             personalMeny.Show();
-            //_medlemController.SkapaMedlem(nyMedlem);
-            //_personalController.Validera
+
+
+            string namn = EmailTextBox.Text.Trim().ToLower();
+            string lösenord = LösenordTextBox.Text.Trim().ToLower();
+
+            var inloggning = new Personal
+            {
+                Namn = namn,
+                Lösenord = lösenord
+            }
+
+            personalController.ValideraInloggning(inloggning);
+           
+          
+
+           
+
             this.Close();
         }
     }
