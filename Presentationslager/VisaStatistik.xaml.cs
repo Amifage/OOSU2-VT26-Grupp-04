@@ -23,5 +23,17 @@ namespace Presentationslager
         {
             InitializeComponent();
         }
+
+        private void MedlemsStatistikButton_Click(object sender, RoutedEventArgs e)
+        {
+            MedlemsAktivitet medlemsAktivitet = new MedlemsAktivitet();
+            medlemsAktivitet.Show();
+            this.Close();
+        }
+
+        private void ResursStatistikButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

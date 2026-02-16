@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
-
         Title="PersonalMeny" Height="450" Width="800" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -40,7 +39,7 @@
         <Button x:Name="SkapaBokningButton" Content="Skapa bokning" Grid.Column="1" Grid.Row="2" Margin="10" Click="SkapaBokningButton_Click" />
         <Button x:Name="HanteraBokningButton" Content="Hantera bokning" Grid.Column=" 2" Grid.Row="2" Margin="10" Click="HanteraBokningButton_Click" />
         <Button x:Name="RegistreraMedlemButton" Content="Registrera medlem" Grid.Column=" 1" Grid.Row="3" Margin="10" Click="RegistreraMedlemButton_Click" />
-        <Button x:Name="KommandeBoknigarButton" Content="Visa kommande boknigar" Grid.Column="3" Grid.Row="3" Margin="10" Click="KommandeBoknigarButton_Click"/>
+        <Button x:Name="KommandeBoknigarButton" Content="Visa kommande bokningar" Grid.Column="3" Grid.Row="3" Margin="10" Click="KommandeBoknigarButton_Click"/>
         <Button x:Name="UppdateraMedlemButton" Content="Uppdatera medlem" Grid.Column=" 2" Grid.Row="3" Margin="10" Click="UppdateraMedlemButton_Click" />
         <Button x:Name="RegistreraResursButton" Content="Registrera resurs" Grid.Column="1" Grid.Row="4" Margin="10" Click="RegistreraResursButton_Click" />
         <Button x:Name="UppdateraResursButton" Content="Uppdatera resurs" Grid.Column="2" Grid.Row="4" Margin="10" Click="UppdateraResursButton_Click" />

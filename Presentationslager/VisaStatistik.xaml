@@ -37,6 +37,9 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Statistik" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
+        <Button x:Name="MedlemsStatistikButton" Grid.Column="1" Grid.Row="2" Content="Medlemsstatistik" Margin="5" Click="MedlemsStatistikButton_Click"/>
+        <Button x:Name="ResursStatistikButton" Grid.Column="1" Grid.Row="3" Content="Resursstatistik" Margin="5" Click="ResursStatistikButton_Click"/>
+
     </Grid>
 </Window>
   
