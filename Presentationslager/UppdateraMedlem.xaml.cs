@@ -40,6 +40,16 @@ namespace Presentationslager
             MedlemsIDTextBox.Focus(); //Denna raden flyttar fokus/pekaren tillbaka till medlem namn så man direkt kan registrera en ny medlem
         }
 
+        static bool IsDigitsOnly(string str) //Denna funktion tar en sträng och returnerar falskt om villkoret inte stämmer och sant om villkoret stämmer. Funktionen kontrollerar så strängen innehåller siffror mellan 0-9.
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
+
         private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -68,6 +78,20 @@ namespace Presentationslager
             if (medlem == null)
             {
                 MessageBox.Show("Hämta medlem först");
+                return;
+            }
+
+            string telefon = TelefonTextBox.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(telefon))
+            {
+                MessageBox.Show("Telefonnummer måste fyllas i.");
+                return;
+            }
+
+            if (!IsDigitsOnly(telefon))
+            {
+                MessageBox.Show("Telefonnummer får bara innehålla siffror.");
                 return;
             }
 

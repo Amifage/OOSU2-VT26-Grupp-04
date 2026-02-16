@@ -41,6 +41,16 @@ namespace Presentationslager
             MedlemNamnTextBox.Focus(); //Denna raden flyttar fokus/pekaren tillbaka till medlem namn så man direkt kan registrera en ny medlem
         }
 
+        static bool IsDigitsOnly(string str) //Denna funktion tar en sträng och returnerar falskt om villkoret inte stämmer och sant om villkoret stämmer. Funktionen kontrollerar så strängen innehåller siffror mellan 0-9.
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
+
         private void SparaNyMedlemButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -48,7 +58,7 @@ namespace Presentationslager
             {
                 string namn = MedlemNamnTextBox.Text.Trim().ToLower();
                 string epost = MedlemsEpostTextBox.Text.Trim().ToLower();
-                string telefon = MedlemsTelefonnummerTextBox.Text.Trim().ToLower(); //Kolla efter metod fårn tiidgare arbete som kontrollerar så inga bokstäver följer med
+                string telefon = MedlemsTelefonnummerTextBox.Text.Trim().ToLower();
 
                 string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower();
                 string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower() ;
@@ -62,6 +72,11 @@ namespace Presentationslager
                 if (string.IsNullOrWhiteSpace(medlemsnivå) || string.IsNullOrWhiteSpace(betalstatus))
                 {
                     MessageBox.Show("Välj medlemsnivå och betalstatus.");
+                    return;
+                }
+                if (!IsDigitsOnly(telefon)) //Kontrollera så tel enbart innehåller siffror
+                {
+                    MessageBox.Show("Telefonnummer får bara innehålla siffror.");
                     return;
                 }
 
