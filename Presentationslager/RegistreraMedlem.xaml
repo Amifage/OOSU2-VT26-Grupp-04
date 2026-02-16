@@ -65,8 +65,5 @@
         </ComboBox>
         <Button x:Name="SparaNyMedlemButton" Grid.Column="2" Grid.Row="8" Margin="5" Content="Spara" Click="SparaNyMedlemButton_Click"/>
 
-
-
-
     </Grid>
 </Window>

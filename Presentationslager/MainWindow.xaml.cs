@@ -29,8 +29,6 @@ namespace Presentationslager
 
         private void LoggaInButton_Click(object sender, RoutedEventArgs e)
         {
-            
-
 
             string namn = EmailTextBox.Text.Trim();
             string lösenord = LösenordTextBox.Password.Trim().ToLower();

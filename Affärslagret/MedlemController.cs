@@ -10,7 +10,6 @@ namespace Affärslagret
 {
     public class MedlemController
     {
-
         public void SkapaMedlem(Medlem medlem)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());

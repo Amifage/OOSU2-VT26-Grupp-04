@@ -45,8 +45,6 @@
         <Button x:Name="UppdateraResursButton" Content="Uppdatera resurs" Grid.Column="2" Grid.Row="4" Margin="10" Click="UppdateraResursButton_Click" />
         <Button x:Name="VisaTillgänglighetButton" Content="Visa tillgänglighet" Grid.Column="1" Grid.Row="5" Margin="10" Click="VisaTillgänglighetButton_Click" />
         <Button x:Name="VisaStatistikButton" Content="Visa statistik" Grid.Column="1" Grid.Row="6" Margin="10" Click="VisaStatistikButton_Click" />
-
-
-
+        
     </Grid>
 </Window>
