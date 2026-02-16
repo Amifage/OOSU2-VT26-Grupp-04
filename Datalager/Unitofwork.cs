@@ -21,7 +21,7 @@ namespace Datalager
             samverketContext.Database.EnsureCreated();
 
             MedlemRepository = new MedlemRepository(samverketContext);
-            //BokningRepository = new BokningRepository(samverketContext);
+            BokningRepository = new BokningRepository(samverketContext);
             ResursRepository = new ResursRepository(samverketContext);
             //StatistikRepository = new StatistikRepository(samverketContext);
             PersonalRepository = new PersonalRepository(samverketContext);

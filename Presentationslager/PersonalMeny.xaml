@@ -40,11 +40,12 @@
         <Button x:Name="SkapaBokningButton" Content="Skapa bokning" Grid.Column="1" Grid.Row="2" Margin="10" Click="SkapaBokningButton_Click" />
         <Button x:Name="HanteraBokningButton" Content="Hantera bokning" Grid.Column=" 2" Grid.Row="2" Margin="10" Click="HanteraBokningButton_Click" />
         <Button x:Name="RegistreraMedlemButton" Content="Registrera medlem" Grid.Column=" 1" Grid.Row="3" Margin="10" Click="RegistreraMedlemButton_Click" />
+        <Button x:Name="KommandeBoknigarButton" Content="Visa kommande boknigar" Grid.Column="3" Grid.Row="3" Margin="10" Click="KommandeBoknigarButton_Click"/>
         <Button x:Name="UppdateraMedlemButton" Content="Uppdatera medlem" Grid.Column=" 2" Grid.Row="3" Margin="10" Click="UppdateraMedlemButton_Click" />
         <Button x:Name="RegistreraResursButton" Content="Registrera resurs" Grid.Column="1" Grid.Row="4" Margin="10" Click="RegistreraResursButton_Click" />
         <Button x:Name="UppdateraResursButton" Content="Uppdatera resurs" Grid.Column="2" Grid.Row="4" Margin="10" Click="UppdateraResursButton_Click" />
         <Button x:Name="VisaTillgänglighetButton" Content="Visa tillgänglighet" Grid.Column="1" Grid.Row="5" Margin="10" Click="VisaTillgänglighetButton_Click" />
         <Button x:Name="VisaStatistikButton" Content="Visa statistik" Grid.Column="1" Grid.Row="6" Margin="10" Click="VisaStatistikButton_Click" />
-        
+                
     </Grid>
 </Window>

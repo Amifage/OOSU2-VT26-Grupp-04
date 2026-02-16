@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entitetslager;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,18 @@ namespace Datalager
 {
     public class BokningRepository
     {
+        private readonly SamverketContext samverketContext;
+        public BokningRepository (SamverketContext context)
+        {
+            samverketContext = context;
+        }
+
+        public List<Bokning> HämtakommandeBokningar()
+        {
+            return samverketContext.Bokning                             
+                .Where(b=> b.Starttid >= DateTime.Now)
+                .OrderBy(b=>b.Starttid)          
+                .ToList();
+        }
     }
 }

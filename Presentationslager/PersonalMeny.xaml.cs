@@ -70,5 +70,11 @@ namespace Presentationslager
             VisaTillgänglighet VisaTillgänglighetFönster = new VisaTillgänglighet();
             VisaTillgänglighetFönster.Show();
         }
+
+        private void KommandeBoknigarButton_Click(object sender, RoutedEventArgs e)
+        {
+            KommandeBokningar kommandeBoknigar = new KommandeBokningar();
+            kommandeBoknigar.Show();
+        }
     }
 }
