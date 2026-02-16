@@ -22,6 +22,7 @@ namespace Presentationslager
     public partial class MedlemsAktivitet : Window
     {
         private readonly MedlemController _medlemController = new MedlemController();
+        private readonly BokningController _bokningController = new BokningController();
         private Medlem? medlem;
         public MedlemsAktivitet()
         {
@@ -42,8 +43,13 @@ namespace Presentationslager
                 MessageBox.Show("Ingen medlem hittades med det ID:t.");
                 return;
             }
-            medlem = _medlemController.HamtaMedlemById(id);
-            
+
+            var bokningar = _bokningController.HämtaBokningarFörMedlem(id);
+            MedlemsaktivitetDataGrid.ItemsSource = bokningar;
+            if (bokningar.Count == 0 )
+            {
+                MessageBox.Show("Medlemmen hittades, men har inga registresrade bokningar");
+            }
            
         }
     }

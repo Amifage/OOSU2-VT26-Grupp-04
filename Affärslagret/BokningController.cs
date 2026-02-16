@@ -19,6 +19,13 @@ namespace Affärslagret
                 return _unitOfWork.BokningRepository.HämtakommandeBokningar();
             }
         }
-
+        public List <Bokning> HämtaBokningarFörMedlem(int id)
+        {
+            using (UnitOfWork _unitOfWork = new UnitOfWork(new SamverketContext()))
+            { 
+                return _unitOfWork.BokningRepository.HämtaBokningarFörMedlem(id); 
+           
+            }
+        }
     }
 }
