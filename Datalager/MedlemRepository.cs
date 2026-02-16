@@ -31,6 +31,11 @@ namespace Datalager
         {
             samverketContext.Medlem.Update(medlem);
         }
+
+        public void Delete(Medlem medlem)
+        {
+            samverketContext.Medlem.Remove(medlem);
+        }
        
     }    
     

@@ -31,5 +31,17 @@ namespace Affärslagret
             _unitOfWork.ResursRepository.Update(resurs);
             return _unitOfWork.Save();
         }
+
+        public int TaBortResurs(int id)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
+            var resurs = _unitOfWork.ResursRepository.Hämtaresurs(id);
+            if (resurs == null)
+                return 0;
+
+            _unitOfWork.ResursRepository.Delete(resurs);
+            return _unitOfWork.Save();
+        }
     }
 }

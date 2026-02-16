@@ -27,6 +27,14 @@ namespace Presentationslager
         {
             InitializeComponent();
         }
+        private void RensaFormulär()
+        {
+            ResursNamnTextBox.Text = "";
+            ResurstypComboBox.SelectedIndex = -1;
+            ResursKapacitetTextBox.Text = "";
+
+            ResursNamnTextBox.Focus();
+        }
 
         private void SparaNyResursButton_Click(object sender, RoutedEventArgs e)
         {
@@ -61,7 +69,9 @@ namespace Presentationslager
 
                 _resursController.SkapaResurs(nyResurs);
 
-                MessageBox.Show("Resursen har sparats!");
+                MessageBox.Show($"Resursen har sparats! \n\nTilldelat resursID: {nyResurs.ResursID}");
+
+                RensaFormulär();
 
             }
             catch (Exception ex)

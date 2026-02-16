@@ -31,5 +31,10 @@ namespace Datalager
         {
             samverketContext.Resurs.Update(resurs);
         }
+
+        public void Delete(Resurs resurs)
+        {
+            samverketContext.Resurs.Remove(resurs);
+        }
     }
 }

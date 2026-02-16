@@ -21,11 +21,24 @@ namespace Presentationslager
     /// </summary>
     public partial class RegistreraMedlem : Window
     {
+
         private readonly MedlemController _medlemController = new MedlemController();
 
         public RegistreraMedlem()
         {
             InitializeComponent();
+        }
+
+        private void RensaFormulär()
+        {
+            MedlemNamnTextBox.Text = "";
+            MedlemsEpostTextBox.Text = "";
+            MedlemsTelefonnummerTextBox.Text = "";
+
+            MedlemsNivåComboBox.SelectedIndex = -1;
+            MedlemsBetalstatusComboBox.SelectedIndex = -1;
+
+            MedlemNamnTextBox.Focus(); //Denna raden flyttar fokus/pekaren tillbaka till medlem namn så man direkt kan registrera en ny medlem
         }
 
         private void SparaNyMedlemButton_Click(object sender, RoutedEventArgs e)
@@ -64,14 +77,16 @@ namespace Presentationslager
 
                 _medlemController.SkapaMedlem(nyMedlem);
 
-                MessageBox.Show($"Medlemmen har sparats!");
+                MessageBox.Show($"Medlemmen har sparats!\n\nTilldelat medlemsnummer: {nyMedlem.MedlemID}");
 
-              
+                RensaFormulär();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Fel vid sparning: " + ex.Message);
             }
+
+            
 
         }
                          

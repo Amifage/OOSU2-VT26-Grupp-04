@@ -31,11 +31,20 @@ namespace Presentationslager
             InitializeComponent();
         }
 
+        private void RensaFormulär()
+        {
+            NamnTextBox.Text = "";
+            TypTextBox.Text = "";
+            KapacitetTextBox.Text = "";
+
+            NamnTextBox.Focus();
+        }
+
         private void SumbitResursIDButton_Click(object sender, RoutedEventArgs e)
         {
             if (!int.TryParse(ResursIDTextBox.Text?.Trim(), out int id))
             {
-                MessageBox.Show("Skriv ett giltigt resurs-ID (heltal).");
+                MessageBox.Show("Skriv ett giltigt resurs-ID (heltal)."); //Vill vi ha hetal med här?
                 return;
             }
           
@@ -80,6 +89,40 @@ namespace Presentationslager
             MessageBox.Show(rows == 1 ? "Resurs uppdaterad!" : "Något gick fel");
 
             this.Close();
+        }
+
+        private void RaderaResursButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (resurs == null)
+            {
+                MessageBox.Show("Hämta resurs först.");
+                return;
+            }
+
+            var result = MessageBox.Show(
+                $"Är du säker på att du vill radera resursen?\n\n" +
+                $"ID: {resurs.ResursID}\n" +
+                $"Namn: {resurs.Namn}\n" +
+                $"Typ: {resurs.Typ}", 
+                "Bekräfta radering",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            int rows = _resursController.TaBortResurs(resurs.ResursID);
+
+            if (rows == 1)
+            {
+                MessageBox.Show("Resurs raderad!");
+                resurs = null;
+                RensaFormulär();
+            }
+            else
+            {
+                MessageBox.Show("Radering misslyckades (resurs hittades inte eller fel uppstod).");
+            }
         }
     }
 }

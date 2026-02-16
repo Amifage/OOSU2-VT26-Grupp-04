@@ -33,5 +33,17 @@ namespace Affärslagret
             return _unitOfWork.Save();
         }
 
+        public int TaBortMedlem(int id)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
+            var medlem = _unitOfWork.MedlemRepository.HämtaMedlem(id);
+            if (medlem == null)
+                return 0;
+
+            _unitOfWork.MedlemRepository.Delete(medlem);
+            return _unitOfWork.Save();
+        }
+
     }
 }
