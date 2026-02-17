@@ -65,7 +65,7 @@ namespace Presentationslager
             var lediga = _resursController.HämtaLedigaResurser(start.Value, slut);
 
             VäljresursComboBox.ItemsSource = lediga;
-            VäljresursComboBox.DisplayMemberPath = "Namn"; // Visar resursens namn i listan
+           
 
             if (lediga.Any())
             {
