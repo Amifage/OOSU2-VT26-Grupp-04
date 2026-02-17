@@ -69,8 +69,7 @@ namespace Presentationslager
 
             if (lediga.Any())
             {
-                SparaBokningButton.IsEnabled = true;
-                MessageBox.Show($"Hittade {lediga.Count} lediga resurser.");
+                SparaBokningButton.IsEnabled = true;             
             }
             else
             {
@@ -118,7 +117,6 @@ namespace Presentationslager
                 MessageBox.Show("Ett fel uppstod: " + ex.Message);
             }
         }
-
         // Din befintliga metod för att skapa DateTime från valen i fönstret
         private DateTime? GetBokningsDateTime()
         {
