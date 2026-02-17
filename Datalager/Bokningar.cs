@@ -26,11 +26,17 @@ namespace Datalager
                 .ToList();
 
         }
-        public List<Bokning> HämtaBokningarFörMedlem(int medlemsId)
+        public List<Bokning> HämtaBokningarFörMedlem(int medlemId)
         {
             return samverketContext.Bokning
-                .Where(b => b.MedlemsID == medlemsId)
+                .Where(b => b.MedlemID == medlemId)
                 .OrderByDescending(b => b.Starttid)
+                .ToList();
+        }
+        public List<Bokning> HämtatUpptagnaBokningar(DateTime start, DateTime slut)
+        {
+            return samverketContext.Bokning
+                .Where(b => (start < b.Sluttid && slut > b.Starttid))
                 .ToList();
         }
     }

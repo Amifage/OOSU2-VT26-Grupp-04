@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Affärslagret;
+using Entitetslager;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -20,29 +22,102 @@ namespace Presentationslager
     /// </summary>
     public partial class SkapaBokning : Window
     {
+        private readonly ResursController _resursController = new ResursController();
+        private readonly BokningController _bokningController = new BokningController();
         public SkapaBokning()
         {
             InitializeComponent();
             this.LoadTimePicker();
-        }
+        } 
+
+        // Din befintliga metod för att ladda tider
         private void LoadTimePicker()
         {
-            // Fyll timmar 00-23
             for (int hour = 0; hour <= 23; hour++)
             {
                 this.TimmarComboBox.Items.Add(hour.ToString("D2"));
             }
 
-            // Fyll minuter 00-59 (i 5-min steg)
             for (int minute = 0; minute <= 59; minute += 5)
             {
                 this.MinuterComboBox.Items.Add(minute.ToString("D2"));
             }
 
-            // Standardval
-            this.TimmarComboBox.SelectedIndex = 12;  // 12
-            this.MinuterComboBox.SelectedIndex = 0;  // 00
+            this.TimmarComboBox.SelectedIndex = 12;
+            this.MinuterComboBox.SelectedIndex = 0;
         }
+
+        // Metod för att söka efter lediga resurser
+        private void SökLedigaButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? start = GetBokningsDateTime();
+            if (!start.HasValue)
+            {
+                MessageBox.Show("Välj datum och tid först.");
+                return;
+            }
+
+            // Hämta längd från TextBox, standardvärde 1 timme om inmatning saknas
+            if (!int.TryParse(LängdTextBox.Text, out int timmar)) timmar = 1;
+            DateTime slut = start.Value.AddHours(timmar);
+
+            // Anropar kontrollern för att filtrera fram lediga resurser
+            var lediga = _resursController.HämtaLedigaResurser(start.Value, slut);
+
+            VäljresursComboBox.ItemsSource = lediga;
+           
+
+            if (lediga.Any())
+            {
+                SparaBokningButton.IsEnabled = true;             
+            }
+            else
+            {
+                SparaBokningButton.IsEnabled = false;
+                MessageBox.Show("Inga lediga resurser hittades för denna tid.");
+            }
+        }
+
+        // Metod för att spara den nya bokningen
+        private void SparaBokningButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!int.TryParse(MedlemsIDTextBox.Text, out int medlemId))
+                {
+                    MessageBox.Show("Ange ett giltigt Medlems-ID.");
+                    return;
+                }
+
+                var valdResurs = VäljresursComboBox.SelectedItem as Resurs;
+                if (valdResurs == null)
+                {
+                    MessageBox.Show("Välj en resurs i listan.");
+                    return;
+                }
+
+                DateTime start = GetBokningsDateTime().Value;
+                int timmar = int.Parse(LängdTextBox.Text);
+
+                var nyBokning = new Bokning
+                {
+                    MedlemID = medlemId,
+                    ResursID = valdResurs.ResursID,
+                    Starttid = start,
+                    Sluttid = start.AddHours(timmar),
+                    SenastUppdaterad = DateTime.Now
+                };
+
+                _bokningController.SkapaBokning(nyBokning);
+                MessageBox.Show("Bokningen har skapats!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ett fel uppstod: " + ex.Message);
+            }
+        }
+        // Din befintliga metod för att skapa DateTime från valen i fönstret
         private DateTime? GetBokningsDateTime()
         {
             DateTime? selectedDate = this.BokningsCalander.SelectedDate;

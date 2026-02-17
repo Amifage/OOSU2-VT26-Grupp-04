@@ -44,19 +44,17 @@ namespace Affärslagret
             return _unitOfWork.Save();
         }
 
-        public List<Resurs> HämtaAllaResurser() //NY
+        public List<Resurs> HämtaLedigaResurser(DateTime start, DateTime slut)
         {
-            using var _unitOfWork = new UnitOfWork(new SamverketContext());
-            return _unitOfWork.ResursRepository.GetAll().ToList();
-        }
+            using var uow = new UnitOfWork(new SamverketContext());
+            // Hämta alla resurser
+            var allaResurser = uow.ResursRepository.Find(r => true).ToList();
+            // Hämta bokningar som krockar
+            var krockar = uow.bokningar.HämtatUpptagnaBokningar(start, slut);
+            var upptagnaResursIdn = krockar.Select(b => b.ResursID).Distinct();
 
-        public List<Utrustning> HämtaUtrustningFörResurs(int resursId)
-        {
-            using var _unitOfWork = new UnitOfWork(new SamverketContext());
-
-            return _unitOfWork.UtrustningRepository
-                              .Find(u => u.ResursID == resursId)
-                              .ToList();
+            // Returnera bara de som inte finns i listan över upptagna
+            return allaResurser.Where(r => !upptagnaResursIdn.Contains(r.ResursID)).ToList();
         }
     }
 }

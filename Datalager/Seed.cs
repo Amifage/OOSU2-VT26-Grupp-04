@@ -238,7 +238,7 @@ namespace Datalager
             samverketContext.Bokning.Add(new Bokning()
             {
 
-                MedlemsID = 1,
+                MedlemID = 1,
                 ResursID = 1,
                 Starttid = DateTime.Parse("2026-02-15 10:00"),
                 Sluttid = DateTime.Parse("2026-02-15 11:00"),
@@ -250,7 +250,7 @@ namespace Datalager
             samverketContext.Bokning.Add(new Bokning()
             {
 
-                MedlemsID = 2,
+                MedlemID = 2,
                 ResursID = 2,
                 Starttid = DateTime.Parse("2026-02-17 13:00"),
                 Sluttid = DateTime.Parse("2026-02-17 14:30"),
@@ -262,7 +262,7 @@ namespace Datalager
             samverketContext.Bokning.Add(new Bokning()
             {
 
-                MedlemsID = 3,
+                MedlemID = 3,
                 ResursID = 3,
                 Starttid = DateTime.Parse("2026-02-20 12:00"),
                 Sluttid = DateTime.Parse("2026-02-20 14:00"),

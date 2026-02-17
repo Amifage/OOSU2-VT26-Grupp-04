@@ -26,5 +26,11 @@ namespace Affärslagret
            
             }
         }
+        public void SkapaBokning(Bokning nyBokning)
+        {
+            using var uow = new UnitOfWork(new SamverketContext());
+            uow.BokningRepository.Add(nyBokning);
+            uow.Save();
+        }
     }
 }
