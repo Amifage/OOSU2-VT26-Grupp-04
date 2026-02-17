@@ -21,14 +21,17 @@ namespace Datalager
         public List<Bokning> HämtakommandeBokningar()
         {
             return samverketContext.Bokning
+                .Include(b => b.medlem) 
+                .Include(b => b.resurs) 
                 .Where(b => b.Starttid >= DateTime.Now)
                 .OrderBy(b => b.Starttid)
                 .ToList();
-
         }
         public List<Bokning> HämtaBokningarFörMedlem(int medlemId)
         {
             return samverketContext.Bokning
+                .Include(b => b.medlem)
+                .Include(b => b.resurs)
                 .Where(b => b.MedlemID == medlemId)
                 .OrderByDescending(b => b.Starttid)
                 .ToList();
