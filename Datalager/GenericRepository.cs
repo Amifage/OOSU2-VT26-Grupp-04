@@ -20,10 +20,6 @@ namespace Datalager
             _dbSet = dbSet;
         }
 
-        #region Personal
-       
-        #endregion
-
         #region Generella metoder
 
         public void Update(T entity)
@@ -47,9 +43,13 @@ namespace Datalager
          _dbSet.Remove(entity);
         }
 
-        public IEnumerable<T> Find(Func<T, bool> predicate)
+        public IEnumerable<T> GetAll() //Ändrad
         {
-            return _dbSet.Where(predicate);
+            return _dbSet.ToList();
+        }
+        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate) //NY
+        {
+            return _dbSet.Where(predicate).ToList();
         }
 
         public T FirstOrDefault(Func<T, bool> predicate)

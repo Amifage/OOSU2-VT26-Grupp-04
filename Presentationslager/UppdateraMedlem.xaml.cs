@@ -28,14 +28,17 @@ namespace Presentationslager
         public UppdateraMedlem()
         {
             InitializeComponent();
+            Loaded += UppdateraMedlem_Loaded; //NY
         }
 
         private void RensaFormulär()
         {
+            
             NamnTextBox.Text = "";
             EpostTextBox.Text = "";
             TelefonTextBox.Text = "";
-
+            MedlemComboBox.SelectedIndex = -1;
+            medlem = null;
 
             MedlemsIDTextBox.Focus(); //Denna raden flyttar fokus/pekaren tillbaka till medlem namn så man direkt kan registrera en ny medlem
         }
@@ -48,6 +51,36 @@ namespace Presentationslager
                     return false;
             }
             return true;
+        }
+
+        private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e) //Behövs denna?
+        {
+            LaddaMedlemmar();
+        }
+
+        private void LaddaMedlemmar()
+        {
+            var medlemmar = _medlemController.HämtaAllaMedlemmar()
+                                             .OrderBy(m => m.Namn)
+                                             .ToList();
+
+            MedlemComboBox.ItemsSource = medlemmar;
+            MedlemComboBox.DisplayMemberPath = "Namn";
+            MedlemComboBox.SelectedIndex = -1;
+
+        }
+
+        private void MedlemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (MedlemComboBox.SelectedItem is not Medlem vald)
+                return;
+
+            medlem = vald;
+
+            MedlemsIDTextBox.Text = medlem.MedlemID.ToString();
+            NamnTextBox.Text = medlem.Namn ?? "";
+            EpostTextBox.Text = medlem.Epost ?? "";
+            TelefonTextBox.Text = medlem.Telefonnummer ?? "";
         }
 
         private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
@@ -70,7 +103,7 @@ namespace Presentationslager
             NamnTextBox.Text = medlem.Namn;
             EpostTextBox.Text = medlem.Epost ?? "";
             TelefonTextBox.Text = medlem.Telefonnummer ?? "";
-
+           
         }
 
         private void SparaÄndradMedlemButton_Click(object sender, RoutedEventArgs e)
@@ -103,6 +136,8 @@ namespace Presentationslager
             int rows = _medlemController.UppdateraMedlem(medlem);
 
             MessageBox.Show(rows == 1 ? "Medlem uppdaterad!" : "Något gick fel");
+
+            RensaFormulär();
         }
 
         private void RaderaMedlemButton_Click(object sender, RoutedEventArgs e)
