@@ -26,6 +26,12 @@ namespace Affärslagret
             return _unitOfWork.MedlemRepository.HämtaId(id); //Namn?
         }
 
+        public List<Medlem> HämtaAllaMedlemmar()
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            return _unitOfWork.MedlemRepository.GetAll().ToList();
+        }
+
         public int UppdateraMedlem(Medlem medlem)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());

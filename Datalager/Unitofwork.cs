@@ -31,16 +31,12 @@ namespace Datalager
             validering = new Validering(samverketContext);
             bokningar = new Bokningar(samverketContext);
 
-
             Seed.PopulateMedlem(samverketContext);
             Seed.PopulateResurs(samverketContext);
             Seed.PopulatePersonal(samverketContext);
             Seed.PopulateBokning(samverketContext);
             Seed.PopulateUtrustning(samverketContext);
-                  
         }
-
-
         
         public int Save()
         {

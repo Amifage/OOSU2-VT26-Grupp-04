@@ -43,5 +43,20 @@ namespace Affärslagret
             _unitOfWork.ResursRepository.Remove(resurs);
             return _unitOfWork.Save();
         }
+
+        public List<Resurs> HämtaAllaResurser() //NY
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            return _unitOfWork.ResursRepository.GetAll().ToList();
+        }
+
+        public List<Utrustning> HämtaUtrustningFörResurs(int resursId)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
+            return _unitOfWork.UtrustningRepository
+                              .Find(u => u.ResursID == resursId)
+                              .ToList();
+        }
     }
 }
