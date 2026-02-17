@@ -17,14 +17,7 @@ namespace Affärslagret
             _unitOfWork.Save();
 
         }
-      
-        public Resurs? HamtaResursById (int id)
-        {
-            using var _unitofwork = new UnitOfWork(new SamverketContext());
-            return _unitofwork.ResursRepository.HämtaId(id);
-        }
 
-       
         public int UppdateraResurs(Resurs resurs)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
@@ -42,6 +35,13 @@ namespace Affärslagret
 
             _unitOfWork.ResursRepository.Remove(resurs);
             return _unitOfWork.Save();
+        }
+
+        #region Hämta resurser
+        public Resurs? HamtaResursById(int id)
+        {
+            using var _unitofwork = new UnitOfWork(new SamverketContext());
+            return _unitofwork.ResursRepository.HämtaId(id);
         }
 
         public List<Resurs> HämtaLedigaResurser(DateTime start, DateTime slut)
@@ -62,13 +62,63 @@ namespace Affärslagret
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             return _unitOfWork.ResursRepository.GetAll().ToList();
         }
+        #endregion
 
+        #region Utrsutning
         public List<Utrustning> HämtaUtrustningFörResurs(int resursId)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
 
             return _unitOfWork.UtrustningRepository
-                              .Find(u => u.ResursID == resursId)
-                              .ToList();
+             .Find(u => u.ResursID.HasValue && u.ResursID.Value == resursId)
+             .ToList();
         }
+
+        public List<Utrustning> HämtaOkoppladUtrustning() //Hämtar utrsutning som är null
+        {
+            using var uow = new UnitOfWork(new SamverketContext());
+            return uow.UtrustningRepository
+                      .Find(u => u.ResursID == null)
+                      .ToList();
+        }
+
+        public int KopplaUtrustningTillResurs(int resursId, List<int> inventarieNr)
+        {
+            using var uow = new UnitOfWork(new SamverketContext());
+
+            int rows = 0;
+            foreach (var id in inventarieNr)
+            {
+                var utr = uow.UtrustningRepository.HämtaId(id);
+                if (utr == null) continue;
+
+                utr.ResursID = resursId;
+                uow.UtrustningRepository.Update(utr);
+                rows++;
+            }
+
+            uow.Save();
+            return rows;
+        }
+
+        public int AvkopplaUtrustningFrånResurs(List<int> inventarieNr)
+        {
+            using var uow = new UnitOfWork(new SamverketContext());
+
+            int rows = 0;
+            foreach (var id in inventarieNr)
+            {
+                var utr = uow.UtrustningRepository.HämtaId(id);
+                if (utr == null) continue;
+
+                utr.ResursID = null;
+                uow.UtrustningRepository.Update(utr);
+                rows++;
+            }
+
+            uow.Save();
+            return rows;
+        }
+        #endregion
+    }
 }

@@ -33,7 +33,7 @@ namespace Presentationslager
 
         private void RensaFormulär()
         {
-            
+            MedlemsIDTextBox.Text = "";
             NamnTextBox.Text = "";
             EpostTextBox.Text = "";
             TelefonTextBox.Text = "";
@@ -53,6 +53,7 @@ namespace Presentationslager
             return true;
         }
 
+        #region Kod för combobox
         private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e) //Behövs denna?
         {
             LaddaMedlemmar();
@@ -65,7 +66,6 @@ namespace Presentationslager
                                              .ToList();
 
             MedlemComboBox.ItemsSource = medlemmar;
-            MedlemComboBox.DisplayMemberPath = "Namn";
             MedlemComboBox.SelectedIndex = -1;
 
         }
@@ -82,6 +82,7 @@ namespace Presentationslager
             EpostTextBox.Text = medlem.Epost ?? "";
             TelefonTextBox.Text = medlem.Telefonnummer ?? "";
         }
+        #endregion
 
         private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
         {
@@ -166,6 +167,7 @@ namespace Presentationslager
             {
                 MessageBox.Show("Medlem raderad!");
                 medlem = null;
+                LaddaMedlemmar();
                 RensaFormulär();
             }
             else

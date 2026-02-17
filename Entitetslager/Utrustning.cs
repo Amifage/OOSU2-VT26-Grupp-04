@@ -22,5 +22,8 @@ namespace Entitetslager
         public virtual Resurs resurs { get; set; } //Detta är en navigational property för att koppla ihop till resursID, hänger ihop emd ovan
 
 
+
+        public string DisplayText => $"{Inventarienummer} | {Namn} | {Kategori} | {Skick}";
+
     }
 }

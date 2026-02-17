@@ -22,22 +22,82 @@ namespace Presentationslager
     public partial class RegistreraResurs : Window
     {
         private readonly ResursController _resursController = new ResursController();
+        private Resurs? _skapadResurs;//NY
+        //private Resurs? resurs;
 
         public RegistreraResurs()
         {
             InitializeComponent();
         }
-        private void RensaFormulär()
-        {
-            ResursNamnTextBox.Text = "";
-            ResurstypComboBox.SelectedIndex = -1;
-            ResursKapacitetTextBox.Text = "";
 
-            ResursNamnTextBox.Focus();
+        #region Kod för utrustning
+        private void LaddaKoppladUtrustning()
+        {
+            if (_skapadResurs == null) //ändrat här
+            {
+                KoppladListView.ItemsSource = null;
+                return;
+            }
+
+            KoppladListView.ItemsSource = _resursController
+                .HämtaUtrustningFörResurs(_skapadResurs.ResursID) //Ändrat här från resurs
+                .OrderBy(u => u.Namn)
+                .ToList();
         }
+
+        private void LaddaOkoppladUtrustning()
+        {
+            OkoppladListView.ItemsSource = _resursController
+                .HämtaOkoppladUtrustning()
+                .OrderBy(u => u.Namn)
+                .ToList();
+        }
+
+        private void KopplaButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_skapadResurs == null) //ändrat här emd
+            {
+                MessageBox.Show("Välj en resurs först.");
+                return;
+            }
+
+            var valda = OkoppladListView.SelectedItems.Cast<Utrustning>().ToList();
+            if (valda.Count == 0)
+            {
+                MessageBox.Show("Markera utrustning i listan 'Okopplad'.");
+                return;
+            }
+
+            var ids = valda.Select(u => u.Inventarienummer).ToList();
+            int antal = _resursController.KopplaUtrustningTillResurs(_skapadResurs.ResursID, ids); // Här med
+
+            MessageBox.Show($"Kopplade {antal} st.");
+            LaddaKoppladUtrustning();
+            LaddaOkoppladUtrustning();
+        }
+
+        private void AvkopplaButton_Click(object sender, RoutedEventArgs e)
+        {
+            var valda = KoppladListView.SelectedItems.Cast<Utrustning>().ToList();
+            if (valda.Count == 0)
+            {
+                MessageBox.Show("Markera utrustning i listan 'Kopplad'.");
+                return;
+            }
+
+            var ids = valda.Select(u => u.Inventarienummer).ToList();
+            int antal = _resursController.AvkopplaUtrustningFrånResurs(ids);
+
+            MessageBox.Show($"Tog bort koppling för {antal} st.");
+            LaddaKoppladUtrustning();
+            LaddaOkoppladUtrustning();
+        }
+        #endregion
+
 
         private void SparaNyResursButton_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
                 string namn = ResursNamnTextBox.Text.Trim().ToLower();
@@ -68,10 +128,13 @@ namespace Presentationslager
                 };
 
                 _resursController.SkapaResurs(nyResurs);
+                _skapadResurs = nyResurs;
 
                 MessageBox.Show($"Resursen har sparats! \n\nTilldelat resursID: {nyResurs.ResursID}");
 
-                RensaFormulär();
+                LaddaKoppladUtrustning();
+                LaddaOkoppladUtrustning();
+
 
             }
             catch (Exception ex)

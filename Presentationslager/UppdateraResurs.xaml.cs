@@ -1,4 +1,5 @@
 ﻿using Affärslagret;
+using Datalager;
 using Entitetslager;
 using System;
 using System.Collections.Generic;
@@ -29,16 +30,138 @@ namespace Presentationslager
         public UppdateraResurs()
         {
             InitializeComponent();
+            Loaded += UppdateraResurs_Loaded; //NY
+           
         }
 
         private void RensaFormulär()
         {
+            ResursIDTextBox.Text = "";
             NamnTextBox.Text = "";
             TypTextBox.Text = "";
             KapacitetTextBox.Text = "";
-
+            ResursComboBox.SelectedIndex = -1;
+            UtrustningComboBox.ItemsSource = null;
+            UtrustningComboBox.SelectedIndex = -1;
+            resurs = null;
             NamnTextBox.Focus();
         }
+
+        #region Kod för utrsutning
+        private void LaddaKoppladUtrustning()
+        {
+            if (resurs == null)
+            {
+                KoppladListView.ItemsSource = null;
+                return;
+            }
+
+            KoppladListView.ItemsSource = _resursController
+                .HämtaUtrustningFörResurs(resurs.ResursID)
+                .OrderBy(u => u.Namn)
+                .ToList();
+        }
+
+        private void LaddaOkoppladUtrustning()
+        {
+            OkoppladListView.ItemsSource = _resursController
+                .HämtaOkoppladUtrustning()
+                .OrderBy(u => u.Namn)
+                .ToList();
+        }
+
+        private void KopplaButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (resurs == null)
+            {
+                MessageBox.Show("Välj en resurs först.");
+                return;
+            }
+
+            var valda = OkoppladListView.SelectedItems.Cast<Utrustning>().ToList();
+            if (valda.Count == 0)
+            {
+                MessageBox.Show("Markera utrustning i listan 'Okopplad'.");
+                return;
+            }
+
+            var ids = valda.Select(u => u.Inventarienummer).ToList();
+            int antal = _resursController.KopplaUtrustningTillResurs(resurs.ResursID, ids);
+
+            MessageBox.Show($"Kopplade {antal} st.");
+            LaddaKoppladUtrustning();
+            LaddaOkoppladUtrustning();
+        }
+
+        private void AvkopplaButton_Click(object sender, RoutedEventArgs e)
+        {
+            var valda = KoppladListView.SelectedItems.Cast<Utrustning>().ToList();
+            if (valda.Count == 0)
+            {
+                MessageBox.Show("Markera utrustning i listan 'Kopplad'.");
+                return;
+            }
+
+            var ids = valda.Select(u => u.Inventarienummer).ToList();
+            int antal = _resursController.AvkopplaUtrustningFrånResurs(ids);
+
+            MessageBox.Show($"Tog bort koppling för {antal} st.");
+            LaddaKoppladUtrustning();
+            LaddaOkoppladUtrustning();
+        }
+
+        private void LaddaUtrustningFörValdResurs()
+        {
+            if (resurs == null)
+            {
+                UtrustningComboBox.ItemsSource = null;
+                return;
+            }
+
+            var utrustning = _resursController.HämtaUtrustningFörResurs(resurs.ResursID)
+                                              .OrderBy(u => u.Namn)
+                                              .ToList();
+
+            UtrustningComboBox.ItemsSource = utrustning;
+            UtrustningComboBox.SelectedIndex = -1;
+        }
+        #endregion
+
+        #region Kod för combobox
+        private void UppdateraResurs_Loaded(object sender, RoutedEventArgs e)
+        {
+            LaddaResurser();
+        }
+     
+        private void LaddaResurser()
+        {
+            var resurser = _resursController.HämtaAllaResurser()
+                                            .OrderBy(r => r.Namn)
+                                            .ToList();
+
+            ResursComboBox.ItemsSource = resurser;
+            ResursComboBox.SelectedIndex = -1;
+        }
+
+        private void ResursComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ResursComboBox.SelectedItem is not Resurs vald)
+                return;
+
+            resurs = vald;
+
+            ResursIDTextBox.Text = resurs.ResursID.ToString();
+            NamnTextBox.Text = resurs.Namn ?? "";
+            TypTextBox.Text = resurs.Typ ?? "";
+            KapacitetTextBox.Text = resurs.Kapacitet.ToString();
+
+            LaddaUtrustningFörValdResurs();
+
+            LaddaKoppladUtrustning();
+            LaddaOkoppladUtrustning();
+
+        }
+        #endregion
 
         private void SumbitResursIDButton_Click(object sender, RoutedEventArgs e)
         {
@@ -55,10 +178,17 @@ namespace Presentationslager
                 MessageBox.Show("Ingen resurs hittades med det ID:t.");
                 return;
             }
-           
+
             NamnTextBox.Text = resurs.Namn;
             TypTextBox.Text = resurs.Typ ?? "";
             KapacitetTextBox.Text = resurs.Kapacitet.ToString();
+
+
+            LaddaUtrustningFörValdResurs();
+
+            LaddaKoppladUtrustning();
+            LaddaOkoppladUtrustning();
+
 
         }
 
@@ -87,8 +217,10 @@ namespace Presentationslager
 
 
             MessageBox.Show(rows == 1 ? "Resurs uppdaterad!" : "Något gick fel");
+            
+            LaddaResurser();
+            RensaFormulär();
 
-            this.Close();
         }
 
         private void RaderaResursButton_Click(object sender, RoutedEventArgs e)
@@ -117,6 +249,7 @@ namespace Presentationslager
             {
                 MessageBox.Show("Resurs raderad!");
                 resurs = null;
+                LaddaResurser();
                 RensaFormulär();
             }
             else

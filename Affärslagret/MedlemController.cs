@@ -17,7 +17,6 @@ namespace Affärslagret
 
             _unitOfWork.MedlemRepository.Add(medlem);
             _unitOfWork.Save();       
-
         }
 
         public Medlem? HamtaMedlemById(int id)

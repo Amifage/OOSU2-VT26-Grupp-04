@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace Entitetslager
 {
@@ -16,6 +17,8 @@ namespace Entitetslager
         public string Medlemsnivå { get; set; }
         public string Betalstatus { get; set; }
         public DateTime SenastUppdaterad { get; set; }
+
+        public string DisplayText => $"{MedlemID} | {Namn} | {Medlemsnivå} | {Betalstatus}";
 
     }
 }
