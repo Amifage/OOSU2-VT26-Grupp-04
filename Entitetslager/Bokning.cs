@@ -11,7 +11,7 @@ namespace Entitetslager
     {
         [Key] public int BokningsID { get; set; }
 
-        public int MedlemsID { get; set; }
+        public int MedlemID { get; set; }
         public virtual Medlem medlem {  get; set; }
 
         public int ResursID { get; set; }

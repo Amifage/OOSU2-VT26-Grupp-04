@@ -36,11 +36,28 @@
         <TextBlock Grid.Column="1" Grid.Row="2"  Text="Fyll i MedlemsID" Margin="5"/>
         <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Width="200" Margin="5"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="3"  Text="Välj resurs" Margin="5"/>
-        <ComboBox x:Name="VäljresursComboBox" Grid.Column="2" Grid.Row="3" Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="Välj startdatum" Margin="5"/>
+        <Calendar Grid.Column="2" Grid.Row="3" x:Name="BokningsCalander" DisplayMode="Month" SelectionMode="SingleDate" Margin="5"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
+            <TextBlock Text="Starttid:" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <ComboBox x:Name="TimmarComboBox" Width="60" />
+            <TextBlock Text=":" VerticalAlignment="Center" />
+            <ComboBox x:Name="MinuterComboBox" Width="60" />
+        </StackPanel>
+
+        <TextBlock Grid.Column="1" Grid.Row="5" Text="Längd (timmar):" Margin="5"/>
+        <TextBox x:Name="LängdTextBox" Grid.Column="2" Grid.Row="5" Width="50" HorizontalAlignment="Left" Text="1" Margin="5"/>
+
+        <Button x:Name="SökLedigaButton" Content="Sök lediga resurser" Grid.Column="2" Grid.Row="6" Margin="5" Click="SökLedigaButton_Click" Background="LightBlue"/>
+
+        <TextBlock Grid.Column="1" Grid.Row="7" Text="Välj ledig resurs" Margin="5"/>
+        <ComboBox x:Name="VäljresursComboBox" Grid.Column="2" Grid.Row="7" Width="200" Margin="5" HorizontalAlignment="Left"/>
+
+        <Button x:Name="SparaBokningButton" Content="Boka nu" Grid.Column="2" Grid.Row="8" Margin="10" Click="SparaBokningButton_Click" IsEnabled="False" Height="40" FontWeight="Bold"/>
 
 
-        <Calendar Grid.Column="2" Grid.Row="4" x:Name="BokningsCalander" DisplayMode="Month" SelectionMode="SingleDate"     />
+        <!--<Calendar Grid.Column="2" Grid.Row="4" x:Name="BokningsCalander" DisplayMode="Month" SelectionMode="SingleDate"     />
 
         <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="Tid:" VerticalAlignment="Center" />
@@ -49,7 +66,7 @@
             <ComboBox x:Name="MinuterComboBox" Width="60" />
 
 
-        </StackPanel>
+        </StackPanel>-->
 
 
 

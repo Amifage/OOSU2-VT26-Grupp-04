@@ -51,7 +51,7 @@
 
                 <DataGridTextColumn Header="Medlem ID"
 
-                            Binding="{Binding MedlemsID}" />
+                            Binding="{Binding MedlemID}" />
 
                 <DataGridTextColumn Header="Resurs ID"
 
