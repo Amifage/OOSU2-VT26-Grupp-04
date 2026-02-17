@@ -11,6 +11,8 @@ namespace Datalager
     public class Bokningar
     {
         private readonly SamverketContext samverketContext;
+
+  
         public Bokningar(SamverketContext context)
         {
             samverketContext = context;
