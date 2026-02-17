@@ -56,5 +56,19 @@ namespace Affärslagret
             // Returnera bara de som inte finns i listan över upptagna
             return allaResurser.Where(r => !upptagnaResursIdn.Contains(r.ResursID)).ToList();
         }
-    }
+
+        public List<Resurs> HämtaAllaResurser() //NY
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            return _unitOfWork.ResursRepository.GetAll().ToList();
+        }
+
+        public List<Utrustning> HämtaUtrustningFörResurs(int resursId)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
+            return _unitOfWork.UtrustningRepository
+                              .Find(u => u.ResursID == resursId)
+                              .ToList();
+        }
 }
