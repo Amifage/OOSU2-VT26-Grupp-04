@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datalager;
 using Entitetslager;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Affärslagret
@@ -13,9 +14,9 @@ namespace Affärslagret
     {
         public Personal? ValideraInloggning(string namn, string lösenord)
         {
-            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            using var _unitOfWork  = new UnitOfWork(new SamverketContext());
             {
-                return _unitOfWork.PersonalRepository.ValideraInloggning(namn, lösenord);
+                return _unitOfWork.validering.ValideraInloggning(namn, lösenord);
                     
             }
         }

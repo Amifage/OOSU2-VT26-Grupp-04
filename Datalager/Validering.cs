@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Datalager
 {
-    public class PersonalRepository
+    public class Validering
     {
         private readonly SamverketContext samverketContext;
 
-        public PersonalRepository(SamverketContext context)
+        public Validering(SamverketContext context)
         {
             samverketContext = context;
         }

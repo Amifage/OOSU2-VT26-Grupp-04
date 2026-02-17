@@ -21,7 +21,7 @@ namespace Affärslagret
         public Resurs? HamtaResursById (int id)
         {
             using var _unitofwork = new UnitOfWork(new SamverketContext());
-            return _unitofwork.ResursRepository.Hämtaresurs(id);
+            return _unitofwork.ResursRepository.HämtaId(id);
         }
 
        
@@ -36,11 +36,11 @@ namespace Affärslagret
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
 
-            var resurs = _unitOfWork.ResursRepository.Hämtaresurs(id);
+            var resurs = _unitOfWork.ResursRepository.HämtaId(id);
             if (resurs == null)
                 return 0;
 
-            _unitOfWork.ResursRepository.Delete(resurs);
+            _unitOfWork.ResursRepository.Remove(resurs);
             return _unitOfWork.Save();
         }
     }

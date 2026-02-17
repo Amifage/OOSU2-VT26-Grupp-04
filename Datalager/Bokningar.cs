@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Datalager
 {
-    public class BokningRepository
+    public class Bokningar
     {
         private readonly SamverketContext samverketContext;
-        public BokningRepository(SamverketContext context)
+        public Bokningar(SamverketContext context)
         {
             samverketContext = context;
         }

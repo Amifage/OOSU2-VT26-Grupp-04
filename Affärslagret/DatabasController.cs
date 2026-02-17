@@ -11,7 +11,7 @@ namespace Affärslagret
     {
         public DatabasController() 
         {
-            var uow = new UnitOfWork(new SamverketContext());
+            using var uow = new UnitOfWork(new SamverketContext());
         }
       
         

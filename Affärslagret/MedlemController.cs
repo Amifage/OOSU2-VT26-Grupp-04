@@ -12,7 +12,9 @@ namespace Affärslagret
     {
         public void SkapaMedlem(Medlem medlem)
         {
+     
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
             _unitOfWork.MedlemRepository.Add(medlem);
             _unitOfWork.Save();       
 
@@ -21,7 +23,7 @@ namespace Affärslagret
         public Medlem? HamtaMedlemById(int id)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
-            return _unitOfWork.MedlemRepository.HämtaMedlem(id);
+            return _unitOfWork.MedlemRepository.HämtaId(id); //Namn?
         }
 
         public int UppdateraMedlem(Medlem medlem)
@@ -36,11 +38,11 @@ namespace Affärslagret
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
 
-            var medlem = _unitOfWork.MedlemRepository.HämtaMedlem(id);
+            var medlem = _unitOfWork.MedlemRepository.HämtaId(id);
             if (medlem == null)
                 return 0;
 
-            _unitOfWork.MedlemRepository.Delete(medlem);
+            _unitOfWork.MedlemRepository.Remove(medlem);
             return _unitOfWork.Save();
         }
 

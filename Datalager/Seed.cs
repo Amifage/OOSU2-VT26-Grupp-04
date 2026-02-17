@@ -74,11 +74,11 @@ namespace Datalager
             samverketContext.Medlem.Add(new Medlem()
             {
 
-                Namn = "Sara",
-                Epost = "Sara@gmail.com",
+                Namn = "sara",
+                Epost = "sara@gmail.com",
                 Telefonnummer = "076 000 00 00",
-                Medlemsnivå = "Guld",
-                Betalstatus = "Betald",
+                Medlemsnivå = "flex",
+                Betalstatus = "betald",
                 SenastUppdaterad = DateTime.Now,
             });
 
@@ -87,11 +87,11 @@ namespace Datalager
             samverketContext.Medlem.Add(new Medlem()
             {
 
-                Namn = "Amanda",
-                Epost = "Amanda@gmail.com",
+                Namn = "amanda",
+                Epost = "amanda@gmail.com",
                 Telefonnummer = "076 111 11 11",
-                Medlemsnivå = "Silver",
-                Betalstatus = "Obetald",
+                Medlemsnivå = "företag",
+                Betalstatus = "obetald",
                 SenastUppdaterad = DateTime.Now,
             });
 
@@ -100,11 +100,11 @@ namespace Datalager
             samverketContext.Medlem.Add(new Medlem()
             {
 
-                Namn = "Gabbe",
-                Epost = "Gabbe@gmail.com",
+                Namn = "gabbe",
+                Epost = "gabbe@gmail.com",
                 Telefonnummer = "076 222 22 22",
-                Medlemsnivå = "Platinum",
-                Betalstatus = "Betald",
+                Medlemsnivå = "fast",
+                Betalstatus = "betald",
                 SenastUppdaterad = DateTime.Now,
             });
 

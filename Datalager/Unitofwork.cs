@@ -1,46 +1,54 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entitetslager;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Datalager
 {
     public class UnitOfWork : IDisposable
     {
-        private readonly SamverketContext samverketContext;
+        private readonly SamverketContext _samverketContext;
 
-        public MedlemRepository MedlemRepository { get; }
-        public BokningRepository BokningRepository { get; }
-        public ResursRepository ResursRepository { get; }
-        public StatistikRepository StatistikRepository { get; }
-        public PersonalRepository PersonalRepository { get; }
+        public GenericRepository<Bokning> BokningRepository { private set; get; }        
+        public GenericRepository<Medlem> MedlemRepository { get; private set; }
+        public GenericRepository<Personal> PersonalRepository { private set; get; }
+        public GenericRepository<Resurs> ResursRepository { private set; get; }
+        public GenericRepository<Utrustning> UtrustningRepository { private set; get; }
 
+        public Validering validering {  private set; get; } 
+        public Bokningar bokningar { private set; get; }
 
-        public UnitOfWork(SamverketContext context)
+        public UnitOfWork(SamverketContext samverketContext)
         {
-            samverketContext = context ?? throw new ArgumentNullException(nameof(context));
+            _samverketContext = samverketContext ?? throw new ArgumentNullException(nameof(samverketContext));
 
-            samverketContext.Database.EnsureCreated();
+           
+            MedlemRepository = new GenericRepository<Medlem>(samverketContext.Medlem); 
+            PersonalRepository = new GenericRepository<Personal>(samverketContext.Personal);
+            ResursRepository = new GenericRepository<Resurs> (samverketContext.Resurs);
+            UtrustningRepository = new GenericRepository<Utrustning>(samverketContext.Utrustning);
+            BokningRepository = new GenericRepository<Bokning>(samverketContext.Bokning);
 
-            MedlemRepository = new MedlemRepository(samverketContext);
-            BokningRepository = new BokningRepository(samverketContext);
-            ResursRepository = new ResursRepository(samverketContext);
-            //StatistikRepository = new StatistikRepository(samverketContext);
-            PersonalRepository = new PersonalRepository(samverketContext);
+            validering = new Validering(samverketContext);
+            bokningar = new Bokningar(samverketContext);
 
-            Seed.PopulatePersonal(samverketContext);
+
             Seed.PopulateMedlem(samverketContext);
             Seed.PopulateResurs(samverketContext);
-            Seed.PopulateUtrustning(samverketContext);
+            Seed.PopulatePersonal(samverketContext);
             Seed.PopulateBokning(samverketContext);
-
+            Seed.PopulateUtrustning(samverketContext);
+                  
         }
+
+
         
         public int Save()
         {
-            return samverketContext.SaveChanges();
+            return _samverketContext.SaveChanges();
         }
         public void Dispose()
         {
-            samverketContext.Dispose();
+            _samverketContext?.Dispose();
         }           
 
     }
