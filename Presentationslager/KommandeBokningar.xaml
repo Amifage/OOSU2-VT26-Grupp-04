@@ -37,25 +37,22 @@
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Kommande bokningar" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
         <DataGrid x:Name="BokningsDatagGrid" AutoGenerateColumns="False" Width="600" Height="250" Grid.Column="1" Grid.Row="2" IsReadOnly="True" Margin="10">
-            <DataGrid.Columns>
+          
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Medlem" Binding="{Binding medlem.Namn}" />
 
-                <DataGridTextColumn Header="Bokning ID"
+                    <DataGridTextColumn Header="Resurs" Binding="{Binding resurs.Namn}" />
 
-                            Binding="{Binding BokningsID}" />
+                   <DataGridTextColumn Header="Starttid"
 
-                <DataGridTextColumn Header="Resurs ID"
+                      Binding="{Binding Starttid, StringFormat=yyyy-MM-dd HH:mm}" />
 
-                            Binding="{Binding ResursID}" />
+                   <DataGridTextColumn Header="Sluttid"
 
-                <DataGridTextColumn Header="Starttid"
+                        Binding="{Binding Sluttid, StringFormat=yyyy-MM-dd HH:mm}" />
+                </DataGrid.Columns>
 
-                            Binding="{Binding Starttid, StringFormat=yyyy-MM-dd HH:mm}" />
-
-                <DataGridTextColumn Header="Sluttid"
-
-                            Binding="{Binding Sluttid, StringFormat=yyyy-MM-dd HH:mm}" />
-
-            </DataGrid.Columns>
+                
         </DataGrid>
     </Grid>
 </Window>
