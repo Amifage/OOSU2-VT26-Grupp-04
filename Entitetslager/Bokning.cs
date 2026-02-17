@@ -16,8 +16,5 @@ namespace Entitetslager
         public DateTime Sluttid { get; set; }
         public DateTime SenastUppdaterad { get; set; }
 
-      
-
-
     }
 }

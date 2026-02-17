@@ -8,7 +8,6 @@
         Title="Medlems Aktivitet" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <!--1 - 6 är auto-->
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -48,25 +47,23 @@
         <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Margin="4" Width="200"/>
         <Button x:Name="SumbitMedlemIDButton" Grid.Column="2" Grid.Row="3" Content="Hämta" Margin="5" Click="SumbitMedlemIDButton_Click"/>
         <DataGrid x:Name="MedlemsaktivitetDataGrid" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Width="400" Height="200" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
-        <DataGrid.Columns>
+            <DataGrid.Columns>
 
-            <DataGridTextColumn Header="Medlem ID"
+                <DataGridTextColumn Header="Medlem ID"
 
                             Binding="{Binding MedlemsID}" />
 
-            <DataGridTextColumn Header="Resurs ID"
+                <DataGridTextColumn Header="Resurs ID"
 
                             Binding="{Binding BokningsID}" />
 
-            <DataGridTextColumn Header="Starttid"
+                <DataGridTextColumn Header="Starttid"
 
                             Binding="{Binding Starttid, StringFormat=yyyy-MM-dd HH:mm}" />
-       
-        </DataGrid.Columns>
+
+            </DataGrid.Columns>
 
 
         </DataGrid>
-
-
     </Grid>
 </Window>

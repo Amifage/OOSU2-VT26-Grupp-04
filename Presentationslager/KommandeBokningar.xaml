@@ -8,7 +8,6 @@
         Title="Kommande Bokningar" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <!--1 - 6 är auto-->
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
@@ -57,7 +56,6 @@
                             Binding="{Binding Sluttid, StringFormat=yyyy-MM-dd HH:mm}" />
 
             </DataGrid.Columns>
-
         </DataGrid>
     </Grid>
 </Window>

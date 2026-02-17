@@ -8,9 +8,8 @@
 
     Title="Uppdatera Medlem" Height="450" Width="800">
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
-            <!--1 - 6 är auto-->
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />

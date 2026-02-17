@@ -12,8 +12,7 @@ namespace Affärslagret
     {
         public List<Bokning> HämtaKommandeBokningar()
         {
-            //using var _unitOfWork = new UnitOfWork(new SamverketContext());
-            //return _unitOfWork.BokningRepository.HämtakommandeBokningar();
+            
             using (UnitOfWork _unitOfWork = new UnitOfWork(new SamverketContext()))
             {
                 return _unitOfWork.BokningRepository.HämtakommandeBokningar();

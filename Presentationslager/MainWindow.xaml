@@ -9,7 +9,6 @@
         Title="Samverket login" Height="450" Width="800" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <!--1 - 6 är uto-->
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="auto" />
