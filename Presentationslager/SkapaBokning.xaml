@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
-        Title="Skapa Bokning" Height="800" Width="800">
+        Title="Skapa Bokning" Height="700" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -71,7 +71,7 @@
         </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button x:Name="SparaBokningButton" Content="Boka nu" Grid.Column="2" Grid.Row="8" Margin="10" Click="SparaBokningButton_Click" IsEnabled="False" Height="40" FontWeight="Bold"/>
+        <Button x:Name="SparaBokningButton" Content="Boka nu" Grid.Column="2" Grid.Row="8" Margin="10" Click="SparaBokningButton_Click" IsEnabled="False" Height="40"/>
 
 
   
