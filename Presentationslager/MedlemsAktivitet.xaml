@@ -45,7 +45,7 @@
         
         <TextBlock Grid.Column= "1" Grid.Row="2"  Text= "Skriv MedlemsID" Margin="5"/>
         <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Margin="4" Width="200"/>
-        <Button x:Name="SumbitMedlemButton" Grid.Column="2" Grid.Row="3" Content="Hämta" Margin="5" Click="SumbitMedlemIDButton_Click"/>
+        <Button x:Name="SumbitMedlemButton" Grid.Column="2" Grid.Row="3" Content="Hämta" Margin="5" Click="SumbitMedlemIDButton_Click" Background="LightBlue"/>
         <DataGrid x:Name="MedlemsaktivitetDataGrid" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" Width="400" Height="200" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
             <DataGrid.Columns>
 
