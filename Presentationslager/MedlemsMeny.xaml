@@ -36,11 +36,13 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Medlemar" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
-        <Button x:Name="RegistreraMedlemButton" Content="Registrera medlem" Grid.Column="1" Grid.Row="2" Margin="10" Click="RegistreraMedlemButton_Click" />
+        <Button x:Name="RegistreraMedlemButton" Content="Registrera ny medlem" Grid.Column="1" Grid.Row="2" Margin="10" Click="RegistreraMedlemButton_Click" />
 
         <Button x:Name="UppdateraMedlemButton" Content="Uppdatera medlem" Grid.Column=" 3" Grid.Row="2" Margin="10" Click="UppdateraMedlemButton_Click" />
         
         <Button x:Name="MedlemsStatistikButton" Grid.Column="2" Grid.Row="2" Content="Medlemsaktivitet" Margin="10" Click="MedlemsStatistikButton_Click"/>
+        
+        <Button x:Name="VisaAllaMedlemar" Grid.Column="4" Grid.Row="2" Content="Alla medlemar" Margin="10" Click="VisaAllaMedlemar_Click"/>
 
 
 

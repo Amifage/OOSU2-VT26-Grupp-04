@@ -45,5 +45,11 @@ namespace Presentationslager
           ResursStatistik resursStatistik = new ResursStatistik();
             resursStatistik.Show();
         }
+
+        private void AllaResurserButton_Click(object sender, RoutedEventArgs e)
+        {
+            AllaResurser allaResurser = new AllaResurser();
+            allaResurser.Show();
+        }
     }
 }

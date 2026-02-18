@@ -40,5 +40,11 @@ namespace Presentationslager
             medlemsAktivitet.Show();
             this.Close();
         }
+
+        private void VisaAllaMedlemar_Click(object sender, RoutedEventArgs e)
+        {
+            AllaMedlemmar allaMedlemmar = new AllaMedlemmar();
+            allaMedlemmar.Show();
+        }
     }
 }
