@@ -15,25 +15,13 @@ using System.Windows.Shapes;
 namespace Presentationslager
 {
     /// <summary>
-    /// Interaction logic for VisaStatisik.xaml
+    /// Interaction logic for ResursStatistik.xaml
     /// </summary>
-    public partial class VisaStatisik : Window
+    public partial class ResursStatistik : Window
     {
-        public VisaStatisik()
+        public ResursStatistik()
         {
             InitializeComponent();
-        }
-
-        private void MedlemsStatistikButton_Click(object sender, RoutedEventArgs e)
-        {
-            MedlemsAktivitet medlemsAktivitet = new MedlemsAktivitet();
-            medlemsAktivitet.Show();
-            this.Close();
-        }
-
-        private void ResursStatistikButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

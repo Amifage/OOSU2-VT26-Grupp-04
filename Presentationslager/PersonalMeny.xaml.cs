@@ -23,58 +23,23 @@ namespace Presentationslager
         {
             InitializeComponent();
         }
-        private void SkapaBokningButton_Click(object sender, RoutedEventArgs e)
+        
+        private void BokningMenyButton_Click(object sender, RoutedEventArgs e)
         {
-            SkapaBokning skapaBokningfönster = new SkapaBokning();
-            skapaBokningfönster.Show();
+            BokningsMeny bokningsMeny = new BokningsMeny();
+            bokningsMeny.Show();
         }
 
-        private void RegistreraMedlemButton_Click(object sender, RoutedEventArgs e)
+        private void MedlemsMenyButton_Click(object sender, RoutedEventArgs e)
         {
-            RegistreraMedlem registreraMedlemfönster = new RegistreraMedlem();
-            registreraMedlemfönster.Show();
+            MedlemsMeny medlemsMeny = new MedlemsMeny();
+            medlemsMeny.Show(); 
         }
 
-        private void RegistreraResursButton_Click(object sender, RoutedEventArgs e)
+        private void ResursMenyButton_Click(object sender, RoutedEventArgs e)
         {
-            RegistreraResurs registreraResursfönster = new RegistreraResurs();
-            registreraResursfönster.Show();
-        }
-
-        private void UppdateraResursButton_Click(object sender, RoutedEventArgs e)
-        {
-            UppdateraResurs UppdateraResursfönster = new UppdateraResurs();
-            UppdateraResursfönster.Show();
-        }
-
-        private void UppdateraMedlemButton_Click(object sender, RoutedEventArgs e)
-        {
-            UppdateraMedlem HämtaMedlemfönster = new UppdateraMedlem();
-            HämtaMedlemfönster.Show();
-        }
-
-        private void HanteraBokningButton_Click(object sender, RoutedEventArgs e)
-        {
-            HanteraBokning HanteraBokningfönster = new HanteraBokning();
-            HanteraBokningfönster.Show();
-        }
-
-        private void VisaStatistikButton_Click(object sender, RoutedEventArgs e)
-        {
-            VisaStatisik VisaStatistikFönster = new VisaStatisik();
-            VisaStatistikFönster.Show();
-        }
-
-        private void VisaTillgänglighetButton_Click(object sender, RoutedEventArgs e)
-        {
-            VisaTillgänglighet VisaTillgänglighetFönster = new VisaTillgänglighet();
-            VisaTillgänglighetFönster.Show();
-        }
-
-        private void KommandeBoknigarButton_Click(object sender, RoutedEventArgs e)
-        {
-            KommandeBokningar kommandeBoknigar = new KommandeBokningar();
-            kommandeBoknigar.Show();
+            ResursMeny resursMeny = new ResursMeny();
+            resursMeny.Show();
         }
     }
 }

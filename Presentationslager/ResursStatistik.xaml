@@ -1,11 +1,12 @@
-﻿<Window x:Class="Presentationslager.VisaStatisik"
+﻿<Window x:Class="Presentationslager.ResursStatistik"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
-        mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright" 
-        Title="Visa Statistik" Height="450" Width="800">
+        mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
+
+    Title="Resurs statisik" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -34,11 +35,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Statistik" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
-
-        <Button x:Name="MedlemsStatistikButton" Grid.Column="1" Grid.Row="2" Content="Medlemsstatistik" Margin="5" Click="MedlemsStatistikButton_Click"/>
-        <Button x:Name="ResursStatistikButton" Grid.Column="1" Grid.Row="3" Content="Resursstatistik" Margin="5" Click="ResursStatistikButton_Click"/>
-
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Resurs statistik" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
+        
     </Grid>
 </Window>
-  
