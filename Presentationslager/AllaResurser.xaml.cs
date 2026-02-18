@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Affärslagret;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,16 @@ namespace Presentationslager
     /// </summary>
     public partial class AllaResurser : Window
     {
+        private readonly ResursController _resursController = new ResursController();
         public AllaResurser()
         {
             InitializeComponent();
+            LaddaResurser();
+        }
+
+        private void LaddaResurser()
+        {
+            ResurserDataGrid.ItemsSource = _resursController.HämtaAllaResurser();
         }
     }
 }

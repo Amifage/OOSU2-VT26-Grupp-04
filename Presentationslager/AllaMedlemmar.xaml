@@ -4,9 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
         Title="AllaMedlemmar" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="MedlemmarDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding MedlemID}" Width="50"/>
+                <DataGridTextColumn Header="Namn" Binding="{Binding Namn}" Width="*"/>
+                <DataGridTextColumn Header="E-post" Binding="{Binding Epost}" Width="*"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding Telefonnummer}" Width="120"/>
+                <DataGridTextColumn Header="Nivå" Binding="{Binding Medlemsnivå}" Width="100"/>
+                <DataGridTextColumn Header="Betalstatus" Binding="{Binding Betalstatus}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Affärslagret;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,15 @@ namespace Presentationslager
     /// </summary>
     public partial class AllaMedlemmar : Window
     {
+        private readonly MedlemController _medlemController = new MedlemController();
         public AllaMedlemmar()
         {
             InitializeComponent();
+            LaddaMedlemmar();
+        }
+        private void LaddaMedlemmar()
+        {
+            MedlemmarDataGrid.ItemsSource = _medlemController.HämtaAllaMedlemmar();
         }
     }
 }
