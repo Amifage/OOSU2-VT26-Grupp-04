@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d"  FontSize="18" FontFamily="Lucida Bright"
-        Title="Visa Tillgänglighet" Height="500" Width="800">
+        Title="Visa Tillgänglighet" Height="500" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -37,7 +37,7 @@
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Tillgängliga resurser" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
         <TextBlock Grid.Column="1" Grid.Row="2" Text="Välj datum" Margin="5"/>
-        <Calendar Grid.Column="2" Grid.Row="2" x:Name="BokningsCalander" DisplayMode="Month" SelectionMode="SingleDate" Margin="5"/>
+        <Calendar Grid.Column="2" Grid.Row="2" x:Name="Kalender" DisplayMode="Month" SelectionMode="SingleDate" Margin="5"/>
         <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5">
             <TextBlock Text="Starttid:" VerticalAlignment="Center" Margin="0,0,10,0" />
             <ComboBox x:Name="TimmarComboBox" Width="60" />
@@ -47,9 +47,15 @@
 
         <TextBlock Grid.Column="1" Grid.Row="5" Text="Längd (timmar):" Margin="5"/>
         <TextBox x:Name="LängdTextBox" Grid.Column="2" Grid.Row="5" Width="50" HorizontalAlignment="Left" Text="1" Margin="5"/>
-        <Button x:Name="SökLedigaButton" Content="Sök lediga resurser" Grid.Column="2" Grid.Row="6" Margin="5"  />
+        <Button x:Name="SökLedigaButton" Content="Sök lediga resurser" Grid.Column="2" Grid.Row="6" Margin="5" Click="SökTillgänglighetButton_Click" />
 
-        <DataGrid Grid.Row="2" Grid.Column="3" Width="300" Margin="10" Height="220"/>
-
+        <DataGrid x:Name="TillgängligaResurserGrid" Grid.Column="3" Grid.Row="2" Width="400" Height="220" 
+                  AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Resursnamn" Binding="{Binding Namn}" Width="150"/>
+                <DataGridTextColumn Header="Typ" Binding="{Binding Typ}" Width="150"/>
+                <DataGridTextColumn Header="Kapacitet" Binding="{Binding Kapacitet}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
