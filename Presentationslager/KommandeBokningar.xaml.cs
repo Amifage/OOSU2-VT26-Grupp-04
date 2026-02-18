@@ -26,15 +26,17 @@ namespace Presentationslager
         public KommandeBokningar()
         {
             InitializeComponent();
-            bokningController=new BokningController();
-            List<Bokning> Bokningar = bokningController.HämtaKommandeBokningar();
-            BokningsDatagGrid.ItemsSource = bokningController.HämtaKommandeBokningar();
+            bokningController=new BokningController();                 
             LaddaBokningar();
 
         }
         private void LaddaBokningar()
         {
-            BokningsDatagGrid.ItemsSource = bokningController.HämtaKommandeBokningar();
+            var list = bokningController.HämtaKommandeBokningar();
+            if (list != null)
+            {
+                BokningsDataGrid.ItemsSource = list;
+            }
 
           
         }
