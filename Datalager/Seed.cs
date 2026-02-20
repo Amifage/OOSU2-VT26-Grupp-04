@@ -7,7 +7,7 @@ using Entitetslager;
 
 namespace Datalager
 {
-    public class Seed
+    public class Seed //Fyller databsen första gången koden kompileras
     {
 
         SamverketContext samverketContext = new SamverketContext();

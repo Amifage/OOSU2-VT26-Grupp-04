@@ -43,20 +43,14 @@ namespace Datalager
          _dbSet.Remove(entity);
         }
 
-        public IEnumerable<T> GetAll() //Ändrad
+        public IEnumerable<T> GetAll()
         {
             return _dbSet.ToList();
         }
-        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate) //NY
+        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate).ToList();
         }
-
-        public T FirstOrDefault(Func<T, bool> predicate)
-        {
-            return _dbSet.FirstOrDefault(predicate);
-        }
-
         public bool IsEmpty()
         {
             return _dbSet.Count() == 0;

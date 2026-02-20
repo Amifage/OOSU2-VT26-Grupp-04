@@ -168,7 +168,7 @@ namespace Presentationslager
                 return;
             }
           
-           resurs = _resursController.HamtaResursById(id);
+           resurs = _resursController.HämtaResursById(id);
 
             if (resurs == null)
             {

@@ -17,9 +17,9 @@ namespace Entitetslager
 
         public string Skick { get; set; }
 
-        public int? ResursID { get; set; } // denna hänger ihop med nedan, kan vara 0
+        public int? ResursID { get; set; }
 
-        public virtual Resurs resurs { get; set; } //Detta är en navigational property för att koppla ihop till resursID, hänger ihop emd ovan
+        public virtual Resurs resurs { get; set; } //Detta är en navigational property för att koppla ihop till resursID, hänger ihop med ovan.
 
 
 

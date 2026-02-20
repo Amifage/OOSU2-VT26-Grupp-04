@@ -74,7 +74,7 @@ namespace Presentationslager
                 MessageBox.Show("Skriv ett giltigt medlems-ID (heltal)."); 
                 return;
             }
-            medlem = _medlemController.HamtaMedlemById(id);
+            medlem = _medlemController.HämtaMedlemById(id);
 
             if (medlem == null)
             {

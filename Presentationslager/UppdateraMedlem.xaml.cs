@@ -93,7 +93,7 @@ namespace Presentationslager
                 return;
             }
 
-            medlem = _medlemController.HamtaMedlemById(id);
+            medlem = _medlemController.HämtaMedlemById(id);
 
             if (medlem == null)
             {

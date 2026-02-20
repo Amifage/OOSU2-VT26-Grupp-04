@@ -18,7 +18,7 @@ namespace Entitetslager
         public string Betalstatus { get; set; }
         public DateTime SenastUppdaterad { get; set; }
 
-        public string DisplayText => $"{MedlemID} | {Namn} | {Medlemsnivå} | {Betalstatus}";
+        public string DisplayText => $"{MedlemID} | {Namn} | {Medlemsnivå} | {Betalstatus}"; //Textsträng som underlättar utskrift i wpf fönster
 
     }
 }

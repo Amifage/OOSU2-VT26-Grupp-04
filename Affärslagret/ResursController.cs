@@ -38,7 +38,7 @@ namespace Affärslagret
         }
 
         #region Hämta resurser
-        public Resurs? HamtaResursById(int id)
+        public Resurs? HämtaResursById(int id)
         {
             using var _unitofwork = new UnitOfWork(new SamverketContext());
             return _unitofwork.ResursRepository.HämtaId(id);
@@ -47,17 +47,14 @@ namespace Affärslagret
         public List<Resurs> HämtaLedigaResurser(DateTime start, DateTime slut)
         {
             using var uow = new UnitOfWork(new SamverketContext());
-            // Hämta alla resurser
             var allaResurser = uow.ResursRepository.Find(r => true).ToList();
-            // Hämta bokningar som krockar
             var krockar = uow.bokningar.HämtatUpptagnaBokningar(start, slut);
             var upptagnaResursIdn = krockar.Select(b => b.ResursID).Distinct();
 
-            // Returnera bara de som inte finns i listan över upptagna
-            return allaResurser.Where(r => !upptagnaResursIdn.Contains(r.ResursID)).ToList();
+            return allaResurser.Where(r => !upptagnaResursIdn.Contains(r.ResursID)).ToList(); // Returnera bara de som inte finns i listan över upptagna
         }
 
-        public List<Resurs> HämtaAllaResurser() //NY
+        public List<Resurs> HämtaAllaResurser()
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             return _unitOfWork.ResursRepository.GetAll().ToList();
