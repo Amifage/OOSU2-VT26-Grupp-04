@@ -47,7 +47,7 @@ namespace Presentationslager
 
                 StarttidTextBox.Text = valdBokning.Starttid.ToString("yyyy-MM-dd HH:mm");
                 SluttidTextBox.Text = valdBokning.Sluttid.ToString("yyyy-MM-dd HH:mm");
-                AnteckningTextBox.Text = _valdBokning.Anteckning ??"";
+                AnteckningTextBox.Text = valdBokning.Anteckning ??"";
 
 
                 if (MedlemComboBox.ItemsSource != null)
