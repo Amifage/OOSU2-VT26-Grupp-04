@@ -22,15 +22,13 @@ namespace Presentationslager
     /// </summary>
     public partial class UppdateraResurs : Window
     {
-        // private readonly MedlemController _medlemController = new MedlemController();
-        //private Medlem? medlem;
 
         private readonly ResursController _resursController = new ResursController();
         private Resurs? resurs;
         public UppdateraResurs()
         {
             InitializeComponent();
-            Loaded += UppdateraResurs_Loaded; //NY
+            Loaded += UppdateraResurs_Loaded;
            
         }
 

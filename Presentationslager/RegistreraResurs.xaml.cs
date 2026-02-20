@@ -22,8 +22,7 @@ namespace Presentationslager
     public partial class RegistreraResurs : Window
     {
         private readonly ResursController _resursController = new ResursController();
-        private Resurs? _skapadResurs;//NY
-        //private Resurs? resurs;
+        private Resurs? _skapadResurs;
 
         public RegistreraResurs()
         {
@@ -33,14 +32,14 @@ namespace Presentationslager
         #region Kod för utrustning
         private void LaddaKoppladUtrustning()
         {
-            if (_skapadResurs == null) //ändrat här
+            if (_skapadResurs == null)
             {
                 KoppladListView.ItemsSource = null;
                 return;
             }
 
             KoppladListView.ItemsSource = _resursController
-                .HämtaUtrustningFörResurs(_skapadResurs.ResursID) //Ändrat här från resurs
+                .HämtaUtrustningFörResurs(_skapadResurs.ResursID)
                 .OrderBy(u => u.Namn)
                 .ToList();
         }
@@ -55,7 +54,7 @@ namespace Presentationslager
 
         private void KopplaButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_skapadResurs == null) //ändrat här emd
+            if (_skapadResurs == null)
             {
                 MessageBox.Show("Välj en resurs först.");
                 return;
@@ -69,7 +68,7 @@ namespace Presentationslager
             }
 
             var ids = valda.Select(u => u.Inventarienummer).ToList();
-            int antal = _resursController.KopplaUtrustningTillResurs(_skapadResurs.ResursID, ids); // Här med
+            int antal = _resursController.KopplaUtrustningTillResurs(_skapadResurs.ResursID, ids);
 
             MessageBox.Show($"Kopplade {antal} st.");
             LaddaKoppladUtrustning();
