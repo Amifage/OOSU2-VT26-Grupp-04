@@ -115,7 +115,7 @@ namespace Presentationslager
                 return;
             }
 
-            string telefon = TelefonTextBox.Text.Trim();
+            string telefon = TelefonTextBox.Text.Replace(" ", "").Trim();
 
             if (string.IsNullOrWhiteSpace(telefon))
             {
