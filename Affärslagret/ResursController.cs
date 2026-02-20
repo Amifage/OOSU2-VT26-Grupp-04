@@ -64,7 +64,7 @@ namespace Affärslagret
         }
         #endregion
 
-        #region Utrsutning
+        #region Utrustning
         public List<Utrustning> HämtaUtrustningFörResurs(int resursId)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
@@ -120,5 +120,8 @@ namespace Affärslagret
             return rows;
         }
         #endregion
+
+      
+
     }
 }

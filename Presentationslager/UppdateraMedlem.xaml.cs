@@ -54,7 +54,7 @@ namespace Presentationslager
         }
 
         #region Kod för combobox
-        private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e) //Behövs denna?
+        private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e) 
         {
             LaddaMedlemmar();
         }
@@ -115,7 +115,7 @@ namespace Presentationslager
                 return;
             }
 
-            string telefon = TelefonTextBox.Text.Trim();
+            string telefon = TelefonTextBox.Text.Replace(" ", "").Trim();
 
             if (string.IsNullOrWhiteSpace(telefon))
             {

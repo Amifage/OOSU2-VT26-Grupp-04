@@ -58,7 +58,7 @@ namespace Presentationslager
             {
                 string namn = MedlemNamnTextBox.Text.Trim().ToLower();
                 string epost = MedlemsEpostTextBox.Text.Trim().ToLower();
-                string telefon = MedlemsTelefonnummerTextBox.Text.Trim().ToLower();
+                string telefon = MedlemsTelefonnummerTextBox.Text.Replace(" ", "").Trim();
 
                 string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower();
                 string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower() ;
