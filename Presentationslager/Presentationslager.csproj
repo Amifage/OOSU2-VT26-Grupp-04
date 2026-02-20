@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <None Remove="istockphoto-1192884194-170667a.jpg" />
+    <None Remove="Skärmavbild 2026-02-20 kl. 09.07.15.png" />
+    <None Remove="Skärmavbild 2026-02-20 kl. 09.18.11.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +20,8 @@
 
   <ItemGroup>
     <Resource Include="istockphoto-1192884194-170667a.jpg" />
+    <Resource Include="Skärmavbild 2026-02-20 kl. 09.07.15.png" />
+    <Resource Include="Skärmavbild 2026-02-20 kl. 09.18.11.png" />
   </ItemGroup>
 
 </Project>
