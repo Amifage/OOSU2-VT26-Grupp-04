@@ -28,9 +28,9 @@ namespace Affärslagret
         }
         public void SkapaBokning(Bokning nyBokning)
         {
-            using var uow = new UnitOfWork(new SamverketContext());
-            uow.BokningRepository.Add(nyBokning);
-            uow.Save();
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            _unitOfWork.BokningRepository.Add(nyBokning);
+            _unitOfWork.Save();
         }
 
         public int UppdateraBokning(Bokning valdbokning)
