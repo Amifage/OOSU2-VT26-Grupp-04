@@ -39,8 +39,7 @@
         <Button x:Name="RegistreraResursButton" Content="Registrera resurs" Grid.Column="1" Grid.Row="4" Margin="10" Click="RegistreraResursButton_Click" />
         <Button x:Name="UppdateraResursButton" Content="Uppdatera resurs" Grid.Column="2" Grid.Row="4" Margin="10" Click="UppdateraResursButton_Click" />
         <Button x:Name="VisaTillgänglighetButton" Content="Visa tillgängliga resurser" Grid.Column="3" Grid.Row="4" Margin="10" Click="VisaTillgänglighetButton_Click" />
-        <Button x:Name="ResursStatistikButton" Grid.Column="1" Grid.Row="5" Content="Resursstatistik" Margin="10" Click="ResursStatistikButton_Click"/>
-        <Button x:Name="AllaResurserButton" Grid.Column="2" Grid.Row="5" Content="Alla resurser" Margin="10" Click="AllaResurserButton_Click" />
+        <Button x:Name="AllaResurserButton" Grid.Column="1" Grid.Row="5" Content="Alla resurser" Margin="10" Click="AllaResurserButton_Click" />
 
 
     </Grid>
