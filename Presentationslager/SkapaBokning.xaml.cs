@@ -96,6 +96,7 @@ namespace Presentationslager
                     return;
                 }
 
+
                 DateTime start = GetBokningsDateTime().Value;
                 int timmar = int.Parse(LängdTextBox.Text);
 
@@ -105,7 +106,8 @@ namespace Presentationslager
                     ResursID = valdResurs.ResursID,
                     Starttid = start,
                     Sluttid = start.AddHours(timmar),
-                    SenastUppdaterad = DateTime.Now
+                    SenastUppdaterad = DateTime.Now,
+                    Anteckning = AnteckningTextBox.Text //Anteckning för att lägga in medlemar
                 };
 
                 _bokningController.SkapaBokning(nyBokning);
