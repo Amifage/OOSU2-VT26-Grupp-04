@@ -39,6 +39,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+        
 
         <TextBlock Grid.Column="1" Grid.Row="1" Text="Skapa bokning"  FontFamily="Segoe Script" FontSize="28" Grid.ColumnSpan="3" Margin="15" Foreground="HotPink"/>
 
@@ -74,6 +75,15 @@
             </DataTemplate>
         </ComboBox.ItemTemplate>
         </ComboBox>
+        <TextBlock Grid.Column="1" Grid.Row="8" Text="Mötesanteckning (Beskrivning och Deltagare)" Margin="5"/>
+        <TextBox x:Name="AnteckningTextBox" Grid.Column="2" Grid.Row="8" Height="100" Width="300" Margin="5" 
+         TextWrapping="Wrap" 
+         AcceptsReturn="True" 
+         VerticalScrollBarVisibility="Auto"/>
+
+        
+        
+        <Button x:Name="SparaBokningButton" Content="Boka nu" Grid.Column="2" Grid.Row="9" Margin="10" Click="SparaBokningButton_Click" IsEnabled="False" Height="40"/>
 
         <Button x:Name="SparaBokningButton" Content="Boka nu" Grid.Column="2" Grid.Row="10" Margin="10" Click="SparaBokningButton_Click" IsEnabled="False" Height="40"/>
 
