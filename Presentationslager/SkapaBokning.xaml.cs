@@ -26,7 +26,6 @@ namespace Presentationslager
         private readonly BokningController _bokningController = new BokningController();
         private readonly MedlemController _medlemController = new MedlemController();
        
-
         public SkapaBokning()
         {
             InitializeComponent();
@@ -41,7 +40,7 @@ namespace Presentationslager
 
         private void LaddaMedlemmar()
         {
-            var medlemmar = _medlemController.HämtaAllaMedlemmar()
+            var medlemmar = _medlemController.HämtaAllaMedlemmar() //laddar in medlemmar i comboboxen
                                              .OrderBy(m => m.Namn)
                                              .ToList();
 
@@ -50,7 +49,7 @@ namespace Presentationslager
 
         }
 
-        private void MedlemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void MedlemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) //metod som registrerar valet från comboboxen
         {
             if (MedlemComboBox.SelectedItem is not Medlem vald)
                 return;
@@ -58,7 +57,7 @@ namespace Presentationslager
             MedlemsIDTextBox.Text = vald.MedlemID.ToString();
         }
 
-        private void MedlemsIDTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void MedlemsIDTextBox_TextChanged(object sender, TextChangedEventArgs e) // skapar en automatisk koppling mellan textrutan för medlems-ID och comboboxen
         {
             if (!int.TryParse(MedlemsIDTextBox.Text, out int id))
                 return;
@@ -70,8 +69,8 @@ namespace Presentationslager
         }
         #endregion
 
-        // Din befintliga metod för att ladda tider
-        private void LoadTimePicker()
+   
+        private void LoadTimePicker() //sätter värden för tid coboboxerna
         {
             for (int hour = 0; hour <= 23; hour++)
             {
@@ -87,8 +86,8 @@ namespace Presentationslager
             this.MinuterComboBox.SelectedIndex = 0;
         }
 
-        // Metod för att söka efter lediga resurser
-        private void SökLedigaButton_Click(object sender, RoutedEventArgs e)
+       
+        private void SökLedigaButton_Click(object sender, RoutedEventArgs e)  // Metod för att söka efter lediga resurser
         {
             DateTime? start = GetBokningsDateTime();
             if (!start.HasValue)
@@ -97,12 +96,12 @@ namespace Presentationslager
                 return;
             }
 
-            // Hämta längd från TextBox, standardvärde 1 timme om inmatning saknas
-            if (!int.TryParse(LängdTextBox.Text, out int timmar)) timmar = 1;
+            
+            if (!int.TryParse(LängdTextBox.Text, out int timmar)) timmar = 1; // Hämta längd från textbox, standardvärde 1 timme om inmatning saknas
             DateTime slut = start.Value.AddHours(timmar);
 
-            // Anropar kontrollern för att filtrera fram lediga resurser
-            var lediga = _resursController.HämtaLedigaResurser(start.Value, slut);
+        
+            var lediga = _resursController.HämtaLedigaResurser(start.Value, slut); // Anropar controllern för att filtrera fram lediga resurser
 
             VäljresursComboBox.ItemsSource = lediga;
            
@@ -117,50 +116,7 @@ namespace Presentationslager
                 MessageBox.Show("Inga lediga resurser hittades för denna tid.");
             }
         }
-
-        // Metod för att spara den nya bokningen
-        private void SparaBokningButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (!int.TryParse(MedlemsIDTextBox.Text, out int medlemId))
-                {
-                    MessageBox.Show("Ange ett giltigt Medlems-ID.");
-                    return;
-                }
-
-                var valdResurs = VäljresursComboBox.SelectedItem as Resurs;
-                if (valdResurs == null)
-                {
-                    MessageBox.Show("Välj en resurs i listan.");
-                    return;
-                }
-
-
-                DateTime start = GetBokningsDateTime().Value;
-                int timmar = int.Parse(LängdTextBox.Text);
-
-                var nyBokning = new Bokning
-                {
-                    MedlemID = medlemId,
-                    ResursID = valdResurs.ResursID,
-                    Starttid = start,
-                    Sluttid = start.AddHours(timmar),
-                    SenastUppdaterad = DateTime.Now,
-                    Anteckning = AnteckningTextBox.Text //Anteckning för att lägga in medlemar
-                };
-
-                _bokningController.SkapaBokning(nyBokning);
-                MessageBox.Show("Bokningen har skapats!");
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ett fel uppstod: " + ex.Message);
-            }
-        }
-        // Din befintliga metod för att skapa DateTime från valen i fönstret
-        private DateTime? GetBokningsDateTime()
+        private DateTime? GetBokningsDateTime() // Metod för att skapa DateTime från valen i kalendern och tid-comboboxarna
         {
             DateTime? selectedDate = this.BokningsCalander.SelectedDate;
 
@@ -197,5 +153,46 @@ namespace Presentationslager
 
             return result;
         }
+
+        private void SparaBokningButton_Click(object sender, RoutedEventArgs e) // Metod för att spara den nya bokningen
+        {
+            try
+            {
+                if (!int.TryParse(MedlemsIDTextBox.Text, out int medlemId))
+                {
+                    MessageBox.Show("Ange ett giltigt Medlems-ID.");
+                    return;
+                }
+
+                var valdResurs = VäljresursComboBox.SelectedItem as Resurs;
+                if (valdResurs == null)
+                {
+                    MessageBox.Show("Välj en resurs i listan.");
+                    return;
+                }
+
+                DateTime start = GetBokningsDateTime().Value;
+                int timmar = int.Parse(LängdTextBox.Text);
+
+                var nyBokning = new Bokning // sätetr värden för den nya bokningen
+                {
+                    MedlemID = medlemId,
+                    ResursID = valdResurs.ResursID,
+                    Starttid = start,
+                    Sluttid = start.AddHours(timmar),
+                    SenastUppdaterad = DateTime.Now,
+                    Anteckning = AnteckningTextBox.Text 
+                };
+
+                _bokningController.SkapaBokning(nyBokning);
+                MessageBox.Show("Bokningen har skapats!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ett fel uppstod: " + ex.Message);
+            }
+        }
+              
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d"  FontSize="18" FontFamily="Lucida Bright"
-        Title="Registrera Medlem" Height="450" Width="800">
+        Title="Registrera Medlem" Height="700" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -62,7 +62,7 @@
             <ComboBoxItem Content="Obetald"/>
             <ComboBoxItem Content="Betald"/>
         </ComboBox>
-        <Button x:Name="SparaNyMedlemButton" Grid.Column="2" Grid.Row="8" Margin="5" Content="Spara" Click="SparaNyMedlemButton_Click" Background="#FFB4E6B4"/>
+        <Button x:Name="SparaNyMedlemButton" Grid.Column="2" Grid.Row="8" Margin="5" Content="Spara" Click="SparaNyMedlemButton_Click" Background="#FFB4E6B4" Height="50"/>
 
     </Grid>
 </Window>

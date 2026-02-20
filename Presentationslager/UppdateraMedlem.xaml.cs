@@ -28,7 +28,7 @@ namespace Presentationslager
         public UppdateraMedlem()
         {
             InitializeComponent();
-            Loaded += UppdateraMedlem_Loaded; //NY
+            Loaded += UppdateraMedlem_Loaded;
         }
 
         private void RensaFormulär()
@@ -40,10 +40,10 @@ namespace Presentationslager
             MedlemComboBox.SelectedIndex = -1;
             medlem = null;
 
-            MedlemsIDTextBox.Focus(); //Denna raden flyttar fokus/pekaren tillbaka till medlem namn så man direkt kan registrera en ny medlem
+            MedlemsIDTextBox.Focus(); 
         }
 
-        static bool IsDigitsOnly(string str) //Denna funktion tar en sträng och returnerar falskt om villkoret inte stämmer och sant om villkoret stämmer. Funktionen kontrollerar så strängen innehåller siffror mellan 0-9.
+        static bool IsDigitsOnly(string str) 
         {
             foreach (char c in str)
             {
@@ -106,7 +106,6 @@ namespace Presentationslager
             TelefonTextBox.Text = medlem.Telefonnummer ?? "";
            
         }
-
         private void SparaÄndradMedlemButton_Click(object sender, RoutedEventArgs e)
         {
             if (medlem == null)
@@ -140,7 +139,6 @@ namespace Presentationslager
 
             RensaFormulär();
         }
-
         private void RaderaMedlemButton_Click(object sender, RoutedEventArgs e)
         {
             if (medlem == null)

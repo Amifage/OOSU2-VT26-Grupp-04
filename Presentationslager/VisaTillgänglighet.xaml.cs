@@ -47,20 +47,16 @@ namespace Presentationslager
                     MessageBox.Show("Vänligen välj ett datum.");
                     return;
                 }
-
           
                 DateTime datum = Kalender.SelectedDate.Value;
                 int timme = int.Parse(TimmarComboBox.SelectedItem.ToString());
                 int minut = int.Parse(MinuterComboBox.SelectedItem.ToString());
                 DateTime startTid = new DateTime(datum.Year, datum.Month, datum.Day, timme, minut, 0);
-
-              
+             
                 if (!int.TryParse(LängdTextBox.Text, out int timmar)) timmar = 1;
                 DateTime slutTid = startTid.AddHours(timmar);
-
               
-                List<Resurs> lediga = _resursController.HämtaLedigaResurser(startTid, slutTid);
-
+                List<Resurs> lediga = _resursController.HämtaLedigaResurser(startTid, slutTid); //skapar en lista med de ledia resurserna
                
                 TillgängligaResurserGrid.ItemsSource = lediga;
 

@@ -30,7 +30,7 @@ namespace Presentationslager
         }
 
         #region Kod för utrustning
-        private void LaddaKoppladUtrustning()
+        private void LaddaKoppladUtrustning() //hämtar alla utrustnigar som är kopplade till resursen
         {
             if (_skapadResurs == null)
             {
@@ -44,7 +44,7 @@ namespace Presentationslager
                 .ToList();
         }
 
-        private void LaddaOkoppladUtrustning()
+        private void LaddaOkoppladUtrustning() //hämtar all utrustning som inte är kopplad till någon resurs
         {
             OkoppladListView.ItemsSource = _resursController
                 .HämtaOkoppladUtrustning()
@@ -52,7 +52,7 @@ namespace Presentationslager
                 .ToList();
         }
 
-        private void KopplaButton_Click(object sender, RoutedEventArgs e)
+        private void KopplaButton_Click(object sender, RoutedEventArgs e) // kopplar utrustning
         {
             if (_skapadResurs == null)
             {
@@ -75,7 +75,7 @@ namespace Presentationslager
             LaddaOkoppladUtrustning();
         }
 
-        private void AvkopplaButton_Click(object sender, RoutedEventArgs e)
+        private void AvkopplaButton_Click(object sender, RoutedEventArgs e) //bortkopplar utrustning
         {
             var valda = KoppladListView.SelectedItems.Cast<Utrustning>().ToList();
             if (valda.Count == 0)
@@ -93,7 +93,6 @@ namespace Presentationslager
         }
         #endregion
 
-
         private void SparaNyResursButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -104,14 +103,14 @@ namespace Presentationslager
                 bool okKapacitet = int.TryParse(ResursKapacitetTextBox.Text?.Trim(), out int kapacitet);
                 string status = "tillgänglig";
 
-                // Validering
+          
                 if (string.IsNullOrWhiteSpace(namn) || (string.IsNullOrWhiteSpace(typ)))
                 {
                     MessageBox.Show("Du måste fylla i resursnamn.");
                     return;
                 }
 
-                if (!okKapacitet || kapacitet < 0)  //Har redan validering så att ingen bokstav följer med av misstag.
+                if (!okKapacitet || kapacitet < 0) 
                 {
                     MessageBox.Show("Kapacitet måste vara ett heltal (0 eller högre).");
                     return;

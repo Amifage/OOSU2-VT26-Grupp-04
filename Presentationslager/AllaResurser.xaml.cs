@@ -26,7 +26,6 @@ namespace Presentationslager
             InitializeComponent();
             LaddaResurser();
         }
-
         private void LaddaResurser()
         {
             ResurserDataGrid.ItemsSource = _resursController.HämtaAllaResurser();

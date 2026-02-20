@@ -23,7 +23,6 @@ namespace Presentationslager
         {
             InitializeComponent();
         }
-
         private void SkapaBokningButton_Click(object sender, RoutedEventArgs e)
         {
             SkapaBokning skapaBokningfönster = new SkapaBokning();
@@ -35,7 +34,6 @@ namespace Presentationslager
             HanteraBokning HanteraBokningfönster = new HanteraBokning();
                 HanteraBokningfönster.Show();
         }
-
         private void KommandeBoknigarButton_Click(object sender, RoutedEventArgs e)
         {
             KommandeBokningar kommandeBoknigar = new KommandeBokningar();

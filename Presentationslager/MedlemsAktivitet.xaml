@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright" 
-        Title="Medlems Aktivitet" Height="450" Width="800">
+        Title="Medlems Aktivitet" Height="700" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -44,9 +44,9 @@
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Medlemsaktivitet" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
         
         <TextBlock Grid.Column= "1" Grid.Row="2"  Text= "Skriv MedlemsID" Margin="5"/>
-        <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Margin="4" Width="200"/>
-        <Button x:Name="SumbitMedlemButton" Grid.Column="2" Grid.Row="4" Content="Hämta" Margin="5" Click="SumbitMedlemIDButton_Click" Background="LightBlue"/>
-        <DataGrid x:Name="MedlemsaktivitetDataGrid" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="2" Width="400" Height="200" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
+        <TextBox x:Name="MedlemsIDTextBox" Grid.Column="2" Grid.Row="2" Margin="4" Width="200" HorizontalAlignment="Left"/>
+        <Button x:Name="SumbitMedlemButton" Grid.Column="2" Grid.Row="4" Content="Hämta" Margin="5" Click="SumbitMedlemIDButton_Click" Background="LightBlue" Height="50"/>
+        <DataGrid x:Name="MedlemsaktivitetDataGrid" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Grid.RowSpan="2" Width="600" Height="200" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="Medlem" 
@@ -67,6 +67,6 @@
         </DataGrid>
 
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Eller välj medlem från listan:" Margin="5"/>
-        <ComboBox x:Name="MedlemComboBox" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" Width="450" Margin="4" DisplayMemberPath="DisplayText" SelectionChanged="MedlemComboBox_SelectionChanged" HorizontalAlignment="Left"/>
+        <ComboBox x:Name="MedlemComboBox" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" Width="440" Margin="4" DisplayMemberPath="DisplayText" SelectionChanged="MedlemComboBox_SelectionChanged" HorizontalAlignment="Left"/>
     </Grid>
 </Window>

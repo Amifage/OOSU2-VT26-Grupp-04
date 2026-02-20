@@ -24,13 +24,12 @@ namespace Presentationslager
             InitializeComponent();
             new DatabasController();
             personalController = new PersonalController();
-
         }
 
         private void LoggaInButton_Click(object sender, RoutedEventArgs e)
         {
 
-            string namn = EmailTextBox.Text.Trim();
+            string namn = EmailTextBox.Text.Trim().ToLower(); // Trimmar mellanslag och sätter input till små bokstäver så att allt i databasen är i små bokstäver
             string lösenord = LösenordTextBox.Password.Trim().ToLower();
 
             var personal = personalController.ValideraInloggning(namn, lösenord);
@@ -47,8 +46,6 @@ namespace Presentationslager
                 MessageBox.Show("Fel namn eller lösenord");
 
             }
-        }
-
-            
-        }
+        }          
     }
+}

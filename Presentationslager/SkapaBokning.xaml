@@ -81,17 +81,10 @@
          AcceptsReturn="True" 
          VerticalScrollBarVisibility="Auto"/>
 
-        
-        
-        <Button x:Name="SparaBokningButton" Content="Boka nu" Grid.Column="2" Grid.Row="10" Margin="10" Click="SparaBokningButton_Click" IsEnabled="False" Height="40"/>
+        <Button x:Name="SparaBokningButton" Content="Boka nu" Grid.Column="2" Grid.Row="10" Margin="10" Click="SparaBokningButton_Click" IsEnabled="False" Height="40" Background="#FFB4E6B4"/>
 
-
-
-        
         <TextBlock Grid.Column="1" Grid.Row="3" Text="Eller välj medlem från listan:" Margin="5"/>
-        <ComboBox x:Name="MedlemComboBox" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" Width="350" Margin="4" DisplayMemberPath="DisplayText" SelectionChanged="MedlemComboBox_SelectionChanged" HorizontalAlignment="Left"/>
-
-
+        <ComboBox x:Name="MedlemComboBox" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="6" Width="340" Margin="4" DisplayMemberPath="DisplayText" SelectionChanged="MedlemComboBox_SelectionChanged" HorizontalAlignment="Left"/>
 
     </Grid>
 </Window>

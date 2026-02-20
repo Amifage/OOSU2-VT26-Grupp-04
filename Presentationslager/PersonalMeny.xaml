@@ -5,18 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
-        Title="PersonalMeny" Height="450" Width="800" Background="White">
+        Title="PersonalMeny" Height="450" Width="510">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -36,13 +32,13 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Personal meny" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="Bokningar" FontWeight="Bold"/>
-        <Button x:Name="BokningMenyButton" Content="Bokningar" Grid.Column="1" Grid.Row="3" Margin="5" Click="BokningMenyButton_Click" />
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="Bokningar" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <Button x:Name="BokningMenyButton" Content="Bokningar" Grid.Column="1" Grid.Row="3" Margin="5" Click="BokningMenyButton_Click" Height="50" />
 
-        <TextBlock Grid.Column="2" Grid.Row="2" Text="Medlemmar" FontWeight="Bold"/>
+        <TextBlock Grid.Column="2" Grid.Row="2" Text="Medlemmar" FontWeight="Bold" HorizontalAlignment="Center"/>
         <Button x:Name="MedlemsMenyButton" Content="Medlemmar" Grid.Column="2" Grid.Row="3" Margin="5" Click="MedlemsMenyButton_Click" />
 
-        <TextBlock Grid.Column="3" Grid.Row="2" Text="Resurser" FontWeight="Bold"/>
+        <TextBlock Grid.Column="3" Grid.Row="2" Text="Resurser" FontWeight="Bold" HorizontalAlignment="Center"/>
         <Button x:Name="ResursMenyButton" Content="Resurser" Grid.Column="3" Grid.Row="3" Margin="5" Click="ResursMenyButton_Click"/>
 
         

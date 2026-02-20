@@ -71,7 +71,7 @@ namespace Presentationslager
         {
             if (!int.TryParse(MedlemsIDTextBox.Text?.Trim(), out int id))
             {
-                MessageBox.Show("Skriv ett giltigt medlems-ID (heltal)."); //Vill vi ha hetal med här?
+                MessageBox.Show("Skriv ett giltigt medlems-ID (heltal)."); 
                 return;
             }
             medlem = _medlemController.HamtaMedlemById(id);
@@ -86,7 +86,7 @@ namespace Presentationslager
             MedlemsaktivitetDataGrid.ItemsSource = bokningar;
             if (bokningar.Count == 0 )
             {
-                MessageBox.Show("Medlemmen hittades, men har inga registresrade bokningar");
+                MessageBox.Show("Medlemmen hittades, men har inga registrerade bokningar");
             }
            
         }

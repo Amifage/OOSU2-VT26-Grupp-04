@@ -28,7 +28,6 @@ namespace Presentationslager
         {
             InitializeComponent();
         }
-
         private void RensaFormulär()
         {
             MedlemNamnTextBox.Text = "";
@@ -40,7 +39,6 @@ namespace Presentationslager
 
             MedlemNamnTextBox.Focus(); //Denna raden flyttar fokus/pekaren tillbaka till medlem namn så man direkt kan registrera en ny medlem
         }
-
         static bool IsDigitsOnly(string str) //Denna funktion tar en sträng och returnerar falskt om villkoret inte stämmer och sant om villkoret stämmer. Funktionen kontrollerar så strängen innehåller siffror mellan 0-9.
         {
             foreach (char c in str)
@@ -50,7 +48,6 @@ namespace Presentationslager
             }
             return true;
         }
-
         private void SparaNyMedlemButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -58,7 +55,7 @@ namespace Presentationslager
             {
                 string namn = MedlemNamnTextBox.Text.Trim().ToLower();
                 string epost = MedlemsEpostTextBox.Text.Trim().ToLower();
-                string telefon = MedlemsTelefonnummerTextBox.Text.Replace(" ", "").Trim();
+                string telefon = MedlemsTelefonnummerTextBox.Text.Replace(" ", "").Trim(); //tar bort alla mellanrum i telefonnummer
 
                 string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower();
                 string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower() ;
@@ -74,7 +71,7 @@ namespace Presentationslager
                     MessageBox.Show("Välj medlemsnivå och betalstatus.");
                     return;
                 }
-                if (!IsDigitsOnly(telefon)) //Kontrollera så tel enbart innehåller siffror
+                if (!IsDigitsOnly(telefon)) 
                 {
                     MessageBox.Show("Telefonnummer får bara innehålla siffror.");
                     return;
@@ -100,8 +97,6 @@ namespace Presentationslager
             {
                 MessageBox.Show("Fel vid sparning: " + ex.Message);
             }
-
-            
 
         }
                          

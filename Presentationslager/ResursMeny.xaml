@@ -5,24 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
-        Title="Meldems Meny" Height="450" Width="800">
+        Title="Meldems Meny" Height="450" Width="510">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="450"/>
+            <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -36,11 +28,10 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Resurser" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
-        <Button x:Name="RegistreraResursButton" Content="Registrera resurs" Grid.Column="1" Grid.Row="4" Margin="10" Click="RegistreraResursButton_Click" />
-        <Button x:Name="UppdateraResursButton" Content="Uppdatera resurs" Grid.Column="2" Grid.Row="4" Margin="10" Click="UppdateraResursButton_Click" />
-        <Button x:Name="VisaTillgänglighetButton" Content="Visa tillgängliga resurser" Grid.Column="3" Grid.Row="4" Margin="10" Click="VisaTillgänglighetButton_Click" />
-        <Button x:Name="AllaResurserButton" Grid.Column="1" Grid.Row="5" Content="Alla resurser" Margin="10" Click="AllaResurserButton_Click" />
-
+        <Button x:Name="RegistreraResursButton" Content="Registrera resurs" Grid.Column="1" Grid.Row="2" Margin="10" Click="RegistreraResursButton_Click" Height="50"/>
+        <Button x:Name="UppdateraResursButton" Content="Uppdatera resurs" Grid.Column="1" Grid.Row="3" Margin="10" Click="UppdateraResursButton_Click" Height="50"/>
+        <Button x:Name="VisaTillgänglighetButton" Content="Visa tillgängliga resurser" Grid.Column="1" Grid.Row="4" Margin="10" Click="VisaTillgänglighetButton_Click" Height="50" />
+        <Button x:Name="AllaResurserButton" Grid.Column="1" Grid.Row="5" Content="Alla resurser" Margin="10" Click="AllaResurserButton_Click" Height="50"/>
 
     </Grid>
 </Window>

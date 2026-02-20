@@ -5,27 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
-        Title="Boknings Meny" Height="450" Width="800">
+        Title="Bokningsmeny" Height="450" Width="510">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="450" />
+            <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -36,11 +25,9 @@
 
         <TextBlock Grid.Column="1" Grid.Row="1" FontSize="28" Text="Bokningar" FontFamily="Segoe Script" Foreground="HotPink" Grid.ColumnSpan="3" Margin="15"/>
 
-        
-        <Button x:Name="SkapaBokningButton" Content="Skapa ny bokning" Grid.Column="1" Grid.Row="2" Margin="10" Click="SkapaBokningButton_Click" />
-        <Button x:Name="HanteraBokningButton" Content="Uppdatera bokning" Grid.Column=" 2" Grid.Row="2" Margin="10" Click="HanteraBokningButton_Click" />
-        <Button x:Name="KommandeBoknigarButton" Content="Visa kommande bokningar" Grid.Column="3" Grid.Row="2" Margin="10" Click="KommandeBoknigarButton_Click"/>
-
+        <Button x:Name="SkapaBokningButton" Content="Skapa ny bokning" Grid.Column="1" Grid.Row="2" Margin="10" Click="SkapaBokningButton_Click" Height="50"/>
+        <Button x:Name="HanteraBokningButton" Content="Uppdatera bokning" Grid.Column="1" Grid.Row="3" Margin="10" Click="HanteraBokningButton_Click" Height="50"/>
+        <Button x:Name="KommandeBoknigarButton" Content="Visa kommande bokningar" Grid.Column="1" Grid.Row="4" Margin="10" Click="KommandeBoknigarButton_Click" Height="50"/>
 
     </Grid>
 </Window>

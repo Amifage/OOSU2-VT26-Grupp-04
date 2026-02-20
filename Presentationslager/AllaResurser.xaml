@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
-        Title="AllaResurser" Height="450" Width="800">
+        Title="AllaResurser" Height="700" Width="800">
     <Grid>
         <DataGrid x:Name="ResurserDataGrid" AutoGenerateColumns="False" IsReadOnly="True" Margin="10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ResursID}" Width="50"/>
                 <DataGridTextColumn Header="Namn" Binding="{Binding Namn}" Width="*"/>
                 <DataGridTextColumn Header="Typ" Binding="{Binding Typ}" Width="*"/>
-                <DataGridTextColumn Header="Kapacitet" Binding="{Binding Kapacitet}" Width="100"/>
+                <DataGridTextColumn Header="Kapacitet" Binding="{Binding Kapacitet}" Width="*"/>
                 
             </DataGrid.Columns>
         </DataGrid>

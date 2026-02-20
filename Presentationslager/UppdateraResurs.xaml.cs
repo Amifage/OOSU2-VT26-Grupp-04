@@ -28,8 +28,7 @@ namespace Presentationslager
         public UppdateraResurs()
         {
             InitializeComponent();
-            Loaded += UppdateraResurs_Loaded;
-           
+            Loaded += UppdateraResurs_Loaded;         
         }
 
         private void RensaFormulär()
@@ -165,7 +164,7 @@ namespace Presentationslager
         {
             if (!int.TryParse(ResursIDTextBox.Text?.Trim(), out int id))
             {
-                MessageBox.Show("Skriv ett giltigt resurs-ID (heltal)."); //Vill vi ha hetal med här?
+                MessageBox.Show("Skriv ett giltigt resurs-ID (heltal)."); 
                 return;
             }
           
@@ -181,12 +180,10 @@ namespace Presentationslager
             TypTextBox.Text = resurs.Typ ?? "";
             KapacitetTextBox.Text = resurs.Kapacitet.ToString();
 
-
             LaddaUtrustningFörValdResurs();
 
             LaddaKoppladUtrustning();
             LaddaOkoppladUtrustning();
-
 
         }
 
