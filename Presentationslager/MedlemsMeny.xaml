@@ -42,7 +42,7 @@
         
         <Button x:Name="MedlemsStatistikButton" Grid.Column="2" Grid.Row="2" Content="Medlemsaktivitet" Margin="10" Click="MedlemsStatistikButton_Click"/>
         
-        <Button x:Name="VisaAllaMedlemar" Grid.Column="4" Grid.Row="2" Content="Alla medlemar" Margin="10" Click="VisaAllaMedlemar_Click"/>
+        <Button x:Name="VisaAllaMedlemar" Grid.Column="4" Grid.Row="2" Content="Alla medlemmar" Margin="10" Click="VisaAllaMedlemar_Click"/>
 
 
 
