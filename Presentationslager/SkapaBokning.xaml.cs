@@ -41,7 +41,7 @@ namespace Presentationslager
 
         private void LaddaMedlemmar()
         {
-            var medlemmar = _bokningController.HämtaAllaMedlemmar()
+            var medlemmar = _medlemController.HämtaAllaMedlemmar()
                                              .OrderBy(m => m.Namn)
                                              .ToList();
 
