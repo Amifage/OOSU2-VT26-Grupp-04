@@ -32,5 +32,24 @@ namespace Affärslagret
             uow.BokningRepository.Add(nyBokning);
             uow.Save();
         }
+
+        public int UppdateraBokning(Bokning valdbokning)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            _unitOfWork.BokningRepository.Update(valdbokning);
+            return _unitOfWork.Save();
+        }
+
+        public int TaBortBokning(int id)
+        {
+               using var _unitOfWork = new UnitOfWork(new SamverketContext());
+                var bokning = _unitOfWork.BokningRepository.HämtaId(id);
+                if (bokning == null)
+                return 0;
+
+                _unitOfWork.BokningRepository.Remove(bokning);
+            return _unitOfWork.Save();
+
+        }
     }
 }
