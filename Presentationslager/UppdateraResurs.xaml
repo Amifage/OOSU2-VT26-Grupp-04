@@ -59,7 +59,7 @@
         <Button x:Name="RaderaResursButton" Grid.Column="2" Grid.Row="10" Content="Radera resurs" Margin="5" Click="RaderaResursButton_Click" Background="#FFD8997C" />
 
 
-        <TextBlock Grid.Column="1" Grid.Row="5" Text="Välj resurs (lista)" Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Text="Eller välj resurs från listan:" Margin="5"/>
         <ComboBox x:Name="ResursComboBox" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan ="6" Width="450" Margin="4" DisplayMemberPath="DisplayText" SelectionChanged="ResursComboBox_SelectionChanged"/>
 
         <TextBlock Grid.Column="1" Grid.Row="11" Text="Utrustning kopplad till resurs" Margin="5"/>
