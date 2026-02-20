@@ -34,20 +34,33 @@ namespace Presentationslager
         private void LaddaData()
         {
             BokningsDataGrid.ItemsSource = _bokningController.HämtaKommandeBokningar();
-            // Du behöver lägga till metoder i dina controllers för att hämta ALLA medlemmar/resurser
-            // MedlemComboBox.ItemsSource = _medlemController.HämtaAllaMedlemmar(); 
-            // ResursComboBox.ItemsSource = _resursController.HämtaAllaResurser();
+             MedlemComboBox.ItemsSource = _medlemController.HämtaAllaMedlemmar();
+            ResursComboBox.ItemsSource = _resursController.HämtaAllaResurser();
         }
 
         private void BokningsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             valdBokning = BokningsDataGrid.SelectedItem as Bokning;
+
             if (valdBokning != null)
             {
+
                 StarttidTextBox.Text = valdBokning.Starttid.ToString("yyyy-MM-dd HH:mm");
                 SluttidTextBox.Text = valdBokning.Sluttid.ToString("yyyy-MM-dd HH:mm");
-                MedlemComboBox.SelectedItem = valdBokning.medlem;
-                ResursComboBox.SelectedItem = valdBokning.resurs;
+
+
+                if (MedlemComboBox.ItemsSource != null)
+                {
+                    MedlemComboBox.SelectedItem = MedlemComboBox.Items.Cast<Medlem>()
+                        .FirstOrDefault(m => m.MedlemID == valdBokning.MedlemID);
+                }
+
+
+                if (ResursComboBox.ItemsSource != null)
+                {
+                    ResursComboBox.SelectedItem = ResursComboBox.Items.Cast<Resurs>()
+                        .FirstOrDefault(r => r.ResursID == valdBokning.ResursID);
+                }
             }
         }
 
@@ -58,16 +71,32 @@ namespace Presentationslager
             var valdMedlem = MedlemComboBox.SelectedItem as Medlem;
             var valdResurs = ResursComboBox.SelectedItem as Resurs;
 
-            if (valdMedlem != null) valdBokning.MedlemID = valdMedlem.MedlemID;
-            if (valdResurs != null) valdBokning.ResursID = valdResurs.ResursID;
+            if (valdMedlem != null)
+            {
+                valdBokning.MedlemID = valdMedlem.MedlemID;
+                valdBokning.medlem = null; // Tvinga EF att gå på ID istället för det gamla objektet
+            }
 
-            valdBokning.Starttid = DateTime.Parse(StarttidTextBox.Text);
-            valdBokning.Sluttid = DateTime.Parse(SluttidTextBox.Text);
-            valdBokning.SenastUppdaterad = DateTime.Now;
+            if (valdResurs != null)
+            {
+                valdBokning.ResursID = valdResurs.ResursID;
+                valdBokning.resurs = null; // Tvinga EF att gå på ID istället för det gamla objektet
+            }
 
-            _bokningController.UppdateraBokning(valdBokning);
-            MessageBox.Show("Bokningen uppdaterad!");
-            LaddaData();
+            try
+            {
+                valdBokning.Starttid = DateTime.Parse(StarttidTextBox.Text);
+                valdBokning.Sluttid = DateTime.Parse(SluttidTextBox.Text);
+                valdBokning.SenastUppdaterad = DateTime.Now;
+
+                _bokningController.UppdateraBokning(valdBokning);
+                MessageBox.Show("Bokningen uppdaterad!");
+                LaddaData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kunde inte spara ändringar: " + ex.Message);
+            }
         }
 
         private void TaBortButton_Click(object sender, RoutedEventArgs e)
