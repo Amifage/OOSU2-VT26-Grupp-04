@@ -16,7 +16,7 @@ namespace Entitetslager
         public int Kapacitet { get; set; } //Denna är ändrat till en int
         public string? Status { get; set; } 
 
-        //public virtual ICollection<Utrustning> utrustning { get; set; } //En navigational property till utrsutning
+        //public virtual ICollection<Utrustning> utrustning { get; set; } //En navigational property till utrsutning g
         public DateTime SenastUppdaterad { get; set; }
 
 
