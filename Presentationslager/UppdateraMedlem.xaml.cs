@@ -54,7 +54,7 @@ namespace Presentationslager
         }
 
         #region Kod för combobox
-        private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e) //Behövs denna?
+        private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e) 
         {
             LaddaMedlemmar();
         }

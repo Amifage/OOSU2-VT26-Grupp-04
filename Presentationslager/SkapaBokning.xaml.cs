@@ -24,11 +24,51 @@ namespace Presentationslager
     {
         private readonly ResursController _resursController = new ResursController();
         private readonly BokningController _bokningController = new BokningController();
+        private readonly MedlemController _medlemController = new MedlemController();
+       
+
         public SkapaBokning()
         {
             InitializeComponent();
             this.LoadTimePicker();
-        } 
+            Loaded += UppdateraMedlem_Loaded;
+        }
+        #region Kod för medlem combobox
+        private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e)
+        {
+            LaddaMedlemmar();
+        }
+
+        private void LaddaMedlemmar()
+        {
+            var medlemmar = _bokningController.HämtaAllaMedlemmar()
+                                             .OrderBy(m => m.Namn)
+                                             .ToList();
+
+            MedlemComboBox.ItemsSource = medlemmar;
+            MedlemComboBox.SelectedIndex = -1;
+
+        }
+
+        private void MedlemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (MedlemComboBox.SelectedItem is not Medlem vald)
+                return;
+
+            MedlemsIDTextBox.Text = vald.MedlemID.ToString();
+        }
+
+        private void MedlemsIDTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!int.TryParse(MedlemsIDTextBox.Text, out int id))
+                return;
+
+            var match = (MedlemComboBox.ItemsSource as IEnumerable<Medlem>)
+                ?.FirstOrDefault(m => m.MedlemID == id);
+
+            MedlemComboBox.SelectedItem = match;
+        }
+        #endregion
 
         // Din befintliga metod för att ladda tider
         private void LoadTimePicker()

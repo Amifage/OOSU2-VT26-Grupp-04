@@ -12,6 +12,7 @@ namespace Entitetslager
     {
         [Key] public int BokningsID { get; set; }
         [Column("MedlemsID")] // Säg till EF att kolumnen i SQL faktiskt heter MedlemsID
+
         public int MedlemID { get; set; }
         public virtual Medlem medlem {  get; set; }
 

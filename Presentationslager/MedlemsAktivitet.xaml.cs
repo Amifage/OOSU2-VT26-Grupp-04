@@ -27,7 +27,45 @@ namespace Presentationslager
         public MedlemsAktivitet()
         {
             InitializeComponent();
+            Loaded += UppdateraMedlem_Loaded; 
         }
+
+        #region Kod för medlem combobox
+        private void UppdateraMedlem_Loaded(object sender, RoutedEventArgs e)
+        {
+            LaddaMedlemmar();
+        }
+
+        private void LaddaMedlemmar()
+        {
+            var medlemmar = _medlemController.HämtaAllaMedlemmar()
+                                             .OrderBy(m => m.Namn)
+                                             .ToList();
+
+            MedlemComboBox.ItemsSource = medlemmar;
+            MedlemComboBox.SelectedIndex = -1;
+
+        }
+
+        private void MedlemComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (MedlemComboBox.SelectedItem is not Medlem vald)
+                return;
+
+            MedlemsIDTextBox.Text = vald.MedlemID.ToString();
+        }
+
+        private void MedlemsIDTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!int.TryParse(MedlemsIDTextBox.Text, out int id))
+                return;
+
+            var match = (MedlemComboBox.ItemsSource as IEnumerable<Medlem>)
+                ?.FirstOrDefault(m => m.MedlemID == id);
+
+            MedlemComboBox.SelectedItem = match;
+        }
+        #endregion
 
         private void SumbitMedlemIDButton_Click(object sender, RoutedEventArgs e)
         {

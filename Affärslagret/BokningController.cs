@@ -32,5 +32,11 @@ namespace Affärslagret
             uow.BokningRepository.Add(nyBokning);
             uow.Save();
         }
+
+        public List<Medlem> HämtaAllaMedlemmar()
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            return _unitOfWork.MedlemRepository.GetAll().ToList();
+        }
     }
 }
