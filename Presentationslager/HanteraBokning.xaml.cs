@@ -47,6 +47,7 @@ namespace Presentationslager
 
                 StarttidTextBox.Text = valdBokning.Starttid.ToString("yyyy-MM-dd HH:mm");
                 SluttidTextBox.Text = valdBokning.Sluttid.ToString("yyyy-MM-dd HH:mm");
+                AnteckningTextBox.Text = _valdBokning.Anteckning ??"";
 
 
                 if (MedlemComboBox.ItemsSource != null)
@@ -87,6 +88,7 @@ namespace Presentationslager
             {
                 valdBokning.Starttid = DateTime.Parse(StarttidTextBox.Text);
                 valdBokning.Sluttid = DateTime.Parse(SluttidTextBox.Text);
+                valdBokning.Anteckning = AnteckningTextBox.Text;
                 valdBokning.SenastUppdaterad = DateTime.Now;
 
                 _bokningController.UppdateraBokning(valdBokning);

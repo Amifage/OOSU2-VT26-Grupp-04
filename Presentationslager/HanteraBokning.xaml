@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:Presentationslager"
         mc:Ignorable="d" FontSize="18" FontFamily="Lucida Bright"
 
-    Title="Uppdatera Bokning" Height="600" Width="800">
+    Title="Uppdatera Bokning" Height="700" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="200"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -36,10 +37,15 @@
             <TextBlock Text="Ny Sluttid (yyyy-MM-dd HH:mm):"/>
             <TextBox x:Name="SluttidTextBox" Margin="5"/>
 
+            <TextBlock Text="Ändra mötesanteckning (Beskrivning och Deltagare)"  Margin="5"/>
+            <TextBox x:Name="AnteckningTextBox" Margin="5" TextWrapping="Wrap" AcceptsReturn="True"  />
+
             <UniformGrid Columns="2" Margin="0,10,0,0">
                 <Button Content="Spara Ändringar" Click="SparaButton_Click" Margin="5" Background="#FFB4E6B4"/>
                 <Button Content="Ta bort Bokning" Click="TaBortButton_Click" Margin="5" Background="#FFD8997C"/>
+
             </UniformGrid>
+
         </StackPanel>
     </Grid>
 </Window>
