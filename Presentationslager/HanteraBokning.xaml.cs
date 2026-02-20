@@ -22,8 +22,8 @@ namespace Presentationslager
     public partial class HanteraBokning : Window
     {
         private BokningController _bokningController = new BokningController();
-        private MedlemController _medlemController = new MedlemController(); // För att hämta medlemmar
-        private ResursController _resursController = new ResursController(); // För att hämta resurser
+        private MedlemController _medlemController = new MedlemController(); 
+        private ResursController _resursController = new ResursController(); 
         private Bokning valdBokning;
         public HanteraBokning()
         {
@@ -74,13 +74,13 @@ namespace Presentationslager
             if (valdMedlem != null)
             {
                 valdBokning.MedlemID = valdMedlem.MedlemID;
-                valdBokning.medlem = null; // Tvinga EF att gå på ID istället för det gamla objektet
+                valdBokning.medlem = null; 
             }
 
             if (valdResurs != null)
             {
                 valdBokning.ResursID = valdResurs.ResursID;
-                valdBokning.resurs = null; // Tvinga EF att gå på ID istället för det gamla objektet
+                valdBokning.resurs = null;
             }
 
             try
