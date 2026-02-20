@@ -38,13 +38,7 @@ namespace Presentationslager
         {
             VisaTillgänglighet VisaTillgänglighetFönster = new VisaTillgänglighet();
             VisaTillgänglighetFönster.Show();
-        }
-
-        private void ResursStatistikButton_Click(object sender, RoutedEventArgs e)
-        {
-          ResursStatistik resursStatistik = new ResursStatistik();
-            resursStatistik.Show();
-        }
+        }       
 
         private void AllaResurserButton_Click(object sender, RoutedEventArgs e)
         {

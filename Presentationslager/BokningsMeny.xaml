@@ -38,7 +38,7 @@
 
         
         <Button x:Name="SkapaBokningButton" Content="Skapa ny bokning" Grid.Column="1" Grid.Row="2" Margin="10" Click="SkapaBokningButton_Click" />
-        <Button x:Name="HanteraBokningButton" Content="Hantera befintlig bokning" Grid.Column=" 2" Grid.Row="2" Margin="10" Click="HanteraBokningButton_Click" />
+        <Button x:Name="HanteraBokningButton" Content="Uppdatera bokning" Grid.Column=" 2" Grid.Row="2" Margin="10" Click="HanteraBokningButton_Click" />
         <Button x:Name="KommandeBoknigarButton" Content="Visa kommande bokningar" Grid.Column="3" Grid.Row="2" Margin="10" Click="KommandeBoknigarButton_Click"/>
 
 
