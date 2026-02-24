@@ -27,9 +27,9 @@ namespace Datalager
             samverketContext.Personal.Add(new Personal()
             {
 
-                Namn = "Sara",
+                Namn = "sara",
 
-                Roll = "Administratör",
+                Roll = "administratör",
 
                 Lösenord = "123"
 
@@ -40,9 +40,9 @@ namespace Datalager
             samverketContext.Personal.Add(new Personal()
             {
 
-                Namn = "Amanda",
+                Namn = "amanda",
 
-                Roll = "Receptionist",
+                Roll = "receptionist",
 
                 Lösenord = "456"
 
@@ -53,9 +53,9 @@ namespace Datalager
             samverketContext.Personal.Add(new Personal()
             {
 
-                Namn = "Gabbe",
+                Namn = "gabbe",
 
-                Roll = "Reparatör",
+                Roll = "reparatör",
 
                 Lösenord = "789"
 
@@ -121,10 +121,10 @@ namespace Datalager
             samverketContext.Resurs.Add(new Resurs()
             {
 
-                Namn = "Katten",
-                Typ = "Konferensrum",
+                Namn = "katten",
+                Typ = "konferensrum",
                 Kapacitet = 10,
-                Status = "Ledig",
+                Status = "ledig",
                 SenastUppdaterad = DateTime.Now,
             });
 
@@ -133,10 +133,10 @@ namespace Datalager
             samverketContext.Resurs.Add(new Resurs()
             {
 
-                Namn = "Hunden",
-                Typ = "Mötesrum",
+                Namn = "hunden",
+                Typ = "mötesrum",
                 Kapacitet = 5,
-                Status = "Bokad",
+                Status = "bokad",
                 SenastUppdaterad = DateTime.Now,
             });
 
@@ -145,10 +145,10 @@ namespace Datalager
             samverketContext.Resurs.Add(new Resurs()
             {
 
-                Namn = "Hästen",
-                Typ = "Kontorsrum",
+                Namn = "hästen",
+                Typ = "kontorsrum",
                 Kapacitet = 2,
-                Status = "Ledig",
+                Status = "ledig",
                 SenastUppdaterad = DateTime.Now,
             });
 
@@ -167,11 +167,11 @@ namespace Datalager
             samverketContext.Utrustning.Add(new Utrustning()
             {
 
-                Namn = "Whiteboard",
+                Namn = "whiteboard",
 
-                Kategori = "Whiteboard",
+                Kategori = "whiteboard",
 
-                Skick = "Bra",
+                Skick = "bra",
 
                 ResursID = 1
 
@@ -183,11 +183,11 @@ namespace Datalager
             samverketContext.Utrustning.Add(new Utrustning()
             {
 
-                Namn = "Projektor",
+                Namn = "projektor",
 
-                Kategori = "Projektor",
+                Kategori = "projektor",
 
-                Skick = "Trasig",
+                Skick = "trasig",
 
                 ResursID = null
 
@@ -198,11 +198,11 @@ namespace Datalager
             samverketContext.Utrustning.Add(new Utrustning()
             {
 
-                Namn = "Dator",
+                Namn = "dator",
 
-                Kategori = "Skärm",
+                Kategori = "skärm",
 
-                Skick = "Sliten",
+                Skick = "sliten",
 
                 ResursID = 2
 
@@ -213,11 +213,11 @@ namespace Datalager
             samverketContext.Utrustning.Add(new Utrustning()
             {
 
-                Namn = "TV",
+                Namn = "tv",
 
-                Kategori = "Skärm",
+                Kategori = "skärm",
 
-                Skick = "Bra",
+                Skick = "bra",
 
                 ResursID = 1
 

@@ -26,6 +26,7 @@ namespace Presentationslager
             InitializeComponent();
             LaddaMedlemmar();
         }
+
         private void LaddaMedlemmar()
         {
             MedlemmarDataGrid.ItemsSource = _medlemController.HämtaAllaMedlemmar();
