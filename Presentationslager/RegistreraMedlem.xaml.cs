@@ -28,6 +28,7 @@ namespace Presentationslager
         {
             InitializeComponent();
         }
+
         private void RensaFormulär()
         {
             MedlemNamnTextBox.Text = "";
