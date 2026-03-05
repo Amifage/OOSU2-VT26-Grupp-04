@@ -1,0 +1,47 @@
+﻿<Window x:Class="Medlem_Presentationslager.Startsida"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medlem_Presentationslager"
+        mc:Ignorable="d" 
+        Title="Startsida" Height="450" Width="800">
+    <Grid Margin="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,40" HorizontalAlignment="Center">
+            <TextBlock Text="Välkommen till Samverket" 
+                   FontSize="36" 
+                   FontWeight="ExtraBold" 
+                   Foreground="Black" />
+            <TextBlock Text="Välj din roll nedan för att fortsätta" 
+                   FontSize="16" 
+                   Foreground="#FF636363"
+                   HorizontalAlignment="Center" 
+                   Margin="5"/>
+        </StackPanel>
+
+        <Button Grid.Column="0" Grid.Row="1" Margin="20" Background="White" Cursor="Hand">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="👤" FontSize="50" HorizontalAlignment="Center"/>
+                <TextBlock Text="Personal" FontSize="24" FontWeight="Bold" Margin="10"/>
+                <TextBlock Text="Logga in för att hantera systemet" Foreground="#FF636363"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Column="1" Grid.Row="1" Margin="20" Background="White" Cursor="Hand">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="⭐" FontSize="50" HorizontalAlignment="Center"/>
+                <TextBlock Text="Medlem" FontSize="24" FontWeight="Bold" Margin="10"/>
+                <TextBlock Text="Gå till mina sidor och förmåner" Foreground="#FF636363"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
