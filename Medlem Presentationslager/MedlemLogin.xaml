@@ -12,15 +12,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="⭐" FontSize="60" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+        <TextBlock Grid.Row="0" Text="⭐" FontSize="60" HorizontalAlignment="Center" />
 
         <StackPanel Grid.Row="1" Margin="0,0,0,30">
             <TextBlock Text="Medlemsinloggning" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock Text="Ange dina uppgifter för att fortsätta" FontSize="14" Foreground="#FF636363" HorizontalAlignment="Center"/>
+            <TextBlock Text="Ange dina uppgifter för att fortsätta" FontSize="13" Foreground="#FF636363" HorizontalAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
-            <TextBlock Text="E-postadress" Margin="0,0,0,5" FontWeight="SemiBold"/>
+            <TextBlock Text="E-postadress" FontWeight="SemiBold" Margin="0,0,0,5"/>
             <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="5" Margin="0,0,0,20">
                 <TextBox x:Name="EmailTextBox" Height="40" Padding="10,8" Background="White" BorderThickness="0"/>
             </Border>
@@ -32,23 +32,21 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="0,20,0,0">
-            <Button Content="Logga in" 
-                    Height="45" 
-                    Background="HotPink" 
-                    Foreground="White" 
-                    FontWeight="Bold">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <Button Content="Logga in" Height="45" Background="HotPink" Foreground="White" FontWeight="Bold" Click="LoginButton_Click"/>
+
+            <Button Content="Har du inget konto? Registrera dig här" 
+            Margin="0,15,0,0" 
+            Background="Transparent" 
+            BorderThickness="0" 
+            Foreground="#FF2980B9" 
+            Cursor="Hand"
+            Click="RegisterAccount_Click"/>
 
             <Button Content="Tillbaka" 
                     Margin="0,10,0,0" 
-                    Background="LightGray" 
+                    Background="LightGray"
                     BorderThickness="1" 
-                    Cursor="Hand"/>
+                    Cursor="Hand" />
         </StackPanel>
     </Grid>
 </Window>

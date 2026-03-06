@@ -22,6 +22,19 @@
             <Setter Property="FontFamily" Value="Lucida Bright" />
             <Setter Property="FontSize" Value="14" />
         </Style>
+        
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#DDD"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5,2"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
 
     </Application.Resources>
 </Application>
