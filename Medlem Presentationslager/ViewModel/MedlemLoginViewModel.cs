@@ -17,18 +17,19 @@ namespace Medlem_Presentationslager.ViewModel
     public class MedlemLoginViewModel : INotifyPropertyChanged
     {
 
-        private string _email;
+        private string _epost;
         private string _lösenord;
         private string _felmeddelande;
 
         private readonly MedlemController _medlemController;
 
-        public string Email
+        #region Properties
+        public string Epost
         {
-            get => _email;
+            get => _epost;
             set
             {
-                _email = value;
+                _epost = value;
                 OnPropertyChanged();
             }
         }
@@ -52,9 +53,14 @@ namespace Medlem_Presentationslager.ViewModel
                 OnPropertyChanged();
             }
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
-
+        #endregion
         public ICommand OpenSkapaMedlemCommand { get; }
         public ICommand LoginCommand { get; }
         public ICommand TillbakaCommand { get; }
@@ -67,6 +73,7 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
+        #region Diverse metoder
         private void OpenSkapaMedlem(object obj)
         {
             SkapaMedlem skapaMedlem = new SkapaMedlem();
@@ -91,10 +98,10 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void UtförLogin(object obj)
         {
-            string epost = Email?.Trim().ToLower() ?? "";
-            string losenord = Lösenord?.Trim().ToLower() ?? "";
+            string epost = Epost?.Trim().ToLower() ?? "";
+            string lösenord = Lösenord?.Trim().ToLower() ?? "";
 
-            var medlem = _medlemController.ValideraInloggningEpost(epost, losenord);
+            var medlem = _medlemController.ValideraInloggningEpost(epost, lösenord);
 
             if (medlem != null)
             {
@@ -109,14 +116,7 @@ namespace Medlem_Presentationslager.ViewModel
                 MessageBox.Show("Fel e-postadress eller lösenord", "Inloggning misslyckades", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
+        #endregion
     }
 
 }
