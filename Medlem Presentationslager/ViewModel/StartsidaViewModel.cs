@@ -12,16 +12,23 @@ namespace Medlem_Presentationslager.ViewModel
     internal class StartsidaViewModel
     {
         public ICommand OpenAdminLoginCommand { get; }
+        public ICommand OpenMedlemLoginCommand { get; }
 
         public StartsidaViewModel()
         {
             OpenAdminLoginCommand = new RelayCommand(OpenAdminLogin);
+            OpenMedlemLoginCommand = new RelayCommand(OpenMedlemLogin);
         }
 
         private void OpenAdminLogin()
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+        }
+        private void OpenMedlemLogin()
+        {
+            MedlemLogin medlemLogin = new MedlemLogin();
+            medlemLogin.Show();
         }
     }
 }

@@ -27,7 +27,7 @@
                    Margin="5"/>
         </StackPanel>
 
-        <Button Grid.Column="0" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" >
+        <Button Grid.Column="0" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" Command="{Binding OpenAdminLoginCommand}">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="👤" FontSize="50" HorizontalAlignment="Center"/>
                 <TextBlock Text="Personal" FontSize="24" FontWeight="Bold" Margin="10"/>
@@ -35,7 +35,7 @@
             </StackPanel>
         </Button>
 
-        <Button Grid.Column="1" Grid.Row="1" Margin="20" Background="White" Cursor="Hand">
+        <Button Grid.Column="1" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" Command="{Binding OpenMedlemLoginCommand}">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="⭐" FontSize="50" HorizontalAlignment="Center"/>
                 <TextBlock Text="Medlem" FontSize="24" FontWeight="Bold" Margin="10"/>
