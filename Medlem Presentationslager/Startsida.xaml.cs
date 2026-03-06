@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Medlem_Presentationslager.ViewModel;
 
 namespace Medlem_Presentationslager
 {
@@ -19,6 +20,9 @@ namespace Medlem_Presentationslager
         public Startsida()
         {
             InitializeComponent();
+            DataContext = new StartsidaViewModel();
         }
     }
+
+
 }

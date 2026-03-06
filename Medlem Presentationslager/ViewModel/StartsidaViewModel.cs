@@ -1,0 +1,33 @@
+﻿using Medlem_Presentationslager.Command;
+using Presentationslager;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+namespace Medlem_Presentationslager.ViewModel
+{
+    internal class StartsidaViewModel
+    {
+        public ICommand OpenAdminLoginCommand { get; }
+
+        public StartsidaViewModel()
+        {
+            OpenAdminLoginCommand = new RelayCommand(OpenAdminLogin);
+        }
+
+        private void OpenAdminLogin()
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
+    }
+}
+
+
+
+
+       
+
