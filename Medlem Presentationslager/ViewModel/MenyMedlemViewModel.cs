@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows; 
 using System.Windows.Input;
 
+
 namespace Medlem_Presentationslager.ViewModel
 {
     public class MenyMedlemViewModel : INotifyPropertyChanged
@@ -35,35 +36,35 @@ namespace Medlem_Presentationslager.ViewModel
         {
             Medlemmar window = new Medlemmar();
             window.Show();
-            StangFonster(obj);
+            StängFönster(obj);
         }
 
         private void OpenSkapaBokning(object obj)
         {          
             SkapaMedlem window = new SkapaMedlem();
             window.Show();
-            StangFonster(obj);
+            StängFönster(obj);
         }
 
         private void OpenMinaSidor(object obj)
         {
             MinaSidor window = new MinaSidor();
             window.Show();
-            StangFonster(obj);
+            StängFönster(obj);
         }
 
         private void OpenAndraAvboka(object obj)
         {
             UppdateraBokning window = new UppdateraBokning();
             window.Show();
-            StangFonster(obj);
+            StängFönster(obj);
         }
 
         private void OpenBokningshistorik(object obj)
         {
             Historik window = new Historik();
             window.Show();
-            StangFonster(obj);
+            StängFönster(obj);
         }
 
         private void LoggaUt(object obj)
@@ -73,11 +74,11 @@ namespace Medlem_Presentationslager.ViewModel
             window.Show();
 
             // Stäng meny-fönstret
-            StangFonster(obj);
+            StängFönster(obj);
         }
 
         // En hjälpmetod som stänger fönstret som skickas med från XAML
-        private void StangFonster(object parameter)
+        private void StängFönster(object parameter)
         {
             if (parameter is Window fönster)
             {

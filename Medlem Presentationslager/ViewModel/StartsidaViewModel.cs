@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Medlem_Presentationslager.ViewModel
@@ -24,12 +25,26 @@ namespace Medlem_Presentationslager.ViewModel
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            StängFönster(obj);
         }
         private void OpenMedlemLogin(object obj)
         {
             MedlemLogin medlemLogin = new MedlemLogin();
             medlemLogin.Show();
+            StängFönster(obj);
         }
+
+        private void StängFönster(object obj)
+        {
+            Startsida startsida = new Startsida();
+            startsida.Show();
+
+            if (obj is Window fönster)
+            {
+                fönster.Close();
+            }
+        }
+
     }
 }
 
