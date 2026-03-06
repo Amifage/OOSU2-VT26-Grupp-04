@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medlem_Presentationslager"
-        mc:Ignorable="d" 
+        mc:Ignorable="d" Background="{StaticResource HuvudBakgrund}"
         Title="Startsida" Height="450" Width="800">
     <Grid Margin="50">
         <Grid.RowDefinitions>
@@ -19,8 +19,7 @@
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,40" HorizontalAlignment="Center">
             <TextBlock Text="Välkommen till Samverket" 
                    FontSize="36" 
-                   FontWeight="ExtraBold" 
-                   Foreground="Black" />
+                   FontWeight="ExtraBold"/>
             <TextBlock Text="Välj din roll nedan för att fortsätta" 
                    FontSize="16" 
                    Foreground="#FF636363"
