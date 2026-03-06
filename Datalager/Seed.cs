@@ -77,9 +77,12 @@ namespace Datalager
                 Namn = "sara",
                 Epost = "sara@gmail.com",
                 Telefonnummer = "076 000 00 00",
+                Lösenord = "123",
                 Medlemsnivå = "flex",
+                Poäng = 100,
                 Betalstatus = "betald",
-                SenastUppdaterad = DateTime.Now,
+                  SenastUppdaterad = DateTime.Now,
+
             });
 
             samverketContext.SaveChanges();
@@ -90,7 +93,9 @@ namespace Datalager
                 Namn = "amanda",
                 Epost = "amanda@gmail.com",
                 Telefonnummer = "076 111 11 11",
+                Lösenord = "456",
                 Medlemsnivå = "företag",
+                Poäng = 100,
                 Betalstatus = "obetald",
                 SenastUppdaterad = DateTime.Now,
             });
@@ -103,7 +108,9 @@ namespace Datalager
                 Namn = "gabbe",
                 Epost = "gabbe@gmail.com",
                 Telefonnummer = "076 222 22 22",
+                Lösenord = "789",
                 Medlemsnivå = "fast",
+                Poäng = 100,
                 Betalstatus = "betald",
                 SenastUppdaterad = DateTime.Now,
             });
