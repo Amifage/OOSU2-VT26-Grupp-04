@@ -1,8 +1,13 @@
 ﻿<Window x:Class="Medlem_Presentationslager.MenyMedlem"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
         Title="Meny" Height="600" Width="900"
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:MenyMedlemViewModel />
+    </Window.DataContext>
+
 
     <Grid Margin="30">
         <Grid.RowDefinitions>
