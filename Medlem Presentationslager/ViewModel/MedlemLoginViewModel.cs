@@ -64,20 +64,25 @@ namespace Medlem_Presentationslager.ViewModel
             _medlemController = new MedlemController();
             LoginCommand = new RelayCommand(UtförLogin);
             OpenSkapaMedlemCommand = new RelayCommand(OpenSkapaMedlem);
-            TillbakaCommand = new RelayCommand(StängFönster);
+            TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
         private void OpenSkapaMedlem(object obj)
         {
             SkapaMedlem skapaMedlem = new SkapaMedlem();
             skapaMedlem.Show();
+            StängFönster(obj);
+        }
+
+        private void Tillbaka(object obj)
+        {
+            Startsida startsida = new Startsida();
+            startsida.Show();
+            StängFönster(obj);
         }
 
         private void StängFönster(object obj)
         {
-            Startsida startsida = new Startsida();
-            startsida.Show();
-
             if (obj is Window fönster)
             {
                 fönster.Close();

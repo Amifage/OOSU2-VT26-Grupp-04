@@ -25,7 +25,7 @@ namespace Medlem_Presentationslager.ViewModel
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            StängFönster(obj);
+            
         }
         private void OpenMedlemLogin(object obj)
         {
@@ -36,14 +36,15 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void StängFönster(object obj)
         {
-            Startsida startsida = new Startsida();
-            startsida.Show();
+            //Startsida startsida = new Startsida();
+            //startsida.Show();
 
             if (obj is Window fönster)
             {
                 fönster.Close();
             }
         }
+     
 
     }
 }
