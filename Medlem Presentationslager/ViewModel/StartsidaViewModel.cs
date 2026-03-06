@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Medlem_Presentationslager.ViewModel
 {
-    internal class StartsidaViewModel
+    public class StartsidaViewModel
     {
         public ICommand OpenAdminLoginCommand { get; }
         public ICommand OpenMedlemLoginCommand { get; }

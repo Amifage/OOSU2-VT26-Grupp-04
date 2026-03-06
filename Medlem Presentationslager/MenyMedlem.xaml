@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
         Title="Meny" Height="600" Width="900"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}">
     <Window.DataContext>
         <vm:MenyMedlemViewModel />
     </Window.DataContext>
