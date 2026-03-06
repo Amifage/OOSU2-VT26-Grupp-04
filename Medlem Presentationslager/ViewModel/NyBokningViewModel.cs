@@ -76,7 +76,7 @@ namespace Medlem_Presentationslager.ViewModel
             this.inloggadMedlem = medlem;
 
             TillgangligaResurser = new ObservableCollection<Resurs>();
-            BekraftaBokningCommand = new RelayCommand(BekraftaBokning);
+            //BekraftaBokningCommand = new RelayCommand(BekraftaBokning);
 
             LaddaResurser();
         }
