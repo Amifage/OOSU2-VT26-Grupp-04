@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medlem_Presentationslager"
+        xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
         mc:Ignorable="d" Background="{StaticResource HuvudBakgrund}"
         Title="Startsida" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:StartsidaViewModel />
+    </Window.DataContext>
     <Grid Margin="50">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
