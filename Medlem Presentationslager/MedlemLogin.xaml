@@ -1,8 +1,8 @@
 ﻿<Window x:Class="Medlem_Presentationslager.MedlemLogin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Medlem - Logga in" Height="500" Width="400"
-        WindowStartupLocation="CenterScreen">
+        Title="Medlem - Logga in" Height="520" Width="400"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}"> 
 
     <Grid Margin="30">
         <Grid.RowDefinitions>
@@ -14,9 +14,9 @@
 
         <TextBlock Grid.Row="0" Text="⭐" FontSize="60" HorizontalAlignment="Center" />
 
-        <StackPanel Grid.Row="1" Margin="0,0,0,30">
-            <TextBlock Text="Medlemsinloggning" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock Text="Ange dina uppgifter för att fortsätta" FontSize="13" Foreground="#FF636363" HorizontalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Margin="0,0,0,20">
+            <TextBlock Text="Medlemsinloggning" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock Text="Ange dina uppgifter för att fortsätta" FontSize="12" Foreground="#FF636363" HorizontalAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
