@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
         Title="Meny" Height="600" Width="900"
+        x:Name="MenyWindow"
         WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}">
     <Window.DataContext>
         <vm:MenyMedlemViewModel />
@@ -55,7 +56,8 @@
                 </StackPanel>
             </Button>
 
-            <Button Margin="5" Background="White" Cursor="Hand" x:Name="btnAndraMedlemmar">
+            <Button Margin="5" Background="White" Cursor="Hand" x:Name="btnAndraMedlemmar" Command="{Binding MedlemarCommand}"
+            CommandParameter="{Binding ElementName=MenyWindow}">
                 <StackPanel>
                     <TextBlock Text="👥" FontSize="40" HorizontalAlignment="Center"/>
                     <TextBlock Text="Medlemmar" FontSize="18" FontWeight="Bold" Margin="5"/>
@@ -67,6 +69,7 @@
 
         <Button Grid.Row="2" Content="Logga ut" Width="150" Height="40" 
                 Background="#FFD8997C" Margin="0,20,0,0"
-                HorizontalAlignment="Right" x:Name="btnLoggaUt"/>
+                HorizontalAlignment="Right" x:Name="btnLoggaUt" Command="{Binding LoggaUtCommand}"
+            CommandParameter="{Binding ElementName=MenyWindow}"/>
     </Grid>
 </Window>

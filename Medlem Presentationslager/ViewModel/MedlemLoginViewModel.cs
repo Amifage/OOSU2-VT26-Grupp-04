@@ -60,7 +60,7 @@ namespace Medlem_Presentationslager.ViewModel
             LoginCommand = new RelayCommand(UtförLogin);
         }
 
-        private void UtförLogin()
+        private void UtförLogin(object obj)
         {
           
             string epost = Email?.Trim().ToLower() ?? "";
