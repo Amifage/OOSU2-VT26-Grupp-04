@@ -30,23 +30,21 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
         public ICommand TillbakaCommand { get; }
-        private void ExecuteTillbaka(object parameter)
+        private void Tillbaka(object obj)
         {
             // 1. Öppna MedlemsMeny
-            MedlemsMeny meny = new MedlemsMeny();
-            meny.Show();
+            MenyMedlem meny = new MenyMedlem();
+            meny.Show();      
 
-            // 2. Stäng nuvarande fönster (skickas med som parameter från XAML)
-            if (parameter is Window nuvarandeFönster)
-            {
-                nuvarandeFönster.Close();
-            }
+            // Stäng meny-fönstret
+            StängFönster(obj);
         }
 
         public MedlemmarViewModel()
         {
             _medlemController = new MedlemController();
             LaddaMedlemmar();
+            TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
         private void LaddaMedlemmar()
@@ -59,6 +57,13 @@ namespace Medlem_Presentationslager.ViewModel
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private void StängFönster(object parameter)
+        {
+            if (parameter is Window fönster)
+            {
+                fönster.Close();
+            }
         }
     }
 }

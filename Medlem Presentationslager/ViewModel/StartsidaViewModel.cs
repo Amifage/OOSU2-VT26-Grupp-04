@@ -19,12 +19,14 @@ namespace Medlem_Presentationslager.ViewModel
         {
             OpenAdminLoginCommand = new RelayCommand(OpenAdminLogin);
             OpenMedlemLoginCommand = new RelayCommand(OpenMedlemLogin);
+
         }
 
         private void OpenAdminLogin(object obj)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            StängFönster(obj);
             
         }
         private void OpenMedlemLogin(object obj)
@@ -34,18 +36,16 @@ namespace Medlem_Presentationslager.ViewModel
             StängFönster(obj);
         }
 
-        private void StängFönster(object obj)
+        private void StängFönster(object parameter)
         {
-            //Startsida startsida = new Startsida();
-            //startsida.Show();
-
-            if (obj is Window fönster)
+            if (parameter is Window fönster)
             {
                 fönster.Close();
             }
-        }
-     
 
+
+
+        }
     }
 }
 

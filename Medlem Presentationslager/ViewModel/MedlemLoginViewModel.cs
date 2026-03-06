@@ -103,6 +103,7 @@ namespace Medlem_Presentationslager.ViewModel
 
                 MenyMedlem menyMedlem = new MenyMedlem();
                 menyMedlem.Show();
+                StängFönster(obj);
             }
             else
             {
