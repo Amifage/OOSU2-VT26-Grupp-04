@@ -16,7 +16,7 @@
                     <ImageBrush x:Name="ProfilBildBrush" ImageSource="/Images/default_user.png" Stretch="UniformToFill"/>
                 </Ellipse.Fill>
             </Ellipse>-->
-            <Button Content="Byt profilbild" Margin="0,5,0,0" Click="BytBild_Click" 
+            <Button Content="Byt profilbild" Margin="0,5,0,0"
                     Background="Transparent" BorderThickness="0" Foreground="#FF2980B9" Cursor="Hand"/>
         </StackPanel>
 

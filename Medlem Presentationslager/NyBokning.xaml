@@ -17,19 +17,17 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel Margin="10,0">
                     <TextBlock Text="Välj Datum" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <DatePicker x:Name="BokningsDatumPicker" Width="150" SelectedDateChanged="SokParametrar_Changed"/>
+                    <DatePicker x:Name="BokningsDatumPicker" Width="150" />
                 </StackPanel>
 
                 <StackPanel Margin="10,0">
                     <TextBlock Text="Starttid" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <ComboBox x:Name="StartTidCombo" Width="80" SelectionChanged="SokParametrar_Changed">
-                    </ComboBox>
+                    <ComboBox x:Name="StartTidCombo" Width="80" />
                 </StackPanel>
 
                 <StackPanel Margin="10,0">
                     <TextBlock Text="Sluttid" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <ComboBox x:Name="SlutTidCombo" Width="80" SelectionChanged="SokParametrar_Changed">
-                    </ComboBox>
+                    <ComboBox x:Name="SlutTidCombo" Width="80" />
                 </StackPanel>
             </StackPanel>
         </Border>

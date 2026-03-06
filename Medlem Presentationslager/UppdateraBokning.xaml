@@ -17,7 +17,6 @@
             <DataGrid x:Name="MinaBokningarGrid" 
                       AutoGenerateColumns="False" 
                       IsReadOnly="True" 
-                      SelectionChanged="MinaBokningarGrid_SelectionChanged"
                       SelectionMode="Single">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Datum" Binding="{Binding StartDatum, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
@@ -32,7 +31,7 @@
                 <TextBlock Text="Redigera vald bokning" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Foreground="HotPink"/>
 
                 <TextBlock Text="Nytt Datum" Margin="0,10,0,5"/>
-                <DatePicker x:Name="NyttDatumPicker" SelectedDateChanged="SokLediga_Changed"/>
+                <DatePicker x:Name="NyttDatumPicker" />
 
                 <Grid Margin="0,15,0,0">
                     <Grid.ColumnDefinitions>
@@ -41,11 +40,11 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="0,0,5,0">
                         <TextBlock Text="Ny Starttid" Margin="0,0,0,5"/>
-                        <ComboBox x:Name="StartTidCombo" SelectionChanged="SokLediga_Changed"/>
+                        <ComboBox x:Name="StartTidCombo" />
                     </StackPanel>
                     <StackPanel Grid.Column="1" Margin="5,0,0,0">
                         <TextBlock Text="Ny Sluttid" Margin="0,0,0,5"/>
-                        <ComboBox x:Name="SlutTidCombo" SelectionChanged="Changed"/>
+                        <ComboBox x:Name="SlutTidCombo" />
                     </StackPanel>
                 </Grid>
 
@@ -64,8 +63,8 @@
             <Button Content="Tillbaka"  Width="100" Height="40" Background="LightGray" BorderBrush="HotPink" BorderThickness="1"/>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button Content="Avboka" Click="Avboka_Click" Width="120" Height="40" Background="#FFFF8D8D" Margin="0,0,10,0" FontWeight="Bold"/>
-                <Button Content="Spara ändringar" Click="Spara_Click" Width="150" Height="40" Background="HotPink" Foreground="White" FontWeight="Bold"/>
+                <Button Content="Avboka"  Width="120" Height="40" Background="#FFFF8D8D" Margin="0,0,10,0" FontWeight="Bold"/>
+                <Button Content="Spara ändringar"  Width="150" Height="40" Background="HotPink" Foreground="White" FontWeight="Bold"/>
             </StackPanel>
         </Grid>
     </Grid>
