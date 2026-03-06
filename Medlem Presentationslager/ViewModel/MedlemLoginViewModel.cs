@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,15 +67,21 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(StängFönster);
         }
 
-        private void OpenSkapaMedlem()
+        private void OpenSkapaMedlem(object obj)
         {
             SkapaMedlem skapaMedlem = new SkapaMedlem();
             skapaMedlem.Show();
         }
 
-        private void StängFönster()
+        private void StängFönster(object obj)
         {
-             Application.Current.Windows[0].Close();
+            Startsida startsida = new Startsida();
+            startsida.Show();
+
+            if (obj is Window fönster)
+            {
+                fönster.Close();
+            }
         }
 
         private void UtförLogin(object obj)
