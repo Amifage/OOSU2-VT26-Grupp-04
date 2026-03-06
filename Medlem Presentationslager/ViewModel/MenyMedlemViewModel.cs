@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Windows; 
 using System.Windows.Input;
 
+
 namespace Medlem_Presentationslager.ViewModel
 {
     public class MenyMedlemViewModel : INotifyPropertyChanged
