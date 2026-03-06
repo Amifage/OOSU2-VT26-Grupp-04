@@ -1,12 +1,42 @@
 ﻿<Window x:Class="Medlem_Presentationslager.Medlemmar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Medlem_Presentationslager"
-        mc:Ignorable="d"
-        Title="Medlemmar" Height="450" Width="800">
-    <Grid>
-        
+        Title="Samverket - medlemmar" Height="500" Width="750"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Våra Medlemmar" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <TextBlock Text="Här kan du se andra som är en del av Samverket" FontSize="14" Opacity="0.7" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <DataGrid x:Name="MedlemsGrid" Grid.Row="1" 
+                  AutoGenerateColumns="False" 
+                  IsReadOnly="True" 
+                  Background="White" 
+                  RowBackground="#FFF9F9F9"
+                  AlternatingRowBackground="#FFF1F1F1"
+                  BorderBrush="HotPink"
+                  BorderThickness="1"
+                  CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Namn" Binding="{Binding Namn}" Width="*"/>
+                <DataGridTextColumn Header="Nivå" Binding="{Binding Medlemsnivå}" Width="100"/>
+                <DataGridTextColumn Header="E-post" Binding="{Binding Epost}" Width="200"/>
+                <DataGridTextColumn Header="Poäng" Binding="{Binding Poäng}" Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Tillbaka till menyn" Grid.Row="2" 
+                Width="200" Height="40" Margin="0,20,0,0"
+                HorizontalAlignment="Left"
+                Background="LightGray" BorderBrush="HotPink" BorderThickness="1"
+                Click="Tillbaka_Click" Cursor="Hand"/>
     </Grid>
 </Window>
