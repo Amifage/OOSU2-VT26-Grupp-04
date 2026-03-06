@@ -62,10 +62,11 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void UtförLogin()
         {
-            string email = Email?.Trim().ToLower() ?? "";
+          
+            string epost = Email?.Trim().ToLower() ?? "";
             string losenord = Lösenord?.Trim().ToLower() ?? "";
 
-            var medlem = _medlemController.ValideraInloggning(email, losenord);
+            var medlem = _medlemController.ValideraInloggningEpost(epost, losenord);
 
             if (medlem != null)
             {

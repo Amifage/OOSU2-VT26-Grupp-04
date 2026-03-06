@@ -22,10 +22,10 @@ namespace Datalager
                 .FirstOrDefault(p => p.Namn == namn && p.Lösenord == lösenord);
         }
 
-        public Medlem? ValideraInloggningMedlem(string namn, string lösenord)
+        public Medlem? ValideraInloggningMedlem(string epost, string lösenord)
         {
             return samverketContext.Medlem
-                .FirstOrDefault(m => m.Namn == namn && m.Lösenord == lösenord);
+                .FirstOrDefault(m => m.Epost == epost && m.Lösenord == lösenord);
         }
     }
 }

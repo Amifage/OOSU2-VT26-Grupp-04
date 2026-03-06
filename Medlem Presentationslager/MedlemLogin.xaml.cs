@@ -25,7 +25,13 @@ namespace Medlem_Presentationslager
             InitializeComponent();
             DataContext = new MedlemLoginViewModel();
         }
-       
 
+        private void LosenordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is MedlemLoginViewModel vm && sender is PasswordBox passwordBox)
+            {
+                vm.Lösenord = passwordBox.Password;
+            }
+        }
     }
 }

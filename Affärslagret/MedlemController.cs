@@ -61,5 +61,15 @@ namespace Affärslagret
             }
         }
 
+        public Medlem? ValideraInloggningEpost(string epost, string lösenord) //NY
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            {
+                return _unitOfWork.validering.ValideraInloggningMedlem(epost, lösenord);
+
+
+            }
+        }
+
     }
 }
