@@ -44,7 +44,7 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void OpenSkapaBokning(object obj)
         {          
-            NyBokning window = new NyBokning();
+            NyBokning window = new NyBokning(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }
