@@ -163,6 +163,7 @@ namespace Medlem_Presentationslager.ViewModel
             {
                 var nyBokning = new Bokning
                 {
+                    //MedlemID = InloggadMedlemSession.AktivMedlem.MedlemID, // döpp om den till inloggad session class namn!
                     MedlemID = inloggadMedlem.MedlemID,
                     ResursID = ValdResurs.ResursID,
                     Starttid = starttid,
