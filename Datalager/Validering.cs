@@ -21,5 +21,11 @@ namespace Datalager
             return samverketContext.Personal
                 .FirstOrDefault(p => p.Namn == namn && p.Lösenord == lösenord);
         }
+
+        public Medlem? ValideraInloggningMedlem(string namn, string lösenord)
+        {
+            return samverketContext.Medlem
+                .FirstOrDefault(m => m.Namn == namn && m.Lösenord == lösenord);
+        }
     }
 }
