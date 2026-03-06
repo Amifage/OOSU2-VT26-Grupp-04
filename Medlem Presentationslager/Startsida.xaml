@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medlem_Presentationslager"
         xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
         mc:Ignorable="d" Background="{StaticResource HuvudBakgrund}"
-        Title="Startsida" Height="450" Width="800">
+        Title="Startsida" Height="450" Width="800" x:Name="StartsidaWindow">
     <Window.DataContext>
         <vm:StartsidaViewModel />
     </Window.DataContext>
@@ -32,7 +32,7 @@
                    Margin="5"/>
         </StackPanel>
 
-        <Button Grid.Column="0" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" Command="{Binding OpenAdminLoginCommand}">
+        <Button Grid.Column="0" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" Command="{Binding OpenAdminLoginCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="👤" FontSize="50" HorizontalAlignment="Center"/>
                 <TextBlock Text="Personal" FontSize="24" FontWeight="Bold" Margin="10"/>
@@ -40,7 +40,7 @@
             </StackPanel>
         </Button>
 
-        <Button Grid.Column="1" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" Command="{Binding OpenMedlemLoginCommand}">
+        <Button Grid.Column="1" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" Command="{Binding OpenMedlemLoginCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="⭐" FontSize="50" HorizontalAlignment="Center"/>
                 <TextBlock Text="Medlem" FontSize="24" FontWeight="Bold" Margin="10"/>

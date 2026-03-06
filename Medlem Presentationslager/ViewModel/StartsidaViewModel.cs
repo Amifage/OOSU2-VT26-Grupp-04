@@ -19,12 +19,14 @@ namespace Medlem_Presentationslager.ViewModel
         {
             OpenAdminLoginCommand = new RelayCommand(OpenAdminLogin);
             OpenMedlemLoginCommand = new RelayCommand(OpenMedlemLogin);
+
         }
 
         private void OpenAdminLogin(object obj)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
+            StängFönster(obj);
             
         }
         private void OpenMedlemLogin(object obj)
