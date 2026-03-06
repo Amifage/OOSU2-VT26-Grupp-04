@@ -23,6 +23,7 @@ namespace Medlem_Presentationslager
         public MenyMedlem()
         {
             InitializeComponent();
+            DataContext = new MenyMedlemViewModel();
           
         }
     }
