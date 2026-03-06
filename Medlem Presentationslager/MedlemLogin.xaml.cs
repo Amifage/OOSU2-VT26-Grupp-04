@@ -23,10 +23,10 @@ namespace Medlem_Presentationslager
         public MedlemLogin()
         {
             InitializeComponent();
-            DataContext = new MedlemLoginViewModel();
+            DataContext = new MedlemLoginViewModel(); //Denna beövs för att WPF ska veta var den ska hämta/läsa från.
         }
 
-        private void LosenordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private void LosenordBox_PasswordChanged(object sender, RoutedEventArgs e) //Passwordbox är inte en DependencyProperty så därför fungerar inte binding. Av säkerhetsskäl behöver vi göra på detta sättet istället.
         {
             if (DataContext is MedlemLoginViewModel vm && sender is PasswordBox passwordBox)
             {
