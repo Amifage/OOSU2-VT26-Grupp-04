@@ -51,5 +51,15 @@ namespace Affärslagret
             return _unitOfWork.Save();
         }
 
+        public Medlem? ValideraInloggning(string namn, string lösenord) //NY
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+            {
+                return _unitOfWork.validering.ValideraInloggningMedlem(namn, lösenord);
+              
+
+            }
+        }
+
     }
 }

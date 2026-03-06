@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Medlem_Presentationslager.Command
 {
-    public class RelayCommand :ICommand //Den ska heta Relay för att inte blandas ihop med namespacet?
+    public class RelayCommand :ICommand //Den ska heta Relay för att inte blandas ihop med namespacet=
     {
         private readonly Action _execute;
         private readonly Func<bool> _canExecute;
