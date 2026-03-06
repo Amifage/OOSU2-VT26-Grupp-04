@@ -18,8 +18,10 @@ namespace Datalager
         public DbSet<Utrustning> Utrustning { get; set; }
         public DbSet<Bokning> Bokning { get; set; }
 
-       
-
+        public SamverketContext()
+        {
+            Database.EnsureCreated();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
