@@ -17,11 +17,15 @@ namespace Medlem_Presentationslager
     /// <summary>
     /// Interaction logic for NyBokning.xaml
     /// </summary>
+    using Entitetslager;
+    using Medlem_Presentationslager.ViewModel;
+
     public partial class NyBokning : Window
     {
-        public NyBokning()
+        public NyBokning(Medlem medlem)
         {
             InitializeComponent();
+            this.DataContext = new NyBokningViewModel(medlem);
         }
     }
 }
