@@ -32,7 +32,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Margin="5" Background="White" Cursor="Hand" x:Name="btnMinaSidor">
+            <Button Margin="5" Background="White" Cursor="Hand" x:Name="btnMinaSidor" CommandParameter="{Binding ElementName=MenyWindow}" Command="{Binding MinaSidorCommand}">
                 <StackPanel>
                     <TextBlock Text="👤" FontSize="40" HorizontalAlignment="Center"/>
                     <TextBlock Text="Se mina sidor" FontSize="18" FontWeight="Bold" Margin="5"/>

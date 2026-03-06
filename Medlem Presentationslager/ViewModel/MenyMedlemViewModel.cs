@@ -39,8 +39,7 @@ namespace Medlem_Presentationslager.ViewModel
         }
 
         private void OpenSkapaBokning(object obj)
-        {
-            // Notera: Du hade SkapaMedlem här, dubbelkolla om det ska vara NyBokning?
+        {          
             SkapaMedlem window = new SkapaMedlem();
             window.Show();
             StangFonster(obj);
