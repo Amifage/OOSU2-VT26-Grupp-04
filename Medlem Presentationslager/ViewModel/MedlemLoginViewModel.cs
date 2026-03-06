@@ -91,7 +91,6 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void UtförLogin(object obj)
         {
-          
             string epost = Email?.Trim().ToLower() ?? "";
             string losenord = Lösenord?.Trim().ToLower() ?? "";
 
@@ -100,18 +99,14 @@ namespace Medlem_Presentationslager.ViewModel
             if (medlem != null)
             {
                 Felmeddelande = "";
-
-                MenyMedlem menyMedlem = new MenyMedlem();
+                // SKICKA MED MEDLEMMEN HÄR
+                MenyMedlem menyMedlem = new MenyMedlem(medlem);
                 menyMedlem.Show();
                 StängFönster(obj);
             }
             else
             {
-                MessageBox.Show(
-                "Fel e-postadress eller lösenord",
-                "Inloggning misslyckades",
-                 MessageBoxButton.OK,
-                 MessageBoxImage.Error);
+                MessageBox.Show("Fel e-postadress eller lösenord", "Inloggning misslyckades", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

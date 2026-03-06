@@ -1,4 +1,5 @@
-﻿using Medlem_Presentationslager.ViewModel;
+﻿using Entitetslager;
+using Medlem_Presentationslager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,10 @@ namespace Medlem_Presentationslager
     /// </summary>
     public partial class MenyMedlem : Window
     {
-        public MenyMedlem()
+        public MenyMedlem(Medlem inloggadMedlem)
         {
             InitializeComponent();
-            DataContext = new MenyMedlemViewModel();
-          
+            DataContext = new MenyMedlemViewModel(inloggadMedlem);
         }
     }
 }

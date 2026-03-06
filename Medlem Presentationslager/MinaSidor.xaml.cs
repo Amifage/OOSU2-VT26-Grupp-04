@@ -1,4 +1,5 @@
-﻿using Medlem_Presentationslager.ViewModel;
+﻿using Entitetslager;
+using Medlem_Presentationslager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,10 @@ namespace Medlem_Presentationslager
     /// </summary>
     public partial class MinaSidor : Window
     {
-        public MinaSidor()
+        public MinaSidor(Medlem inloggadMedlem) // Parametern fixar Error CS7036
         {
             InitializeComponent();
-            DataContext = new MinaSidorViewModel();
+            DataContext = new MinaSidorViewModel(inloggadMedlem);
         }
     }
 }

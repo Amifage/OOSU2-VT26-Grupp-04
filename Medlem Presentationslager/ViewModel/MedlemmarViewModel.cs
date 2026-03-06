@@ -19,6 +19,7 @@ namespace Medlem_Presentationslager.ViewModel
     {
         private readonly MedlemController _medlemController;
         private ObservableCollection<Medlem> _medlemmar;
+        private Medlem _inloggadMedlem;
 
         public ObservableCollection<Medlem> Medlemmar
         {
@@ -30,13 +31,20 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
         public ICommand TillbakaCommand { get; }
+        public MedlemmarViewModel(Medlem inloggad) // Ta emot vid start
+        {
+            _medlemController = new MedlemController();
+            _inloggadMedlem = inloggad;
+
+            LaddaMedlemmar();
+            TillbakaCommand = new RelayCommand(Tillbaka);
+        }
+
         private void Tillbaka(object obj)
         {
-            // 1. Öppna MedlemsMeny
-            MenyMedlem meny = new MenyMedlem();
-            meny.Show();      
-
-            // Stäng meny-fönstret
+            // Nu kan vi skicka tillbaka rätt medlem till menyn!
+            MenyMedlem meny = new MenyMedlem(_inloggadMedlem);
+            meny.Show();
             StängFönster(obj);
         }
 
