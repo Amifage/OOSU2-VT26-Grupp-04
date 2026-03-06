@@ -22,31 +22,25 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <TextBlock Text="Namn" FontWeight="Bold" Margin="0,10,0,5"/>
-                <TextBox x:Name="NamnTextBox" IsReadOnly="True" Background="#EEEEEE" Height="35" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="NamnTextBox" Text="{Binding InloggadMedlem.Namn, Mode=OneWay}" IsReadOnly="True" Background="#EEEEEE" Height="35" VerticalContentAlignment="Center"/>
 
                 <TextBlock Text="Mina poäng" FontWeight="Bold" Margin="0,15,0,5"/>
-                <TextBox x:Name="PoangTextBox" IsReadOnly="True" Background="#EEEEEE" Height="35" VerticalContentAlignment="Center"/>
-
+                <TextBox Text="{Binding InloggadMedlem.Poäng, Mode=OneWay}" IsReadOnly="True" Background="#EEEEEE" Height="35" VerticalContentAlignment="Center"/>
                 <TextBlock Text="Betalstatus" FontWeight="Bold" Margin="0,15,0,5"/>
-                <TextBox x:Name="BetalstatusTextBox" IsReadOnly="True" Background="#EEEEEE" Height="35" VerticalContentAlignment="Center"/>
-
+                <TextBox Text="{Binding InloggadMedlem.Betalstatus, Mode=OneWay}" IsReadOnly="True" Background="#EEEEEE" Height="35" VerticalContentAlignment="Center"/>
                 <Separator Margin="0,20" Background="HotPink" Height="1"/>
 
                 <TextBlock Text="Ändra Medlemsnivå" FontWeight="Bold" Margin="0,5,0,5"/>
-                <ComboBox x:Name="NivaComboBox" Height="35" VerticalContentAlignment="Center">
-                    <ComboBoxItem Content="Flex"/>
-                    <ComboBoxItem Content="Fast"/>
-                    <ComboBoxItem Content="Företag"/>
-                </ComboBox>
+                <ComboBox SelectedValue="{Binding InloggadMedlem.Medlemsnivå}" SelectedValuePath="Content" Height="35" VerticalContentAlignment="Center" ItemsSource="{Binding MedlemsNivåer}"
+                              SelectedItem="{Binding MedlemsNivå, Mode=TwoWay}"/>
 
                 <TextBlock Text="Ändra E-postadress" FontWeight="Bold" Margin="0,15,0,5"/>
-                <TextBox x:Name="EpostTextBox" Height="35" Background="White" VerticalContentAlignment="Center"/>
-
+                <TextBox Text="{Binding InloggadMedlem.Epost, UpdateSourceTrigger=PropertyChanged}" Height="35" Background="White" VerticalContentAlignment="Center"/>
                 <TextBlock Text="Ändra Telefonnummer" FontWeight="Bold" Margin="0,15,0,5"/>
-                <TextBox x:Name="TelefonTextBox" Height="35" Background="White" VerticalContentAlignment="Center"/>
-
+<TextBox Text="{Binding InloggadMedlem.Telefonnummer, UpdateSourceTrigger=PropertyChanged}" Height="35" Background="White" VerticalContentAlignment="Center"/>
                 <TextBlock Text="Nytt Lösenord" FontWeight="Bold" Margin="0,15,0,5"/>
-                <PasswordBox x:Name="PasswordBox" Height="35" Background="White" VerticalContentAlignment="Center"/>
+                <TextBox Text="{Binding NyttLösenord, UpdateSourceTrigger=PropertyChanged}" 
+         Height="35" Background="White" VerticalContentAlignment="Center"/>
                 <TextBlock Text="Lämna tomt om du inte vill byta" FontSize="10" Opacity="0.6"/>
             </StackPanel>
         </ScrollViewer>
@@ -57,10 +51,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="Tillbaka" Grid.Column="0" Height="45" Margin="0,0,10,0"
-                    Background="Transparent" BorderBrush="HotPink" BorderThickness="1" />
+            <Button Content="Tillbaka" Command="{Binding TillbakaCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Background="LightGray" BorderThickness="1" BorderBrush="HotPink"/>
 
-            <Button Content="Spara ändringar" Grid.Column="1" Height="45" 
+            <Button Content="Spara ändringar" Command="{Binding SparaÄndringarCommand}" Grid.Column="1" Height="45" 
                     Background="HotPink" Foreground="White" FontWeight="Bold" />
         </Grid>
     </Grid>

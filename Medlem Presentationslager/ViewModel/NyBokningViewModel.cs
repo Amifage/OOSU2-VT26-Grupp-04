@@ -48,7 +48,7 @@ namespace Medlem_Presentationslager.ViewModel
             bokningController = new BokningController();
 
             TillgangligaResurser = new ObservableCollection<Resurs>();
-            BekraftaBokningCommand = new RelayCommand(BekraftaBokning);
+            //BekraftaBokningCommand = new RelayCommand(BekraftaBokning);
 
             LaddaResurser();
         }
@@ -64,35 +64,35 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
-        private void BekraftaBokning(object obj)
-        {
-            if (ValdResurs == null)
-            {
-                MessageBox.Show("Vänligen välj en resurs i listan först!");
-                return;
-            }
+        //private void BekraftaBokning(object obj)
+        //{
+        //    if (ValdResurs == null)
+        //    {
+        //        MessageBox.Show("Vänligen välj en resurs i listan först!");
+        //        return;
+        //    }
 
-            try
-            {
-                Bokning nyBokning = new Bokning
-                {
-                    MedlemID = InloggadMedlemSession.AktivMedlem.MedlemID, // döpp om den till inloggad session class namn!
-                    ResursID = ValdResurs.ResursID,
-                    Starttid = DateTime.Now,
-                    Sluttid = DateTime.Now.AddHours(1),
-                    SenastUppdaterad = DateTime.Now,
-                    Anteckning = "Skapad via medlemssidan"
-                };
+        //    try
+        //    {
+        //        Bokning nyBokning = new Bokning
+        //        {
+        //            MedlemID = InloggadMedlemSession.AktivMedlem.MedlemID, // döpp om den till inloggad session class namn!
+        //            ResursID = ValdResurs.ResursID,
+        //            Starttid = DateTime.Now,
+        //            Sluttid = DateTime.Now.AddHours(1),
+        //            SenastUppdaterad = DateTime.Now,
+        //            Anteckning = "Skapad via medlemssidan"
+        //        };
 
-                bokningController.SkapaBokning(nyBokning);
+        //        bokningController.SkapaBokning(nyBokning);
 
-                MessageBox.Show($"Bokningen av {ValdResurs.Namn} är nu genomförd!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Kunde inte skapa bokning: " + ex.Message);
-            }
-        }
+        //        MessageBox.Show($"Bokningen av {ValdResurs.Namn} är nu genomförd!");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Kunde inte skapa bokning: " + ex.Message);
+        //    }
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name) =>
