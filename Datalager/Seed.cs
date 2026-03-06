@@ -77,7 +77,7 @@ namespace Datalager
 
                 Namn = "sara",
                 Epost = "sara@gmail.com",
-                Telefonnummer = "076 000 00 00",
+                Telefonnummer = "0760000000",
                 Lösenord = "123",
                 Medlemsnivå = "flex",
                 Poäng = 100,
@@ -93,7 +93,7 @@ namespace Datalager
 
                 Namn = "amanda",
                 Epost = "amanda@gmail.com",
-                Telefonnummer = "076 111 11 11",
+                Telefonnummer = "0761111111",
                 Lösenord = "456",
                 Medlemsnivå = "företag",
                 Poäng = 100,
@@ -108,7 +108,7 @@ namespace Datalager
 
                 Namn = "gabbe",
                 Epost = "gabbe@gmail.com",
-                Telefonnummer = "076 222 22 22",
+                Telefonnummer = "0762222222",
                 Lösenord = "789",
                 Medlemsnivå = "fast",
                 Poäng = 100,

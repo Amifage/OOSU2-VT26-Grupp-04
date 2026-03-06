@@ -21,8 +21,11 @@ namespace Medlem_Presentationslager.ViewModel
         public ICommand LoggaUtCommand { get; set; }
         public ICommand MedlemarCommand { get; set; }
 
-        public MenyMedlemViewModel()
+        private Medlem _inloggadMedlem;
+
+        public MenyMedlemViewModel(Medlem medlem)
         {
+            _inloggadMedlem = medlem;
             // Vi ser till att alla metoder tar emot ett 'obj' (vilket kommer vara fönstret)
             SkapaBokningCommand = new RelayCommand(OpenSkapaBokning);
             MinaSidorCommand = new RelayCommand(OpenMinaSidor);
@@ -48,7 +51,8 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void OpenMinaSidor(object obj)
         {
-            MinaSidor window = new MinaSidor();
+            // SKICKA MED DEN SPARADE MEDLEMMEN TILL MINA SIDOR
+            MinaSidor window = new MinaSidor(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }
