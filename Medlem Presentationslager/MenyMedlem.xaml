@@ -5,9 +5,7 @@
         Title="Meny" Height="600" Width="900"
         x:Name="MenyWindow"
         WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}">
-    <Window.DataContext>
-        <vm:MenyMedlemViewModel />
-    </Window.DataContext>
+ 
 
 
     <Grid Margin="30">

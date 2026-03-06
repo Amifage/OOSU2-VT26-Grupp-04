@@ -10,12 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Gemini_Generated_Image_rtnq6xrtnq6xrtnq.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Affärslagret\Affärslagret.csproj" />
     <ProjectReference Include="..\Presentationslager\Presentationslager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Gemini_Generated_Image_rtnq6xrtnq6xrtnq.png" />
   </ItemGroup>
 
 </Project>
