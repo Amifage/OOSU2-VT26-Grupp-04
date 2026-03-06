@@ -27,7 +27,7 @@
                    Margin="5"/>
         </StackPanel>
 
-        <Button Grid.Column="0" Grid.Row="1" Margin="20" Background="White" Cursor="Hand">
+        <Button Grid.Column="0" Grid.Row="1" Margin="20" Background="White" Cursor="Hand" >
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="👤" FontSize="50" HorizontalAlignment="Center"/>
                 <TextBlock Text="Personal" FontSize="24" FontWeight="Bold" Margin="10"/>

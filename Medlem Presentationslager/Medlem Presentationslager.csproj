@@ -9,4 +9,9 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Affärslagret\Affärslagret.csproj" />
+    <ProjectReference Include="..\Presentationslager\Presentationslager.csproj" />
+  </ItemGroup>
+
 </Project>
