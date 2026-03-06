@@ -10,6 +10,7 @@ namespace Datalager
     public class Seed //Fyller databsen första gången koden kompileras
     {
 
+
         SamverketContext samverketContext = new SamverketContext();
 
         Personal personal = new Personal();

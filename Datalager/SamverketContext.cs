@@ -11,11 +11,14 @@ namespace Datalager
 {
     public class SamverketContext : DbContext
     {
+        
         public DbSet<Personal> Personal { get; set; }
         public DbSet<Medlem> Medlem { get; set; }
         public DbSet<Resurs> Resurs { get; set; }
         public DbSet<Utrustning> Utrustning { get; set; }
         public DbSet<Bokning> Bokning { get; set; }
+
+       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
