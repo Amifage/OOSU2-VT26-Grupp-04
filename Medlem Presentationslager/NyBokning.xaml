@@ -1,8 +1,17 @@
 ﻿<Window x:Class="Medlem_Presentationslager.NyBokning"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Skapa ny bokning" Height="750" Width="600"
-        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}" >
+        xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
+        Title="Skapa ny bokning"
+        Height="750"
+        Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource HuvudBakgrund}">
+
+    <Window.DataContext>
+        <vm:NyBokningViewModel />
+    </Window.DataContext>
+
     <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -12,33 +21,69 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Skapa bokning" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+        <TextBlock Grid.Row="0"
+                   Text="Skapa bokning"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
 
         <Border Grid.Row="1" Background="White" CornerRadius="10" Padding="15" Margin="0,0,0,20">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
                 <StackPanel Margin="10,0">
-                    <TextBlock Text="Välj Datum" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <DatePicker x:Name="BokningsDatumPicker" Width="150" />
+                    <TextBlock Text="Välj Datum"
+                               FontWeight="Bold"
+                               Margin="0,0,0,5"/>
+                    <DatePicker Width="150"
+                                SelectedDate="{Binding ValtDatum, Mode=TwoWay}" />
                 </StackPanel>
 
                 <StackPanel Margin="10,0">
-                    <TextBlock Text="Starttid" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <ComboBox x:Name="StartTidCombo" Width="80" />
+                    <TextBlock Text="Starttid"
+                               FontWeight="Bold"
+                               Margin="0,0,0,5"/>
+                    <ComboBox Width="100"
+                              ItemsSource="{Binding Starttider}"
+                              SelectedItem="{Binding ValdStarttid, Mode=TwoWay}" />
                 </StackPanel>
 
                 <StackPanel Margin="10,0">
-                    <TextBlock Text="Sluttid" FontWeight="Bold" Margin="0,0,0,5"/>
-                    <ComboBox x:Name="SlutTidCombo" Width="80" />
+                    <TextBlock Text="Sluttid"
+                               FontWeight="Bold"
+                               Margin="0,0,0,5"/>
+                    <ComboBox Width="100"
+                              ItemsSource="{Binding Sluttider}"
+                              SelectedItem="{Binding ValdSluttid, Mode=TwoWay}" />
                 </StackPanel>
+
             </StackPanel>
         </Border>
 
         <StackPanel Grid.Row="2" Margin="0,0,0,15">
-            <TextBlock Text="Tillgängliga resurser för vald tid:" FontWeight="Bold" Margin="0,0,0,10"/>
-            <ListBox x:Name="LedigaResurserListBox" Height="200" BorderBrush="HotPink" BorderThickness="1">
+            <TextBlock Text="Tillgängliga resurser för vald tid:"
+                       FontWeight="Bold"
+                       Margin="0,0,0,10"/>
+
+            <Button Content="Visa lediga resurser"
+                    Width="160"
+                    Height="35"
+                    Margin="0,0,0,10"
+                    HorizontalAlignment="Left"
+                    Background="LightGray"
+                    BorderBrush="HotPink"
+                    BorderThickness="1"
+                    Command="{Binding HamtaLedigaResurserCommand}" />
+
+            <ListBox x:Name="LedigaResurserListBox"
+                     Height="200"
+                     BorderBrush="HotPink"
+                     BorderThickness="1"
+                     ItemsSource="{Binding TillgangligaResurser}"
+                     SelectedItem="{Binding ValdResurs, Mode=TwoWay}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Horizontal">
                             <TextBlock Text="🏢" Margin="0,0,10,0"/>
                             <TextBlock Text="{Binding Namn}" FontWeight="SemiBold"/>
                             <TextBlock Text=" - "/>
@@ -50,14 +95,17 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="0,0,0,10">
-            <TextBlock Text="Anteckningar (deltagare, syfte...)" FontWeight="Bold" Margin="0,0,0,5"/>
-            <TextBox x:Name="AnteckningTextBox" 
-                     Height="80" 
-                     AcceptsReturn="True" 
-                     TextWrapping="Wrap" 
-                     VerticalScrollBarVisibility="Auto" 
+            <TextBlock Text="Anteckningar (deltagare, syfte...)"
+                       FontWeight="Bold"
+                       Margin="0,0,0,5"/>
+            <TextBox x:Name="AnteckningTextBox"
+                     Height="80"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
                      Padding="5"
-                     BorderBrush="HotPink"/>
+                     BorderBrush="HotPink"
+                     Text="{Binding Anteckning, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <Grid Grid.Row="4" Margin="0,10,0,0">
@@ -66,11 +114,22 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="Tillbaka" Grid.Column="0" Height="45" Margin="0,0,10,0"
-                    Background="LightGray" BorderBrush="HotPink" BorderThickness="1" />
+            <Button Content="Tillbaka"
+                    Grid.Column="0"
+                    Height="45"
+                    Margin="0,0,10,0"
+                    Background="LightGray"
+                    BorderBrush="HotPink"
+                    BorderThickness="1"
+                    Command="{Binding TillbakaCommand}" />
 
-            <Button Content="Bekräfta Bokning" Grid.Column="1" Height="45" 
-                    Background="HotPink" Foreground="White" FontWeight="Bold" />
+            <Button Content="Bekräfta Bokning"
+                    Grid.Column="1"
+                    Height="45"
+                    Background="HotPink"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    Command="{Binding BekraftaBokningCommand}" />
         </Grid>
     </Grid>
 </Window>
