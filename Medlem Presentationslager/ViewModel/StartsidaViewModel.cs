@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Medlem_Presentationslager.ViewModel
 {
-    internal class StartsidaViewModel
+    public class StartsidaViewModel
     {
         public ICommand OpenAdminLoginCommand { get; }
         public ICommand OpenMedlemLoginCommand { get; }
@@ -20,12 +20,12 @@ namespace Medlem_Presentationslager.ViewModel
             OpenMedlemLoginCommand = new RelayCommand(OpenMedlemLogin);
         }
 
-        private void OpenAdminLogin()
+        private void OpenAdminLogin(object obj)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
         }
-        private void OpenMedlemLogin()
+        private void OpenMedlemLogin(object obj)
         {
             MedlemLogin medlemLogin = new MedlemLogin();
             medlemLogin.Show();

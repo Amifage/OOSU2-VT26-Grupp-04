@@ -76,9 +76,8 @@ namespace Medlem_Presentationslager.ViewModel
         {
              Application.Current.Windows[0].Close();
         }
-        
 
-        private void UtförLogin()
+        private void UtförLogin(object obj)
         {
           
             string epost = Email?.Trim().ToLower() ?? "";
