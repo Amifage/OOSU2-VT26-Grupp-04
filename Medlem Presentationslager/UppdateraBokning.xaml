@@ -1,8 +1,8 @@
 ﻿<Window x:Class="Medlem_Presentationslager.UppdateraBokning"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Hantera Mina Bokningar" Height="750" Width="650"
-        WindowStartupLocation="CenterScreen">
+        Title="Hantera mina bokningar" Height="750" Width="650"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}">
     <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
