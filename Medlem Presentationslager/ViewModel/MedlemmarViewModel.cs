@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Affärslagret;
 using Entitetslager;
+using System.Windows;
+using Medlem_Presentationslager.Command;
+using System.Windows.Input;
+using Presentationslager;
 
 namespace Medlem_Presentationslager.ViewModel
 {
@@ -25,6 +29,19 @@ namespace Medlem_Presentationslager.ViewModel
                 OnPropertyChanged();
             }
         }
+        public ICommand TillbakaCommand { get; }
+        private void ExecuteTillbaka(object parameter)
+        {
+            // 1. Öppna MedlemsMeny
+            MedlemsMeny meny = new MedlemsMeny();
+            meny.Show();
+
+            // 2. Stäng nuvarande fönster (skickas med som parameter från XAML)
+            if (parameter is Window nuvarandeFönster)
+            {
+                nuvarandeFönster.Close();
+            }
+        }
 
         public MedlemmarViewModel()
         {
@@ -33,8 +50,7 @@ namespace Medlem_Presentationslager.ViewModel
         }
 
         private void LaddaMedlemmar()
-        {
-            // Hämtar alla medlemmar från affärslagret och lägger i kollektionen
+        {       
             var lista = _medlemController.HämtaAllaMedlemmar();
             Medlemmar = new ObservableCollection<Medlem>(lista);
         }

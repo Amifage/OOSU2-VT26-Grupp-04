@@ -52,15 +52,32 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
+
+
+        public ICommand OpenSkapaMedlemCommand { get; }
         public ICommand LoginCommand { get; }
+        public ICommand TillbakaCommand { get; }
 
         public MedlemLoginViewModel()
         {
             _medlemController = new MedlemController();
             LoginCommand = new RelayCommand(UtförLogin);
+            OpenSkapaMedlemCommand = new RelayCommand(OpenSkapaMedlem);
+            TillbakaCommand = new RelayCommand(StängFönster);
         }
 
-        private void UtförLogin()
+        private void OpenSkapaMedlem()
+        {
+            SkapaMedlem skapaMedlem = new SkapaMedlem();
+            skapaMedlem.Show();
+        }
+
+        private void StängFönster()
+        {
+             Application.Current.Windows[0].Close();
+        }
+
+        private void UtförLogin(object obj)
         {
           
             string epost = Email?.Trim().ToLower() ?? "";
@@ -77,7 +94,11 @@ namespace Medlem_Presentationslager.ViewModel
             }
             else
             {
-                Felmeddelande = "Fel e-postadress eller lösenord";
+                MessageBox.Show(
+                "Fel e-postadress eller lösenord",
+                "Inloggning misslyckades",
+                 MessageBoxButton.OK,
+                 MessageBoxImage.Error);
             }
         }
 
@@ -87,5 +108,7 @@ namespace Medlem_Presentationslager.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
+
 }
