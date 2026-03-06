@@ -2,7 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Medlem - Logga in" Height="520" Width="400"
-        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}"> 
+        xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
+        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}"
+        >
+    <Window.DataContext>
+        <vm:MedlemLoginViewModel />
+    </Window.DataContext>
 
     <Grid Margin="30">
         <Grid.RowDefinitions>
