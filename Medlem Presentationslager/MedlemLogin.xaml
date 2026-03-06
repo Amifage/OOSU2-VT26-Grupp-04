@@ -22,17 +22,17 @@
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
             <TextBlock Text="E-postadress" FontWeight="SemiBold" Margin="0,0,0,5"/>
             <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="5" Margin="0,0,0,20">
-                <TextBox x:Name="EmailTextBox" Height="40" Padding="10,8" Background="White" BorderThickness="0"/>
+                <TextBox x:Name="EmailTextBox" Height="40" Padding="10,8" Background="White" BorderThickness="0" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             </Border>
 
             <TextBlock Text="Lösenord" Margin="0,0,0,5" FontWeight="SemiBold"/>
             <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="5">
-                <PasswordBox x:Name="PasswordBox" Height="40" Padding="10,8" Background="White" BorderThickness="0"/>
+                <PasswordBox x:Name="PasswordBox" Height="40" Padding="10,8" Background="White" BorderThickness="0" Text="{Binding Lösenord, UpdateSourceTrigger=PropertyChanged}"/>
             </Border>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="0,20,0,0">
-            <Button Content="Logga in" Height="45" Background="HotPink" Foreground="White" FontWeight="Bold" />
+            <Button Content="Logga in" Height="45" Background="HotPink" Foreground="White" FontWeight="Bold" Command="{Binding LoginCommand}" />
 
             <Button Content="Har du inget konto? Registrera dig här" 
             Margin="0,15,0,0" 
