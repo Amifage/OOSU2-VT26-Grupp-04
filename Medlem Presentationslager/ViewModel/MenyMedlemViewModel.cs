@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
+
 namespace Medlem_Presentationslager.ViewModel
 {
     public class MenyMedlemViewModel : INotifyPropertyChanged
@@ -36,14 +37,14 @@ namespace Medlem_Presentationslager.ViewModel
         {
             Medlemmar window = new Medlemmar();
             window.Show();
-            StangAktivtFonster();
+            //StangAktivtFonster();
         }
         private void OpenSkapaBokning()
         {
             SkapaMedlem window = new SkapaMedlem();
             window.Show();
 
-            StangAktivtFonster();
+            //StangAktivtFonster();
         }
 
         private void OpenMinaSidor()
@@ -51,7 +52,7 @@ namespace Medlem_Presentationslager.ViewModel
             MinaSidor window = new MinaSidor();
             window.Show();
 
-            StangAktivtFonster();
+            //StangAktivtFonster();
         }
 
         private void OpenAndraAvboka()
@@ -59,7 +60,7 @@ namespace Medlem_Presentationslager.ViewModel
             UppdateraBokning window = new UppdateraBokning();
             window.Show();
 
-            StangAktivtFonster();
+            //StangAktivtFonster();
         }
 
         private void OpenBokningshistorik()
@@ -67,7 +68,7 @@ namespace Medlem_Presentationslager.ViewModel
             Historik window = new Historik();
             window.Show();
 
-            StangAktivtFonster();
+            //StangAktivtFonster();
         }
 
         private void LoggaUt()
@@ -75,20 +76,11 @@ namespace Medlem_Presentationslager.ViewModel
             MedlemLogin window = new MedlemLogin();
             window.Show();
 
-            StangAktivtFonster();
+            //StangAktivtFonster();
         }
 
-        private void StangAktivtFonster()
-        {
-            foreach (Window window in Application.Current.Windows)
-            {
-                if (window.IsActive)
-                {
-                    window.Close();
-                    break;
-                }
-            }
+        
         }
     
     }
-}
+
