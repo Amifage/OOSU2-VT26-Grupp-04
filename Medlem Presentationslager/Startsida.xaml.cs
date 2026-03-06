@@ -20,7 +20,7 @@ namespace Medlem_Presentationslager
         public Startsida()
         {
             InitializeComponent();
-            DataContext = new StartsidaViewModel();
+            DataContext = new StartsidaViewModel(); //Är detta rätt?
         }
     }
 

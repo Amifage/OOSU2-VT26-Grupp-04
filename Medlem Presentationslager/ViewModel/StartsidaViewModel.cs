@@ -25,7 +25,7 @@ namespace Medlem_Presentationslager.ViewModel
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            StängFönster(obj);
+            
         }
         private void OpenMedlemLogin(object obj)
         {
