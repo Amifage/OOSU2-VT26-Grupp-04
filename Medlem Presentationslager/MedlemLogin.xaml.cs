@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Medlem_Presentationslager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,9 @@ namespace Medlem_Presentationslager
         public MedlemLogin()
         {
             InitializeComponent();
+            DataContext = new MedlemLoginViewModel();
         }
-
        
+
     }
 }

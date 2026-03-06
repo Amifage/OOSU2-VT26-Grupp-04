@@ -15,6 +15,7 @@ namespace Medlem_Presentationslager.ViewModel
 {
     public class MedlemLoginViewModel : INotifyPropertyChanged
     {
+
         private string _email;
         private string _lösenord;
         private string _felmeddelande;
