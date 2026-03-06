@@ -19,6 +19,7 @@ namespace Medlem_Presentationslager.ViewModel
         public ICommand AndraAvbokaCommand { get; set; }
         public ICommand BokningshistorikCommand { get; set; }
         public ICommand LoggaUtCommand { get; set; }
+        public ICommand MedlemarCommand { get; set; }
 
         public MenyMedlemViewModel()
         {
@@ -27,8 +28,16 @@ namespace Medlem_Presentationslager.ViewModel
             AndraAvbokaCommand = new RelayCommand(OpenAndraAvboka);
             BokningshistorikCommand = new RelayCommand(OpenBokningshistorik);
             LoggaUtCommand = new RelayCommand(LoggaUt);
+            MedlemarCommand = new RelayCommand(OpenMedlemar);
+
         }
 
+        private void OpenMedlemar()
+        {
+            Medlemmar window = new Medlemmar();
+            window.Show();
+            StangAktivtFonster();
+        }
         private void OpenSkapaBokning()
         {
             SkapaMedlem window = new SkapaMedlem();
@@ -47,12 +56,18 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void OpenAndraAvboka()
         {
-            MessageBox.Show("Fönster för Ändra/Avboka är inte skapat ännu.");
+            UppdateraBokning window = new UppdateraBokning();
+            window.Show();
+
+            StangAktivtFonster();
         }
 
         private void OpenBokningshistorik()
         {
-            MessageBox.Show("Fönster för Bokningshistorik är inte skapat ännu.");
+            Historik window = new Historik();
+            window.Show();
+
+            StangAktivtFonster();
         }
 
         private void LoggaUt()
