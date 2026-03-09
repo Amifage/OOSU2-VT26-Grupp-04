@@ -37,7 +37,7 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void OpenMedlemar(object obj)
         {
-            Medlemmar window = new Medlemmar();
+            Medlemmar window = new Medlemmar(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }

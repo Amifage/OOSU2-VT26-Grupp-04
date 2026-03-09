@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Entitetslager;
 
 namespace Medlem_Presentationslager
 {
@@ -20,10 +21,10 @@ namespace Medlem_Presentationslager
     /// </summary>
     public partial class Medlemmar : Window
     {
-        public Medlemmar()
+        public Medlemmar(Medlem medlem)
         {
             InitializeComponent();
-            DataContext = new MedlemmarViewModel();
+            DataContext = new MedlemmarViewModel(medlem);
         }
     }
 }

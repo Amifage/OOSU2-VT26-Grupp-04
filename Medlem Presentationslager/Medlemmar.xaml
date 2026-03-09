@@ -5,11 +5,7 @@
         xmlns:vm="clr-namespace:Medlem_Presentationslager.ViewModel"
         x:Name="MedlemWindow"
         WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}">
-
-    <Window.DataContext>
-        <vm:MedlemmarViewModel />
-    </Window.DataContext>
-
+    
     <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

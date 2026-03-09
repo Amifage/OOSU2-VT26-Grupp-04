@@ -107,7 +107,7 @@
                     Background="LightGray"
                     BorderBrush="HotPink"
                     BorderThickness="1"
-                    Command="{Binding TillbakaCommand}" />
+                    Command="{Binding TillbakaCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
 
             <Button Content="Bekräfta Bokning"
                     Grid.Column="1"
@@ -115,7 +115,7 @@
                     Background="HotPink"
                     Foreground="White"
                     FontWeight="Bold"
-                    Command="{Binding BekraftaBokningCommand}" />
+                    Command="{Binding BekraftaBokningCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
         </Grid>
     </Grid>
 </Window>

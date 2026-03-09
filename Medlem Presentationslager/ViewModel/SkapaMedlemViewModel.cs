@@ -19,6 +19,7 @@ namespace Medlem_Presentationslager.ViewModel
         private string _betalstatus;
         private string _lösenord;
         private string _felmeddelande;
+        private Medlem _inloggadMedlem;
 
         private readonly MedlemController _medlemController;
 

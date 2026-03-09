@@ -139,7 +139,9 @@ namespace Medlem_Presentationslager.ViewModel
             _inloggadMedlem = medlem;
 
             Bokningar = new ObservableCollection<Bokning>(
-                _bokningController.HämtaBokningarFörMedlem(medlem.MedlemID)
+                 _bokningController.HämtaBokningarFörMedlem(medlem.MedlemID)
+                .Where(b => b.Sluttid >= DateTime.Now)
+                .OrderBy(b => b.Starttid)
             );
 
             Resurser = new ObservableCollection<Resurs>();
@@ -274,7 +276,10 @@ namespace Medlem_Presentationslager.ViewModel
         private void UppdateraLista(int medlemId)
         {
             Bokningar.Clear();
-            foreach (var bokning in _bokningController.HämtaBokningarFörMedlem(medlemId))
+
+            foreach (var bokning in _bokningController.HämtaBokningarFörMedlem(medlemId)
+                         .Where(b => b.Sluttid >= DateTime.Now)
+                         .OrderBy(b => b.Starttid))
             {
                 Bokningar.Add(bokning);
             }
@@ -295,7 +300,7 @@ namespace Medlem_Presentationslager.ViewModel
 
 
 
-        private void Tillbaka(object obj) // Två fönster öppnas, det gamla stängs inte.
+        private void Tillbaka(object obj)
         {
 
             MenyMedlem meny = new MenyMedlem(_inloggadMedlem);
@@ -304,6 +309,7 @@ namespace Medlem_Presentationslager.ViewModel
 
             StängFönster(obj);
         }
+
         private void StängFönster(object parameter)
         {
             if (parameter is Window fönster)

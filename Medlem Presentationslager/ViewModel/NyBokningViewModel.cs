@@ -85,13 +85,7 @@ namespace Medlem_Presentationslager.ViewModel
 
             HamtaLedigaResurserCommand = new RelayCommand(HamtaLedigaResurser);
             BekraftaBokningCommand = new RelayCommand(BekraftaBokning);
-            TillbakaCommand = new RelayCommand(_ =>
-            {
-                Application.Current.Windows
-                    .OfType<Window>()
-                    .FirstOrDefault(w => w.IsActive)
-                    ?.Close();
-            });
+            TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
         private void HamtaLedigaResurser(object obj)
@@ -191,5 +185,24 @@ namespace Medlem_Presentationslager.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         protected void UppdateraProperty(string name) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+
+
+
+        private void Tillbaka(object obj)
+        {
+            MenyMedlem meny = new MenyMedlem(inloggadMedlem);
+            meny.Show();
+
+            StängFönster(obj);
+        }
+
+        private void StängFönster(object parameter)
+        {
+            if (parameter is Window fönster)
+            {
+                fönster.Close();
+            }
+        }
     }
 }

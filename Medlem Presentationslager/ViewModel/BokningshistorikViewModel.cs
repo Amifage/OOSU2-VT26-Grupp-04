@@ -28,39 +28,16 @@ namespace Medlem_Presentationslager.ViewModel
             _bokningController = new BokningController();
             _inloggadMedlem = medlem;
 
-            Bokningshistorik = new ObservableCollection<Bokning>();
+            Bokningshistorik = new ObservableCollection<Bokning>(
+               _bokningController.HämtaBokningarFörMedlem(_inloggadMedlem.MedlemID)
+                   .Where(b => b.Sluttid < DateTime.Now)
+                   .OrderByDescending(b => b.Starttid));
 
-            LaddaBokningshistorik();
 
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
-        private void LaddaBokningshistorik()
-        {
-            try
-            {
-                var allaBokningar = _bokningController
-                    .HämtaBokningarFörMedlem(_inloggadMedlem.MedlemID)
-                    .OrderByDescending(b => b.Starttid)
-                    .ToList();
-
-                Bokningshistorik.Clear();
-
-                foreach (var bokning in allaBokningar)
-                {
-                    Bokningshistorik.Add(bokning);
-                }
-
-                MessageBox.Show($"Antal bokningar hittade: {allaBokningar.Count}");
-                OnPropertyChanged(nameof(Bokningshistorik));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Kunde inte hämta bokningshistorik: " + ex.Message);
-            }
-        }
-        }
-
+        
         private void Tillbaka(object obj)
         {
             MenyMedlem meny = new MenyMedlem(_inloggadMedlem);
