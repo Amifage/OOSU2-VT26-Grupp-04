@@ -83,8 +83,10 @@ namespace Presentationslager
                     Namn = namn,
                     Epost = epost,
                     Telefonnummer = telefon,
+                    Lösenord = "123",
                     Medlemsnivå = medlemsnivå,
                     Betalstatus = betalstatus,
+                    Poäng = 0,
                     SenastUppdaterad = DateTime.Now
                 };
 
@@ -96,7 +98,7 @@ namespace Presentationslager
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Fel vid sparning: " + ex.Message);
+                MessageBox.Show("Kunde inte spara: " + ex.InnerException?.Message);
             }
 
         }

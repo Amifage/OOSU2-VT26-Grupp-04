@@ -14,9 +14,9 @@ namespace Entitetslager
         public string Namn { get; set; }
         public string Epost { get; set; }
         public string Telefonnummer { get; set; }
-        public string Lösenord { get; set; }    //NY
+        public string? Lösenord { get; set; }    //NY
         public string Medlemsnivå { get; set; }
-        public int Poäng {  get; set; }         //NY
+        public int? Poäng {  get; set; }         //NY
         public string Betalstatus { get; set; }
         public DateTime SenastUppdaterad { get; set; }
 
