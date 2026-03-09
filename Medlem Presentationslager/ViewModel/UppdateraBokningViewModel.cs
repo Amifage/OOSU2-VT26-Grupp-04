@@ -147,6 +147,8 @@ namespace Medlem_Presentationslager.ViewModel
             Resurser = new ObservableCollection<Resurs>();
             Tider = new ObservableCollection<string>(SkapaTider());
 
+            LaddaBokningar();
+
             SparaCommand = new RelayCommand(SparaÄndringar, KanSpara);
             AvbokaCommand = new RelayCommand(AvbokaBokning, KanAvboka);
             TillbakaCommand = new RelayCommand(Tillbaka);
@@ -199,6 +201,20 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
+        private void LaddaBokningar()
+        {
+            Bokningar.Clear();
+
+            var bokningar = _bokningController.HämtaBokningarFörMedlem(_inloggadMedlem.MedlemID)
+                .Where(b => b.Sluttid >= DateTime.Now)
+                .OrderBy(b => b.Starttid);
+
+            foreach (var bokning in bokningar)
+            {
+                Bokningar.Add(bokning);
+            }
+        }
+
         private bool KanSpara(object obj)
         {
             return ValdBokning != null
@@ -235,7 +251,7 @@ namespace Medlem_Presentationslager.ViewModel
 
                 MessageBox.Show("Bokningen uppdaterad.");
                 UppdateraLista(ValdBokning.MedlemID);
-                StängFönster(obj);
+               
             }
             catch (Exception ex)
             {
@@ -270,7 +286,7 @@ namespace Medlem_Presentationslager.ViewModel
                 Resurser.Clear();
             }
 
-            StängFönster(obj);
+            
         }
 
         private void UppdateraLista(int medlemId)

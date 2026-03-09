@@ -47,14 +47,26 @@ namespace Affärslagret
             return _unitOfWork.Save();
         }
 
-        public int TaBortBokning(int id)
+        public int TaBortBokning(int id) //Up för - påäng
         {
-               using var _unitOfWork = new UnitOfWork(new SamverketContext());
-                var bokning = _unitOfWork.BokningRepository.HämtaId(id);
-                if (bokning == null)
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
+            var bokning = _unitOfWork.BokningRepository.HämtaId(id);
+            if (bokning == null)
                 return 0;
 
-                _unitOfWork.BokningRepository.Remove(bokning);
+            var medlem = _unitOfWork.MedlemRepository.HämtaId(bokning.MedlemID);
+
+            if (medlem != null)
+            {
+                medlem.Poäng -= 100;
+                medlem.SenastUppdaterad = DateTime.Now;
+
+                _unitOfWork.MedlemRepository.Update(medlem);
+            }
+
+            _unitOfWork.BokningRepository.Remove(bokning);
+
             return _unitOfWork.Save();
 
         }
