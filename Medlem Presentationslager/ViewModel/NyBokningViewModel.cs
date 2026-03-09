@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Affärslagret;
@@ -19,94 +16,96 @@ namespace Medlem_Presentationslager.ViewModel
         private readonly ResursController resursController;
         private readonly BokningController bokningController;
 
-        // --- NYA VARIABLER ---
-        private DateTime starttid = DateTime.Now;
-        private DateTime sluttid = DateTime.Now.AddHours(1);
+        private DateTime valdDatum = DateTime.Today;
+        public DateTime ValdDatum
+        {
+            get => valdDatum;
+            set { valdDatum = value; UppdateraProperty(nameof(ValdDatum)); }
+        }
+
+        private string valdStarttid;
+        public string ValdStarttid
+        {
+            get => valdStarttid;
+            set { valdStarttid = value; UppdateraProperty(nameof(ValdStarttid)); }
+        }
+
+        private string valdSluttid;
+        public string ValdSluttid
+        {
+            get => valdSluttid;
+            set { valdSluttid = value; UppdateraProperty(nameof(ValdSluttid)); }
+        }
+
+        public ObservableCollection<string> Starttider { get; } = GeneraTider();
+        public ObservableCollection<string> Sluttider { get; } = GeneraTider();
+
+        private static ObservableCollection<string> GeneraTider()
+        {
+            var tider = new ObservableCollection<string>();
+            for (int h = 6; h <= 22; h++)
+            {
+                tider.Add($"{h:00}:00");
+                tider.Add($"{h:00}:30");
+            }
+            return tider;
+        }
+
         private string anteckning;
-
-        public DateTime Starttid
-        {
-            get => starttid;
-            set { starttid = value; OnPropertyChanged(nameof(Starttid)); }
-        }
-
-        public DateTime Sluttid
-        {
-            get => sluttid;
-            set { sluttid = value; OnPropertyChanged(nameof(Sluttid)); }
-        }
-
         public string Anteckning
         {
             get => anteckning;
-            set { anteckning = value; OnPropertyChanged(nameof(Anteckning)); }
+            set { anteckning = value; UppdateraProperty(nameof(Anteckning)); }
         }
+        private ObservableCollection<Resurs> tillgangligaResurser = new ObservableCollection<Resurs>();
 
-        // --- EXISTERANDE KOD ---
-        private ObservableCollection<Resurs> tillgangligaResurser;
+
         public ObservableCollection<Resurs> TillgangligaResurser
         {
             get => tillgangligaResurser;
-            set
-            {
-                tillgangligaResurser = value;
-                OnPropertyChanged(nameof(TillgangligaResurser));
-            }
+            set { tillgangligaResurser = value; UppdateraProperty(nameof(TillgangligaResurser)); }
         }
 
         private Resurs valdResurs;
         public Resurs ValdResurs
         {
             get => valdResurs;
-            set
-            {
-                valdResurs = value;
-                OnPropertyChanged(nameof(ValdResurs));
-            }
+            set { valdResurs = value; UppdateraProperty(nameof(ValdResurs)); }
         }
 
+        public ICommand HamtaLedigaResurserCommand { get; }
         public ICommand BekraftaBokningCommand { get; }
+        public ICommand TillbakaCommand { get; }
 
         public NyBokningViewModel(Medlem medlem)
         {
             resursController = new ResursController();
             bokningController = new BokningController();
+            inloggadMedlem = medlem;
 
-            // Spara ner medlemmen som skickas in
-            this.inloggadMedlem = medlem;
-
-            TillgangligaResurser = new ObservableCollection<Resurs>();
-            //BekraftaBokningCommand = new RelayCommand(BekraftaBokning);
-
-            LaddaResurser();
-        }
-        private void LaddaResurser()
-        {
-            var resurser = resursController.HämtaAllaResurser();
-            TillgangligaResurser.Clear();
-            foreach (var r in resurser)
+            HamtaLedigaResurserCommand = new RelayCommand(HamtaLedigaResurser);
+            BekraftaBokningCommand = new RelayCommand(BekraftaBokning);
+            TillbakaCommand = new RelayCommand(_ =>
             {
-                TillgangligaResurser.Add(r);
-            }
+                Application.Current.Windows
+                    .OfType<Window>()
+                    .FirstOrDefault(w => w.IsActive)
+                    ?.Close();
+            });
         }
 
-        private void BekraftaBokning(object obj)
+        private void HamtaLedigaResurser(object obj)
         {
-            // SESSIONS-KOLL
-            if (inloggadMedlem == null)
+            if (string.IsNullOrEmpty(ValdStarttid) || string.IsNullOrEmpty(ValdSluttid))
             {
-                MessageBox.Show("Ingen inloggad användare hittades. Logga in igen.");
+                MessageBox.Show("Välj starttid och sluttid först.");
                 return;
             }
 
-            if (ValdResurs == null)
-            {
-                MessageBox.Show("Vänligen välj en resurs i listan först!");
-                return;
-            }
+            var starttid = ByggDateTime(ValdStarttid);
+            var sluttid = ByggDateTime(ValdSluttid);
 
-            // TID-VALIDERING
-            if (Sluttid <= Starttid)
+            if (sluttid <= starttid)
             {
                 MessageBox.Show("Sluttiden måste vara efter starttiden.");
                 return;
@@ -114,19 +113,67 @@ namespace Medlem_Presentationslager.ViewModel
 
             try
             {
-                Bokning nyBokning = new Bokning
+                var alla = resursController.HämtaAllaResurser();
+                var bokadeResursIds = bokningController.HämtaKommandeBokningar()
+                    .Where(b => b.Starttid < sluttid && b.Sluttid > starttid)
+                    .Select(b => b.ResursID)
+                    .ToHashSet();
+
+                TillgangligaResurser.Clear();
+                foreach (var r in alla.Where(r => !bokadeResursIds.Contains(r.ResursID)))
+                    TillgangligaResurser.Add(r);
+
+                if (!TillgangligaResurser.Any())
+                    MessageBox.Show("Inga lediga resurser för vald tid.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fel vid hämtning av resurser: " + ex.Message);
+            }
+        }
+
+        private void BekraftaBokning(object obj)
+        {
+            if (inloggadMedlem == null)
+            {
+                MessageBox.Show("Ingen inloggad användare. Logga in igen.");
+                return;
+            }
+            if (ValdResurs == null)
+            {
+                MessageBox.Show("Välj en resurs i listan.");
+                return;
+            }
+            if (string.IsNullOrEmpty(ValdStarttid) || string.IsNullOrEmpty(ValdSluttid))
+            {
+                MessageBox.Show("Välj starttid och sluttid.");
+                return;
+            }
+
+            var starttid = ByggDateTime(ValdStarttid);
+            var sluttid = ByggDateTime(ValdSluttid);
+
+            if (sluttid <= starttid)
+            {
+                MessageBox.Show("Sluttiden måste vara efter starttiden.");
+                return;
+            }
+
+            try
+            {
+                var nyBokning = new Bokning
                 {
                     //MedlemID = InloggadMedlemSession.AktivMedlem.MedlemID, // döpp om den till inloggad session class namn!
                     MedlemID = inloggadMedlem.MedlemID,
                     ResursID = ValdResurs.ResursID,
-                    Starttid = Starttid,
-                    Sluttid = Sluttid,
+                    Starttid = starttid,
+                    Sluttid = sluttid,
                     SenastUppdaterad = DateTime.Now,
                     Anteckning = string.IsNullOrWhiteSpace(Anteckning) ? null : Anteckning
                 };
 
                 bokningController.SkapaBokning(nyBokning);
-                MessageBox.Show($"Bokningen av {ValdResurs.Namn} är nu genomförd!");
+                MessageBox.Show($" Bokning av {ValdResurs.Namn} är genomförd!");
             }
             catch (Exception ex)
             {
@@ -134,8 +181,15 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
+        private DateTime ByggDateTime(string tid)
+        {
+            var delar = tid.Split(':');
+            return new DateTime(ValdDatum.Year, ValdDatum.Month, ValdDatum.Day,
+                                int.Parse(delar[0]), int.Parse(delar[1]), 0);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name) =>
+        protected void UppdateraProperty(string name) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }
