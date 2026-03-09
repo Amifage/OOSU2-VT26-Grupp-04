@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entitetslager;
+using Medlem_Presentationslager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Medlem_Presentationslager.ViewModel;
 
 namespace Medlem_Presentationslager
 {
@@ -19,9 +22,10 @@ namespace Medlem_Presentationslager
     /// </summary>
     public partial class Historik : Window
     {
-        public Historik()
+        public Historik(Medlem medlem)
         {
             InitializeComponent();
+            DataContext = new BokningshistorikViewModel(medlem);
         }
     }
 }

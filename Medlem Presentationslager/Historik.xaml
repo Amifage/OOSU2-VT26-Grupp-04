@@ -1,8 +1,11 @@
 ﻿<Window x:Class="Medlem_Presentationslager.Historik"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Min Bokningshistorik" Height="500" Width="700"
-        WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}" >
+        Title="Min Bokningshistorik"
+        Height="500"
+        Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource HuvudBakgrund}">
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -12,30 +15,60 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="0,0,0,20">
-            <TextBlock Text="Mina Bokningar" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <TextBlock Text="Här ser du både kommande och tidigare bokningar" FontSize="14" Opacity="0.7" HorizontalAlignment="Center"/>
+            <TextBlock Text="Mina Bokningar"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Här ser du tidigare bokningar"
+                       FontSize="14"
+                       Opacity="0.7"
+                       HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <DataGrid x:Name="BokningsGrid" Grid.Row="1" 
-                  AutoGenerateColumns="False" 
-                  IsReadOnly="True" 
-                  Background="White" 
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Bokningshistorik}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  Background="White"
                   RowBackground="#FFF9F9F9"
                   AlternatingRowBackground="#FFF1F1F1"
                   BorderBrush="HotPink"
                   BorderThickness="1"
                   CanUserAddRows="False">
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Boknings-ID" Binding="{Binding BokningsID}" Width="120"/>
-                <DataGridTextColumn Header="Resurs" Binding="{Binding Resurs.Namn}" Width="120"/>
-                <DataGridTextColumn Header="Startdatum" Binding="{Binding StartDatum, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" Width="150"/>
-                <DataGridTextColumn Header="Slutdatum" Binding="{Binding SlutDatum, StringFormat=\{0:yyyy-MM-dd HH:mm\}}" Width="150"/>
+                <DataGridTextColumn Header="Boknings-ID"
+                                    Binding="{Binding BokningsID}"
+                                    Width="120"/>
+
+                <DataGridTextColumn Header="Resurs"
+                                    Binding="{Binding resurs.Namn}"
+                                    Width="120"/>
+
+                <DataGridTextColumn Header="Starttid"
+                                    Binding="{Binding Starttid, StringFormat={}{0:yyyy-MM-dd HH:mm}}"
+                                    Width="150"/>
+
+                <DataGridTextColumn Header="Sluttid"
+                                    Binding="{Binding Sluttid, StringFormat={}{0:yyyy-MM-dd HH:mm}}"
+                                    Width="150"/>
+
+                <DataGridTextColumn Header="Anteckning"
+                                    Binding="{Binding Anteckning}"
+                                    Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="Tillbaka till menyn" Grid.Row="2" 
-                Width="200" Height="40" Margin="0,20,0,0"
+        <Button Grid.Row="2"
+                Content="Tillbaka till menyn"
+                Width="200"
+                Height="40"
+                Margin="0,20,0,0"
                 HorizontalAlignment="Left"
-                Background="LightGray" BorderBrush="HotPink" BorderThickness="1"/>
+                Background="LightGray"
+                BorderBrush="HotPink"
+                BorderThickness="1"
+                Command="{Binding TillbakaCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
     </Grid>
 </Window>

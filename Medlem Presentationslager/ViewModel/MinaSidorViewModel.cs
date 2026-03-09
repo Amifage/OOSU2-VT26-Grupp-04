@@ -52,7 +52,8 @@ namespace Medlem_Presentationslager.ViewModel
         public MinaSidorViewModel(Medlem medlem)
         {
             _medlemController = new MedlemController();
-            InloggadMedlem = medlem;
+            //InloggadMedlem = medlem;
+            InloggadMedlem = _medlemController.HämtaMedlemById(medlem.MedlemID); //Ovan är ändrad till detta för att uppdatera medlemspoäng.
 
             // Viktigt: Sätt startvärdet så ComboBoxen visar rätt nivå direkt
             MedlemsNivå = medlem.Medlemsnivå;

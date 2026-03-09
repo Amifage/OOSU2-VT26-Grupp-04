@@ -25,6 +25,8 @@ namespace Medlem_Presentationslager
         {
             InitializeComponent();
             DataContext = new MenyMedlemViewModel(inloggadMedlem);
+           
         }
+
     }
 }

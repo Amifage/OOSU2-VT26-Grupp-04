@@ -16,7 +16,7 @@ namespace Medlem_Presentationslager.ViewModel
 
         public ICommand SkapaBokningCommand { get; set; }
         public ICommand MinaSidorCommand { get; set; }
-        public ICommand AndraAvbokaCommand { get; set; }
+        public ICommand ÄndraAvbokaCommand { get; set; }
         public ICommand BokningshistorikCommand { get; set; }
         public ICommand LoggaUtCommand { get; set; }
         public ICommand MedlemarCommand { get; set; }
@@ -29,7 +29,7 @@ namespace Medlem_Presentationslager.ViewModel
             // Vi ser till att alla metoder tar emot ett 'obj' (vilket kommer vara fönstret)
             SkapaBokningCommand = new RelayCommand(OpenSkapaBokning);
             MinaSidorCommand = new RelayCommand(OpenMinaSidor);
-            AndraAvbokaCommand = new RelayCommand(OpenAndraAvboka);
+            ÄndraAvbokaCommand = new RelayCommand(OpenÄndraAvboka);
             BokningshistorikCommand = new RelayCommand(OpenBokningshistorik);
             LoggaUtCommand = new RelayCommand(LoggaUt);
             MedlemarCommand = new RelayCommand(OpenMedlemar);
@@ -57,16 +57,16 @@ namespace Medlem_Presentationslager.ViewModel
             StängFönster(obj);
         }
 
-        private void OpenAndraAvboka(object obj)
+        private void OpenÄndraAvboka(object obj) //Denna öppnar mina sidor
         {
-            UppdateraBokning window = new UppdateraBokning();
+            UppdateraBokning window = new UppdateraBokning(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }
 
-        private void OpenBokningshistorik(object obj)
+        private void OpenBokningshistorik(object obj) //denna öppnar ändra/avboka
         {
-            Historik window = new Historik();
+            Historik window = new Historik(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }

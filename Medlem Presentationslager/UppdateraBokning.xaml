@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Hantera mina bokningar" Height="850" Width="650"
         WindowStartupLocation="CenterScreen" Background="{StaticResource HuvudBakgrund}">
+
     <Grid Margin="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -11,53 +12,92 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Ändra eller avboka" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+        <TextBlock Grid.Row="0"
+                   Text="Ändra eller avboka"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,15"/>
 
-        <GroupBox Grid.Row="1" Header="Välj bokning att hantera" BorderBrush="HotPink" Margin="0,0,0,15">
-            <DataGrid x:Name="MinaBokningarGrid" 
-                      AutoGenerateColumns="False" 
-                      IsReadOnly="True" 
+        <GroupBox Grid.Row="1"
+                  Header="Välj bokning att hantera"
+                  BorderBrush="HotPink"
+                  Margin="0,0,0,15">
+            <DataGrid x:Name="MinaBokningarGrid"
+                      ItemsSource="{Binding Bokningar}"
+                      SelectedItem="{Binding ValdBokning, Mode=TwoWay}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
                       SelectionMode="Single">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Datum" Binding="{Binding StartDatum, StringFormat=\{0:yyyy-MM-dd\}}" Width="100"/>
-                    <DataGridTextColumn Header="Tid" Binding="{Binding StartDatum, StringFormat=\{0:HH:mm\}}" Width="60"/>
-                    <DataGridTextColumn Header="Resurs" Binding="{Binding Resurs.Namn}" Width="*"/>
+                    <DataGridTextColumn Header="Datum"
+                                        Binding="{Binding Starttid, StringFormat={}{0:yyyy-MM-dd}}"
+                                        Width="100"/>
+                    <DataGridTextColumn Header="Tid"
+                                        Binding="{Binding Starttid, StringFormat={}{0:HH:mm}}"
+                                        Width="60"/>
+                    <DataGridTextColumn Header="Resurs"
+                                        Binding="{Binding resurs.Namn}"
+                                        Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
 
-        <Border Grid.Row="2" Background="White" CornerRadius="10" Padding="15" BorderBrush="#FFEB6A98" BorderThickness="1">
-            <StackPanel x:Name="EditPanel" IsEnabled="False">
-                <TextBlock Text="Redigera vald bokning" FontWeight="Bold" FontSize="18" Margin="0,0,0,15" Foreground="HotPink"/>
+        <Border Grid.Row="2"
+                Background="White"
+                CornerRadius="10"
+                Padding="15"
+                BorderBrush="#FFEB6A98"
+                BorderThickness="1">
+            <StackPanel x:Name="EditPanel"
+                        IsEnabled="{Binding HarValdBokning}">
+                <TextBlock Text="Redigera vald bokning"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           Margin="0,0,0,15"
+                           Foreground="HotPink"/>
 
                 <TextBlock Text="Nytt Datum" Margin="0,10,0,5"/>
-                <DatePicker x:Name="NyttDatumPicker" />
+                <DatePicker x:Name="NyttDatumPicker"
+                            SelectedDate="{Binding NyttDatum, Mode=TwoWay}" />
 
                 <Grid Margin="0,15,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+
                     <StackPanel Grid.Column="0" Margin="0,0,5,0">
                         <TextBlock Text="Ny Starttid" Margin="0,0,0,5"/>
-                        <ComboBox x:Name="StartTidCombo" />
+                        <ComboBox x:Name="StartTidCombo"
+                                  ItemsSource="{Binding Tider}"
+                                  SelectedItem="{Binding NyStarttid, Mode=TwoWay}" />
                     </StackPanel>
+
                     <StackPanel Grid.Column="1" Margin="5,0,0,0">
                         <TextBlock Text="Ny Sluttid" Margin="0,0,0,5"/>
-                        <ComboBox x:Name="SlutTidCombo" />
+                        <ComboBox x:Name="SlutTidCombo"
+                                  ItemsSource="{Binding Tider}"
+                                  SelectedItem="{Binding NySluttid, Mode=TwoWay}" />
                     </StackPanel>
                 </Grid>
 
                 <TextBlock Text="Välj ny resurs (valfritt)" Margin="0,15,0,5"/>
-                <ListBox x:Name="LedigaResurserList" Height="80" BorderBrush="HotPink" />
+                <ListBox x:Name="LedigaResurserList"
+                     Height="80"
+                     BorderBrush="HotPink"
+                     ItemsSource="{Binding Resurser}"
+                     SelectedItem="{Binding ValdResurs, Mode=TwoWay}"
+                     DisplayMemberPath="DisplayText"/>
 
                 <TextBlock Text="Anteckning (deltagare, syfte...)" Margin="0,15,0,5" />
-                <TextBox x:Name="AnteckningTextBox" 
-                         Height="70" 
-                         AcceptsReturn="True" 
-                         TextWrapping="Wrap" 
-                         VerticalScrollBarVisibility="Auto" 
-                         Padding="5" 
+                <TextBox x:Name="AnteckningTextBox"
+                         Text="{Binding Anteckning, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Height="70"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Padding="5"
                          BorderBrush="HotPink"/>
             </StackPanel>
         </Border>
@@ -69,11 +109,30 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="Tillbaka" Width="100" Height="40" Background="LightGray" BorderBrush="HotPink" BorderThickness="1"/>
+            <Button Content="Tillbaka"
+                    Width="100"
+                    Height="40"
+                    Background="LightGray"
+                    BorderBrush="HotPink"
+                    BorderThickness="1"
+                    Command="{Binding TillbakaCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button Content="Avboka" Width="120" Height="40" Background="#FFFF8D8D" Margin="0,0,10,0" FontWeight="Bold"/>
-                <Button Content="Spara ändringar" Width="150" Height="40" Background="HotPink" Foreground="White" FontWeight="Bold"/>
+                <Button Content="Avboka"
+                        Width="120"
+                        Height="40"
+                        Background="#FFFF8D8D"
+                        Margin="0,0,10,0"
+                        FontWeight="Bold"
+                        Command="{Binding AvbokaCommand}"  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+
+                <Button Content="Spara ändringar"
+                        Width="150"
+                        Height="40"
+                        Background="HotPink"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Command="{Binding SparaCommand}"  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
             </StackPanel>
         </Grid>
     </Grid>

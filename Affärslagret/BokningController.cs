@@ -26,10 +26,17 @@ namespace Affärslagret
            
             }
         }
-        public void SkapaBokning(Bokning nyBokning)
+        public void SkapaBokning(Bokning nyBokning) //UPD poäng för emdlem vid ny bokning
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             _unitOfWork.BokningRepository.Add(nyBokning);
+
+            var medlem = _unitOfWork.MedlemRepository.HämtaId(nyBokning.MedlemID);
+            medlem.Poäng += 100;
+            medlem.SenastUppdaterad = DateTime.Now;
+
+            _unitOfWork.MedlemRepository.Update(medlem);
+
             _unitOfWork.Save();
         }
 
@@ -50,6 +57,14 @@ namespace Affärslagret
                 _unitOfWork.BokningRepository.Remove(bokning);
             return _unitOfWork.Save();
 
+        }
+
+        public List<Bokning> HämtaUpptagnaBokningar(DateTime start, DateTime slut) //NY
+        {
+            using (var _unitOfWork = new UnitOfWork(new SamverketContext()))
+            {
+                return _unitOfWork.bokningar.HämtatUpptagnaBokningar(start, slut);
+            }
         }
     }
 }

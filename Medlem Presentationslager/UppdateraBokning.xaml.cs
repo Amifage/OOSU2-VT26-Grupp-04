@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entitetslager;
+using Medlem_Presentationslager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,10 @@ namespace Medlem_Presentationslager
     /// </summary>
     public partial class UppdateraBokning : Window
     {
-        public UppdateraBokning()
+        public UppdateraBokning(Medlem medlem)
         {
             InitializeComponent();
+            DataContext = new ÄndraAvbokaViewModel(medlem);
         }
     }
 }
