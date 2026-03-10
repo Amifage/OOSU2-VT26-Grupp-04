@@ -4,7 +4,8 @@
         Title="Startsida"
         Height="450"
         Width="800"
-        Background="{StaticResource HuvudBakgrund}">
+        Background="{StaticResource HuvudBakgrund}"
+        WindowStartupLocation="CenterScreen">
     
     <Grid Margin="50">
         

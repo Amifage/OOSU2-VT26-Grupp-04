@@ -66,19 +66,9 @@
             <ListBox Height="200"
                      BorderBrush="HotPink"
                      BorderThickness="1"
+                     DisplayMemberPath="DisplayText"
                      ItemsSource="{Binding TillgangligaResurser}"
-                     SelectedItem="{Binding ValdResurs, Mode=TwoWay}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="🏢" Margin="0,0,10,0"/>
-                            <TextBlock Text="{Binding Namn}" FontWeight="SemiBold"/>
-                            <TextBlock Text=" - "/>
-                            <TextBlock Text="{Binding Typ}" FontStyle="Italic"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                     SelectedItem="{Binding ValdResurs, Mode=TwoWay}" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="0,0,0,10">
@@ -93,7 +83,7 @@
                      BorderBrush="HotPink"
                      Text="{Binding Anteckning, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
-        
+
         <Grid Grid.Row="4" Margin="0,10,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -107,7 +97,8 @@
                     Background="LightGray"
                     BorderBrush="HotPink"
                     BorderThickness="1"
-                    Command="{Binding TillbakaCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+                    Command="{Binding TillbakaCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
 
             <Button Content="Bekräfta Bokning"
                     Grid.Column="1"
@@ -115,7 +106,8 @@
                     Background="HotPink"
                     Foreground="White"
                     FontWeight="Bold"
-                    Command="{Binding BekraftaBokningCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+                    Command="{Binding BekraftaBokningCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
         </Grid>
     </Grid>
 </Window>
