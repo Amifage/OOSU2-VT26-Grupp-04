@@ -42,6 +42,6 @@
         <PasswordBox x:Name="LösenordTextBox" Grid.Row="3" Grid.Column="2" Width="200" Height="30" Margin="5" />
 
         <Button x:Name="LoggaInButton" Content="Logga in" Grid.Column=" 2" Grid.Row="4" Margin="10" Width="200" Height="30" VerticalAlignment="Top" Click="LoggaInButton_Click" Background="HotPink"/>
-    
+
     </Grid>
 </Window>

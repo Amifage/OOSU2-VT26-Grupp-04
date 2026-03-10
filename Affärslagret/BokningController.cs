@@ -91,7 +91,6 @@ namespace Affärslagret
             {
                 int antal = bokningar.Count(b => b.ResursID == resurs.ResursID);
 
-                // Exempel på enkel beräkning: (Antal bokningar / totala bokningar i perioden) * 100
                 double totalaBokningar = bokningar.Count;
                 double grad = totalaBokningar > 0 ? (antal / totalaBokningar) * 100 : 0;
 

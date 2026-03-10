@@ -9,7 +9,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Affärslagret;
-using Entitetslager;
 
 namespace Presentationslager
 {
@@ -46,6 +45,9 @@ namespace Presentationslager
                 MessageBox.Show("Fel namn eller lösenord");
 
             }
-        }          
-    }
+
+        }
+     }          
 }
+
+

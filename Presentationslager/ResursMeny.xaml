@@ -33,7 +33,6 @@
         <Button x:Name="VisaTillgänglighetButton" Content="Visa tillgängliga resurser" Grid.Column="1" Grid.Row="4" Margin="10" Click="VisaTillgänglighetButton_Click" Height="50" />
         <Button x:Name="AllaResurserButton" Grid.Column="1" Grid.Row="5" Content="Alla resurser" Margin="10" Click="AllaResurserButton_Click" Height="50"/>
 
-
         <Button x:Name="RapporterButton" Grid.Column="1" Grid.Row="6" Content="Rapporter" Margin="10" Height="50" Click="RapporterButton_Click"/>
         
     </Grid>
