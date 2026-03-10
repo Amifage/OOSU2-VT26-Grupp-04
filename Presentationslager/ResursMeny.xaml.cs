@@ -45,5 +45,12 @@ namespace Presentationslager
             AllaResurser allaResurser = new AllaResurser();
             allaResurser.Show();
         }
+
+        private void RapporterButton_Click(object sender, RoutedEventArgs e)
+        {
+            RapportResurs rapportFönster = new RapportResurs();
+            rapportFönster.Show();
+
+        }
     }
 }
