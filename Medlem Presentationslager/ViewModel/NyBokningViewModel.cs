@@ -16,6 +16,8 @@ namespace Medlem_Presentationslager.ViewModel
         private readonly ResursController resursController;
         private readonly BokningController bokningController;
 
+        #region Properties
+
         private DateTime valdDatum = DateTime.Today;
         public DateTime ValdDatum
         {
@@ -72,6 +74,7 @@ namespace Medlem_Presentationslager.ViewModel
             get => valdResurs;
             set { valdResurs = value; UppdateraProperty(nameof(ValdResurs)); }
         }
+        #endregion
 
         public ICommand HamtaLedigaResurserCommand { get; }
         public ICommand BekraftaBokningCommand { get; }
@@ -88,6 +91,7 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
+        #region Metoder
         private void HamtaLedigaResurser(object obj)
         {
             if (string.IsNullOrEmpty(ValdStarttid) || string.IsNullOrEmpty(ValdSluttid))
@@ -157,7 +161,7 @@ namespace Medlem_Presentationslager.ViewModel
             {
                 var nyBokning = new Bokning
                 {
-                    //MedlemID = InloggadMedlemSession.AktivMedlem.MedlemID, // döpp om den till inloggad session class namn!
+                    //MedlemID = InloggadMedlemSession.AktivMedlem.MedlemID, // döp om den till inloggad session class namn!
                     MedlemID = inloggadMedlem.MedlemID,
                     ResursID = ValdResurs.ResursID,
                     Starttid = starttid,
@@ -181,14 +185,14 @@ namespace Medlem_Presentationslager.ViewModel
             return new DateTime(ValdDatum.Year, ValdDatum.Month, ValdDatum.Day,
                                 int.Parse(delar[0]), int.Parse(delar[1]), 0);
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void UppdateraProperty(string name) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
 
-
-
+        #region Tillbaka/Stänga metoder
         private void Tillbaka(object obj)
         {
             MenyMedlem meny = new MenyMedlem(inloggadMedlem);
@@ -204,5 +208,6 @@ namespace Medlem_Presentationslager.ViewModel
                 fönster.Close();
             }
         }
+        #endregion
     }
 }

@@ -37,7 +37,6 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
-        
         private void Tillbaka(object obj)
         {
             MenyMedlem meny = new MenyMedlem(_inloggadMedlem);

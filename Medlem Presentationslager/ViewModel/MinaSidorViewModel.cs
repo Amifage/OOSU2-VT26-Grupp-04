@@ -17,6 +17,7 @@ namespace Medlem_Presentationslager.ViewModel
         private string _valdBonnivå;
         private string _nyttLösenord;
 
+        #region Properties
         public Medlem InloggadMedlem
         {
             get => _inloggadMedlem;
@@ -45,6 +46,7 @@ namespace Medlem_Presentationslager.ViewModel
             get => _nyttLösenord;
             set { _nyttLösenord = value; OnPropertyChanged(); }
         }
+        #endregion
 
         public ICommand SparaÄndringarCommand { get; }
         public ICommand TillbakaCommand { get; }
@@ -62,6 +64,7 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
+        #region Metoder
         private void SparaÄndringar(object obj)
         {
             try
@@ -93,6 +96,7 @@ namespace Medlem_Presentationslager.ViewModel
             meny.Show();
             if (obj is Window window) window.Close();
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null) =>

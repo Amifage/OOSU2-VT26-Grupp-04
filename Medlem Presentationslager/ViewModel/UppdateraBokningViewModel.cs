@@ -73,6 +73,7 @@ namespace Medlem_Presentationslager.ViewModel
         }
         public bool HarValdBokning => ValdBokning != null;
 
+        #region Properties
         public DateTime? NyttDatum
         {
             get => _nyttDatum;
@@ -126,6 +127,7 @@ namespace Medlem_Presentationslager.ViewModel
                 OnPropertyChanged();
             }
         }
+        #endregion
 
         public ICommand SparaCommand { get; }
         public ICommand AvbokaCommand { get; }
@@ -154,6 +156,7 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
+        #region Metoder
         private void UppdateraLedigaResurser()
         {
             if (NyttDatum == null || string.IsNullOrWhiteSpace(NyStarttid) || string.IsNullOrWhiteSpace(NySluttid))
@@ -215,6 +218,33 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
+        private void UppdateraLista(int medlemId)
+        {
+            Bokningar.Clear();
+
+            foreach (var bokning in _bokningController.HämtaBokningarFörMedlem(medlemId)
+                         .Where(b => b.Sluttid >= DateTime.Now)
+                         .OrderBy(b => b.Starttid))
+            {
+                Bokningar.Add(bokning);
+            }
+        }
+
+        private List<string> SkapaTider()
+        {
+            var tider = new List<string>();
+
+            for (int timme = 7; timme <= 20; timme++)
+            {
+                tider.Add($"{timme:D2}:00");
+                tider.Add($"{timme:D2}:30");
+            }
+
+            return tider;
+        }
+        #endregion
+
+        #region Spara/Avboka metoder
         private bool KanSpara(object obj)
         {
             return ValdBokning != null
@@ -286,36 +316,10 @@ namespace Medlem_Presentationslager.ViewModel
                 Resurser.Clear();
             }
 
-            
         }
+        #endregion
 
-        private void UppdateraLista(int medlemId)
-        {
-            Bokningar.Clear();
-
-            foreach (var bokning in _bokningController.HämtaBokningarFörMedlem(medlemId)
-                         .Where(b => b.Sluttid >= DateTime.Now)
-                         .OrderBy(b => b.Starttid))
-            {
-                Bokningar.Add(bokning);
-            }
-        }
-
-        private List<string> SkapaTider()
-        {
-            var tider = new List<string>();
-
-            for (int timme = 7; timme <= 20; timme++)
-            {
-                tider.Add($"{timme:D2}:00");
-                tider.Add($"{timme:D2}:30");
-            }
-
-            return tider;
-        }
-
-
-
+        #region Tillbaka/Stäng metoder
         private void Tillbaka(object obj)
         {
 
@@ -333,5 +337,6 @@ namespace Medlem_Presentationslager.ViewModel
                 fönster.Close();
             }
         }
+        #endregion
     }
 }

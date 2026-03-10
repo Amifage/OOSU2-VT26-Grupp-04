@@ -106,20 +106,15 @@ namespace Presentationslager
             }
         }
 
-
-
         private string GenereraLösenord(int längd = 8)
         {
-        const string tecken = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random random = new Random();
+            const string tecken = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
 
-        return new string(Enumerable.Repeat(tecken, längd)
-            .Select(s => s[random.Next(s.Length)]).ToArray());
+            return new string(Enumerable.Repeat(tecken, längd)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
-         
 
-    }
-                         
-    
+    } 
 
 }

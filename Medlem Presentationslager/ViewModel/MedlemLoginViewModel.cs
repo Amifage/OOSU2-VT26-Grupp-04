@@ -61,6 +61,7 @@ namespace Medlem_Presentationslager.ViewModel
         }
 
         #endregion
+
         public ICommand OpenSkapaMedlemCommand { get; }
         public ICommand LoginCommand { get; }
         public ICommand TillbakaCommand { get; }
@@ -73,27 +74,12 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
-        #region Diverse metoder
+        #region Metoder
         private void OpenSkapaMedlem(object obj)
         {
             SkapaMedlem skapaMedlem = new SkapaMedlem();
             skapaMedlem.Show();
             StängFönster(obj);
-        }
-
-        private void Tillbaka(object obj)
-        {
-            Startsida startsida = new Startsida();
-            startsida.Show();
-            StängFönster(obj);
-        }
-
-        private void StängFönster(object obj)
-        {
-            if (obj is Window fönster)
-            {
-                fönster.Close();
-            }
         }
 
         private void UtförLogin(object obj)
@@ -114,6 +100,23 @@ namespace Medlem_Presentationslager.ViewModel
             else
             {
                 MessageBox.Show("Fel e-postadress eller lösenord", "Inloggning misslyckades", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        #endregion
+
+        #region Tillbaka/Stäng metoder
+        private void Tillbaka(object obj)
+        {
+            Startsida startsida = new Startsida();
+            startsida.Show();
+            StängFönster(obj);
+        }
+
+        private void StängFönster(object obj)
+        {
+            if (obj is Window fönster)
+            {
+                fönster.Close();
             }
         }
         #endregion

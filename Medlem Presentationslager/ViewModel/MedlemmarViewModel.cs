@@ -40,14 +40,6 @@ namespace Medlem_Presentationslager.ViewModel
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
 
-        private void Tillbaka(object obj)
-        {
-            // Nu kan vi skicka tillbaka rätt medlem till menyn!
-            MenyMedlem meny = new MenyMedlem(_inloggadMedlem);
-            meny.Show();
-            StängFönster(obj);
-        }
-
         public MedlemmarViewModel()
         {
             _medlemController = new MedlemController();
@@ -66,6 +58,16 @@ namespace Medlem_Presentationslager.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #region Tillbaka/Stäng metoder
+        private void Tillbaka(object obj)
+        {
+            // Nu kan vi skicka tillbaka rätt medlem till menyn!
+            MenyMedlem meny = new MenyMedlem(_inloggadMedlem);
+            meny.Show();
+            StängFönster(obj);
+        }
+
         private void StängFönster(object parameter)
         {
             if (parameter is Window fönster)
@@ -73,5 +75,6 @@ namespace Medlem_Presentationslager.ViewModel
                 fönster.Close();
             }
         }
+        #endregion
     }
 }
