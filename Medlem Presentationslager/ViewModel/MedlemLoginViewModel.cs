@@ -23,7 +23,8 @@ namespace Medlem_Presentationslager.ViewModel
 
         private readonly MedlemController _medlemController;
 
-        #region Properties
+        #region Properties 
+                             //Properties behövs för att hantera input från användaren
         public string Epost
         {
             get => _epost;
@@ -53,16 +54,17 @@ namespace Medlem_Presentationslager.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) //Uppdaterar variabler
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         #endregion
 
-        public ICommand OpenSkapaMedlemCommand { get; }
+        public ICommand OpenSkapaMedlemCommand { get; } //Kopplar knapptryck
         public ICommand LoginCommand { get; }
         public ICommand TillbakaCommand { get; }
 
@@ -75,7 +77,7 @@ namespace Medlem_Presentationslager.ViewModel
         }
 
         #region Metoder
-        private void OpenSkapaMedlem(object obj)
+        private void OpenSkapaMedlem(object obj) //Tar ett objekt, i detta fallet ett fönster. Hade lika väl kunnat heta parameter.
         {
             SkapaMedlem skapaMedlem = new SkapaMedlem();
             skapaMedlem.Show();
@@ -92,8 +94,7 @@ namespace Medlem_Presentationslager.ViewModel
             if (medlem != null)
             {
                 Felmeddelande = "";
-                // SKICKA MED MEDLEMMEN HÄR
-                MenyMedlem menyMedlem = new MenyMedlem(medlem);
+                MenyMedlem menyMedlem = new MenyMedlem(medlem); //Skickar med medlem
                 menyMedlem.Show();
                 StängFönster(obj);
             }
@@ -105,14 +106,14 @@ namespace Medlem_Presentationslager.ViewModel
         #endregion
 
         #region Tillbaka/Stäng metoder
-        private void Tillbaka(object obj)
+        private void Tillbaka(object obj) //Tar ett objekt, i detta fallet ett fönster.
         {
             Startsida startsida = new Startsida();
             startsida.Show();
             StängFönster(obj);
         }
 
-        private void StängFönster(object obj)
+        private void StängFönster(object obj) //Tar ett objekt, i detta fallet ett fönster.
         {
             if (obj is Window fönster)
             {

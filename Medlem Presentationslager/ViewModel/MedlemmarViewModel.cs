@@ -31,7 +31,7 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
         public ICommand TillbakaCommand { get; }
-        public MedlemmarViewModel(Medlem inloggad) // Ta emot vid start
+        public MedlemmarViewModel(Medlem inloggad) //Kollar vilken medlem som är inloggad.
         {
             _medlemController = new MedlemController();
             _inloggadMedlem = inloggad;
@@ -62,8 +62,7 @@ namespace Medlem_Presentationslager.ViewModel
         #region Tillbaka/Stäng metoder
         private void Tillbaka(object obj)
         {
-            // Nu kan vi skicka tillbaka rätt medlem till menyn!
-            MenyMedlem meny = new MenyMedlem(_inloggadMedlem);
+            MenyMedlem meny = new MenyMedlem(_inloggadMedlem); //Skicka tillbaka inloggad medlem till menyn.
             meny.Show();
             StängFönster(obj);
         }

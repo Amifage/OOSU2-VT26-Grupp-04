@@ -26,7 +26,6 @@ namespace Medlem_Presentationslager.ViewModel
         public MenyMedlemViewModel(Medlem medlem)
         {
             _inloggadMedlem = medlem;
-            // Vi ser till att alla metoder tar emot ett 'obj' (vilket kommer vara fönstret)
             SkapaBokningCommand = new RelayCommand(OpenSkapaBokning);
             MinaSidorCommand = new RelayCommand(OpenMinaSidor);
             ÄndraAvbokaCommand = new RelayCommand(OpenÄndraAvboka);
@@ -35,7 +34,8 @@ namespace Medlem_Presentationslager.ViewModel
             MedlemarCommand = new RelayCommand(OpenMedlemar);
         }
 
-        private void OpenMedlemar(object obj)
+        #region Metoder
+        private void OpenMedlemar(object obj) //Vi ser till att alla metoder tar emot ett 'obj' (vilket kommer vara fönstret).
         {
             Medlemmar window = new Medlemmar(_inloggadMedlem);
             window.Show();
@@ -44,33 +44,34 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void OpenSkapaBokning(object obj)
         {          
-            NyBokning window = new NyBokning(_inloggadMedlem);
+            NyBokning window = new NyBokning(_inloggadMedlem); //Skickar med den sparade medlemen till mina sidor.
             window.Show();
             StängFönster(obj);
         }
 
         private void OpenMinaSidor(object obj)
         {
-            // SKICKA MED DEN SPARADE MEDLEMMEN TILL MINA SIDOR
             MinaSidor window = new MinaSidor(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }
 
-        private void OpenÄndraAvboka(object obj) //Denna öppnar mina sidor
+        private void OpenÄndraAvboka(object obj)
         {
             UppdateraBokning window = new UppdateraBokning(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }
 
-        private void OpenBokningshistorik(object obj) //denna öppnar ändra/avboka
+        private void OpenBokningshistorik(object obj)
         {
             Historik window = new Historik(_inloggadMedlem);
             window.Show();
             StängFönster(obj);
         }
+        #endregion
 
+        #region LoggaUt/Stäng metod
         private void LoggaUt(object obj)
         {
             // Öppna login-fönstret
@@ -89,5 +90,6 @@ namespace Medlem_Presentationslager.ViewModel
                 fönster.Close();
             }
         }
+        #endregion
     }
 }

@@ -100,8 +100,8 @@ namespace Medlem_Presentationslager.ViewModel
                 return;
             }
 
-            var starttid = ByggDateTime(ValdStarttid);
-            var sluttid = ByggDateTime(ValdSluttid);
+            var starttid = SkapaDateTime(ValdStarttid);
+            var sluttid = SkapaDateTime(ValdSluttid);
 
             if (sluttid <= starttid)
             {
@@ -132,11 +132,6 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void BekraftaBokning(object obj)
         {
-            if (inloggadMedlem == null)
-            {
-                MessageBox.Show("Ingen inloggad användare. Logga in igen.");
-                return;
-            }
             if (ValdResurs == null)
             {
                 MessageBox.Show("Välj en resurs i listan.");
@@ -148,8 +143,8 @@ namespace Medlem_Presentationslager.ViewModel
                 return;
             }
 
-            var starttid = ByggDateTime(ValdStarttid);
-            var sluttid = ByggDateTime(ValdSluttid);
+            var starttid = SkapaDateTime(ValdStarttid);
+            var sluttid = SkapaDateTime(ValdSluttid);
 
             if (sluttid <= starttid)
             {
@@ -161,7 +156,6 @@ namespace Medlem_Presentationslager.ViewModel
             {
                 var nyBokning = new Bokning
                 {
-                    //MedlemID = InloggadMedlemSession.AktivMedlem.MedlemID, // döp om den till inloggad session class namn!
                     MedlemID = inloggadMedlem.MedlemID,
                     ResursID = ValdResurs.ResursID,
                     Starttid = starttid,
@@ -179,7 +173,7 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
-        private DateTime ByggDateTime(string tid)
+        private DateTime SkapaDateTime(string tid) //Skapar en start- och en slutpunkt.
         {
             var delar = tid.Split(':');
             return new DateTime(ValdDatum.Year, ValdDatum.Month, ValdDatum.Day,

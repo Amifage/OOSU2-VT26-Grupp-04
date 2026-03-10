@@ -24,7 +24,7 @@ namespace Medlem_Presentationslager.ViewModel
             set { _inloggadMedlem = value; OnPropertyChanged(); }
         }
 
-        public List<string> MedlemsNivåer { get; } = new List<string> { "Företag", "Fast", "Flex" };
+        public List<string> MedlemsNivåer { get; } = new List<string> { "Företag", "Fast", "Flex" }; //Används i WPF fösntret för att visa medlemsnivåer i combobox.
 
         public string MedlemsNivå 
         {
@@ -54,10 +54,8 @@ namespace Medlem_Presentationslager.ViewModel
         public MinaSidorViewModel(Medlem medlem)
         {
             _medlemController = new MedlemController();
-            //InloggadMedlem = medlem;
-            InloggadMedlem = _medlemController.HämtaMedlemById(medlem.MedlemID); //Ovan är ändrad till detta för att uppdatera medlemspoäng.
+            InloggadMedlem = _medlemController.HämtaMedlemById(medlem.MedlemID); //Metoden uppdaterar medlemspoäng.
 
-            // Viktigt: Sätt startvärdet så ComboBoxen visar rätt nivå direkt
             MedlemsNivå = medlem.Medlemsnivå;
 
             SparaÄndringarCommand = new RelayCommand(SparaÄndringar);
@@ -69,18 +67,15 @@ namespace Medlem_Presentationslager.ViewModel
         {
             try
             {
-                // Formatera e-post
                 if (!string.IsNullOrEmpty(InloggadMedlem.Epost))
                     InloggadMedlem.Epost = InloggadMedlem.Epost.Trim().ToLower();
 
-                // Hantera nytt lösenord
                 if (!string.IsNullOrWhiteSpace(NyttLösenord))
                 {
                     InloggadMedlem.Lösenord = NyttLösenord.Trim().ToLower();
                     NyttLösenord = string.Empty;
                 }
 
-                // Spara objektet där Medlemsnivå nu är korrekt satt
                 _medlemController.UppdateraMedlem(InloggadMedlem);
                 MessageBox.Show("Dina uppgifter har uppdaterats!");
             }

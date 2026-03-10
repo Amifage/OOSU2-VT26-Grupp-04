@@ -37,42 +37,6 @@ namespace Medlem_Presentationslager.ViewModel
         public ObservableCollection<Resurs> Resurser { get; set; }
         public ObservableCollection<string> Tider { get; set; }
 
-        public Bokning ValdBokning
-        {
-            get => _valdBokning;
-            set
-            {
-                _valdBokning = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(HarValdBokning));
-                CommandManager.InvalidateRequerySuggested();
-
-                if (_valdBokning != null)
-                {
-                    NyttDatum = _valdBokning.Starttid.Date;
-                    NyStarttid = _valdBokning.Starttid.ToString("HH:mm");
-                    NySluttid = _valdBokning.Sluttid.ToString("HH:mm");
-                    Anteckning = _valdBokning.Anteckning;
-
-                    UppdateraLedigaResurser();
-
-                    if (Resurser != null)
-                    {
-                        ValdResurs = Resurser.FirstOrDefault(r => r.ResursID == _valdBokning.ResursID);
-                    }
-                }
-                else
-                {
-                    NyttDatum = null;
-                    NyStarttid = null;
-                    NySluttid = null;
-                    Anteckning = null;
-                    ValdResurs = null;
-                }
-            }
-        }
-        public bool HarValdBokning => ValdBokning != null;
-
         #region Properties
         public DateTime? NyttDatum
         {
@@ -149,12 +113,48 @@ namespace Medlem_Presentationslager.ViewModel
             Resurser = new ObservableCollection<Resurs>();
             Tider = new ObservableCollection<string>(SkapaTider());
 
-            LaddaBokningar();
+            UppdateraLista(_inloggadMedlem.MedlemID);
 
             SparaCommand = new RelayCommand(SparaÄndringar, KanSpara);
             AvbokaCommand = new RelayCommand(AvbokaBokning, KanAvboka);
             TillbakaCommand = new RelayCommand(Tillbaka);
         }
+
+        public Bokning ValdBokning
+        {
+            get => _valdBokning;
+            set
+            {
+                _valdBokning = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(HarValdBokning));
+                CommandManager.InvalidateRequerySuggested();
+
+                if (_valdBokning != null)
+                {
+                    NyttDatum = _valdBokning.Starttid.Date;
+                    NyStarttid = _valdBokning.Starttid.ToString("HH:mm");
+                    NySluttid = _valdBokning.Sluttid.ToString("HH:mm");
+                    Anteckning = _valdBokning.Anteckning;
+
+                    UppdateraLedigaResurser();
+
+                    if (Resurser != null)
+                    {
+                        ValdResurs = Resurser.FirstOrDefault(r => r.ResursID == _valdBokning.ResursID);
+                    }
+                }
+                else
+                {
+                    NyttDatum = null;
+                    NyStarttid = null;
+                    NySluttid = null;
+                    Anteckning = null;
+                    ValdResurs = null;
+                }
+            }
+        }
+        public bool HarValdBokning => ValdBokning != null;
 
         #region Metoder
         private void UppdateraLedigaResurser()
@@ -204,20 +204,6 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
-        private void LaddaBokningar()
-        {
-            Bokningar.Clear();
-
-            var bokningar = _bokningController.HämtaBokningarFörMedlem(_inloggadMedlem.MedlemID)
-                .Where(b => b.Sluttid >= DateTime.Now)
-                .OrderBy(b => b.Starttid);
-
-            foreach (var bokning in bokningar)
-            {
-                Bokningar.Add(bokning);
-            }
-        }
-
         private void UppdateraLista(int medlemId)
         {
             Bokningar.Clear();
@@ -245,7 +231,7 @@ namespace Medlem_Presentationslager.ViewModel
         #endregion
 
         #region Spara/Avboka metoder
-        private bool KanSpara(object obj)
+        private bool KanSpara(object obj) ///Kontrollerar så att en bokning har valts så att det är möjligt att spara ändring.
         {
             return ValdBokning != null
                    && NyttDatum != null
@@ -253,7 +239,7 @@ namespace Medlem_Presentationslager.ViewModel
                    && !string.IsNullOrWhiteSpace(NySluttid);
         }
 
-        private void SparaÄndringar(object obj)
+        private void SparaÄndringar(object obj) //Genomför själva sparandet
         {
             try
             {
@@ -289,12 +275,12 @@ namespace Medlem_Presentationslager.ViewModel
             }
         }
 
-        private bool KanAvboka(object obj)
+        private bool KanAvboka(object obj) //Kontrollerar så att en bokning har valts så att det är möjligt att avboka.
         {
             return ValdBokning != null;
         }
 
-        private void AvbokaBokning(object obj)
+        private void AvbokaBokning(object obj) //Genomför själva avbokningen.
         {
             if (ValdBokning == null)
                 return;

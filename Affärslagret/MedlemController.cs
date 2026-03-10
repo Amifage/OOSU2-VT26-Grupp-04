@@ -51,7 +51,7 @@ namespace Affärslagret
             return _unitOfWork.Save();
         }
 
-        public Medlem? ValideraInloggning(string namn, string lösenord) //NY
+        public Medlem? ValideraInloggning(string namn, string lösenord)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             {
@@ -61,7 +61,7 @@ namespace Affärslagret
             }
         }
 
-        public Medlem? ValideraInloggningEpost(string epost, string lösenord) //NY
+        public Medlem? ValideraInloggningEpost(string epost, string lösenord)
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             {

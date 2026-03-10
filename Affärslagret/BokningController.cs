@@ -26,7 +26,7 @@ namespace Affärslagret
            
             }
         }
-        public void SkapaBokning(Bokning nyBokning) //UPD poäng för emdlem vid ny bokning
+        public void SkapaBokning(Bokning nyBokning) //Ger medlem 100 poäng vid ny bokning.
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
             _unitOfWork.BokningRepository.Add(nyBokning);
@@ -47,7 +47,7 @@ namespace Affärslagret
             return _unitOfWork.Save();
         }
 
-        public int TaBortBokning(int id) //Up för - påäng
+        public int TaBortBokning(int id) //Drar bort 100 poäng för medlem vid avbokning.
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
 
@@ -71,7 +71,7 @@ namespace Affärslagret
 
         }
 
-        public List<Bokning> HämtaUpptagnaBokningar(DateTime start, DateTime slut) //NY
+        public List<Bokning> HämtaUpptagnaBokningar(DateTime start, DateTime slut)
         {
             using (var _unitOfWork = new UnitOfWork(new SamverketContext()))
             {

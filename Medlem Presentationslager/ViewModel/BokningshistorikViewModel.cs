@@ -30,7 +30,7 @@ namespace Medlem_Presentationslager.ViewModel
 
             Bokningshistorik = new ObservableCollection<Bokning>(
                _bokningController.HämtaBokningarFörMedlem(_inloggadMedlem.MedlemID)
-                   .Where(b => b.Sluttid < DateTime.Now)
+                   .Where(b => b.Sluttid < DateTime.Now) // Hämtar bokningar vars slutdatum har passerat
                    .OrderByDescending(b => b.Starttid));
 
 

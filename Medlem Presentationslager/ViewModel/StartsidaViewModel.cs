@@ -21,7 +21,7 @@ namespace Medlem_Presentationslager.ViewModel
             OpenMedlemLoginCommand = new RelayCommand(OpenMedlemLogin);
         }
 
-        private void OpenAdminLogin(object obj)
+        private void OpenAdminLogin(object obj) //Startsidan stängs inte om man väljer att logga in som admin, då admin menyn inte har en tillbakaknapp.
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();          

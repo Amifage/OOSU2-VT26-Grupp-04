@@ -69,7 +69,6 @@ namespace Medlem_Presentationslager.ViewModel
                 OnPropertyChanged();
             }
         }
-
         public List<string> Betalstatusar { get; } = new List<string>
         {
             "Betald",
@@ -103,6 +102,7 @@ namespace Medlem_Presentationslager.ViewModel
                 OnPropertyChanged();
             }
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -110,13 +110,11 @@ namespace Medlem_Presentationslager.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(namn));
         }
-        #endregion
 
         public ICommand TillbakaCommand { get; }
         public ICommand OpenSkapaKontoCommand { get; }
 
 
-        #region Skapa medlem kod
         public SkapaMedlemViewModel() 
         {
             _medlemController = new MedlemController();
@@ -125,6 +123,7 @@ namespace Medlem_Presentationslager.ViewModel
 
         }
 
+        #region Metoder
         private void SparaMedlem(object obj)
         {
             try
