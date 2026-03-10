@@ -59,7 +59,7 @@ namespace Presentationslager
                 string telefon = MedlemsTelefonnummerTextBox.Text.Replace(" ", "").Trim(); //tar bort alla mellanrum i telefonnummer
 
                 string medlemsnivå = (MedlemsNivåComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower();
-                string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower() ;
+                string betalstatus = (MedlemsBetalstatusComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString().ToLower();
 
                 // Validering
                 if (string.IsNullOrWhiteSpace(namn) || string.IsNullOrWhiteSpace(epost) || string.IsNullOrWhiteSpace(telefon))
@@ -72,18 +72,20 @@ namespace Presentationslager
                     MessageBox.Show("Välj medlemsnivå och betalstatus.");
                     return;
                 }
-                if (!IsDigitsOnly(telefon)) 
+                if (!IsDigitsOnly(telefon))
                 {
                     MessageBox.Show("Telefonnummer får bara innehålla siffror.");
                     return;
                 }
+
+                string genereratLösenord = GenereraLösenord();
 
                 var nyMedlem = new Medlem
                 {
                     Namn = namn,
                     Epost = epost,
                     Telefonnummer = telefon,
-                    Lösenord = "123",
+                    Lösenord = genereratLösenord,
                     Medlemsnivå = medlemsnivå,
                     Betalstatus = betalstatus,
                     Poäng = 0,
@@ -92,7 +94,9 @@ namespace Presentationslager
 
                 _medlemController.SkapaMedlem(nyMedlem);
 
-                MessageBox.Show($"Medlemmen har sparats!\n\nTilldelat medlemsnummer: {nyMedlem.MedlemID}");
+                MessageBox.Show($"Medlemmen har sparats!\n\n" +
+                                $"Tilldelat medlemsnummer: {nyMedlem.MedlemID}\n\n" +
+                                $"Genererat lösenord: {genereratLösenord}");
 
                 RensaFormulär();
             }
@@ -100,9 +104,22 @@ namespace Presentationslager
             {
                 MessageBox.Show("Kunde inte spara: " + ex.InnerException?.Message);
             }
-
         }
-                         
+
+
+
+        private string GenereraLösenord(int längd = 8)
+        {
+        const string tecken = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+
+        return new string(Enumerable.Repeat(tecken, längd)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+         
+
     }
+                         
+    
 
 }
