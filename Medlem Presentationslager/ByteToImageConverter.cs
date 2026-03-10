@@ -1,26 +1,29 @@
 ﻿using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-public class ByteToImageConverter : IValueConverter
+namespace Medlem_Presentationslager
 {
-    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    public class ByteToImageConverter : IValueConverter
     {
-        if (value is byte[] bytes && bytes.Length > 0)
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var image = new BitmapImage();
-            using (var mem = new System.IO.MemoryStream(bytes))
+            if (value is byte[] bytes && bytes.Length > 0)
             {
-                image.BeginInit();
-                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.StreamSource = mem;
-                image.EndInit();
+                var image = new BitmapImage();
+                using (var mem = new System.IO.MemoryStream(bytes))
+                {
+                    image.BeginInit();
+                    image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = mem;
+                    image.EndInit();
+                }
+                return image;
             }
-            return image;
+            // Standardbild om profilbild saknas
+            return new BitmapImage(new Uri("pack://application:,,,/Gemini_Generated_Image_rtnq6xrtnq6xrtnq.png"));
         }
-        // Standardbild om profilbild saknas
-        return new BitmapImage(new Uri("pack://application:,,,/Gemini_Generated_Image_rtnq6xrtnq6xrtnq.png"));
-    }
 
-    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) => throw new NotImplementedException();
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture) => throw new NotImplementedException();
+    }
 }
