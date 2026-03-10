@@ -67,7 +67,8 @@
                      BorderBrush="HotPink"
                      BorderThickness="1"
                      ItemsSource="{Binding TillgangligaResurser}"
-                     SelectedItem="{Binding ValdResurs, Mode=TwoWay}">
+                     SelectedItem="{Binding ValdResurs, Mode=TwoWay}" >
+                     
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
