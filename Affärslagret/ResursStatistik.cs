@@ -12,5 +12,6 @@ namespace Affärslagret
         public string Typ { get; set; }
         public int AntalBokningar { get; set; }
         public double Belaggningsgrad { get; set; }
+        public int Kapacitet {  get; set; }
     }
 }

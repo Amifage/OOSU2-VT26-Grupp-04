@@ -19,7 +19,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Text="Visa statistik från:" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
                 <DatePicker x:Name="dpStartDatum" Width="150" Margin="0,0,20,0"/>
-                <Button x:Name="btnUppdatera" Content="Generera Rapport" Width="130" Height="30" Click="btnUppdatera_Click" 
+                <Button x:Name="btnUppdatera" Content="Generera Rapport" Width="150" Height="30" Click="btnUppdatera_Click" 
                         FontWeight="Bold" Cursor="Hand"/>
             </StackPanel>
         </Border>
@@ -43,8 +43,9 @@
             <DataGrid x:Name="dgResursStatistik" AutoGenerateColumns="False" IsReadOnly="True" 
                       GridLinesVisibility="None" Background="Transparent" BorderThickness="0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Resursnamn" Binding="{Binding Namn}" Width="2*"/>
+                    <DataGridTextColumn Header="Resursnamn" Binding="{Binding Namn}" Width="200"/>
                     <DataGridTextColumn Header="Typ" Binding="{Binding Typ}" Width="*"/>
+                    <DataGridTextColumn Header="Kapacitet" Binding="{Binding Kapacitet}" Width="100"/>
                     <DataGridTextColumn Header="Antal Bokningar" Binding="{Binding AntalBokningar}" Width="*"/>
                     <DataGridTextColumn Header="Beläggning (%)" Binding="{Binding Belaggningsgrad}" Width="*"/>
                 </DataGrid.Columns>

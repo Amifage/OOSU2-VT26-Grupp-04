@@ -24,7 +24,7 @@ namespace Presentationslager
         public RapportResurs()
         {
             InitializeComponent();
-            dpStartDatum.SelectedDate = DateTime.Now.AddMonths(-1); // Standard: Senaste månaden
+            dpStartDatum.SelectedDate = DateTime.Now.AddMonths(-1); 
         }
 
         private void btnUppdatera_Click(object sender, RoutedEventArgs e)

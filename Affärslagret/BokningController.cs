@@ -82,7 +82,6 @@ namespace Affärslagret
         {
             using var _unitOfWork = new UnitOfWork(new SamverketContext());
 
-            // Hämta alla resurser och alla bokningar efter valt datum
             var resurser = _unitOfWork.ResursRepository.GetAll().ToList();
             var bokningar = _unitOfWork.BokningRepository.Find(b => b.Starttid >= startDatum).ToList();
 
@@ -100,6 +99,7 @@ namespace Affärslagret
                 {
                     Namn = resurs.Namn,
                     Typ = resurs.Typ,
+                    Kapacitet= resurs.Kapacitet,
                     AntalBokningar = antal,
                     Belaggningsgrad = Math.Round(grad, 1)
                 });
