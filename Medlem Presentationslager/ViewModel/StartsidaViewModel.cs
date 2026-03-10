@@ -24,8 +24,7 @@ namespace Medlem_Presentationslager.ViewModel
         private void OpenAdminLogin(object obj)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            StängFönster(obj);
+            mainWindow.Show();          
            
         }
         private void OpenMedlemLogin(object obj)
