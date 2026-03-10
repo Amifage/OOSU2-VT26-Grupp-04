@@ -7,6 +7,7 @@ using Affärslagret;
 using Medlem_Presentationslager.Command;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.IO;
 
 namespace Medlem_Presentationslager.ViewModel
 {
@@ -50,6 +51,7 @@ namespace Medlem_Presentationslager.ViewModel
 
         public ICommand SparaÄndringarCommand { get; }
         public ICommand TillbakaCommand { get; }
+        public ICommand VäljBildCommand { get; }
 
         public MinaSidorViewModel(Medlem medlem)
         {
@@ -60,9 +62,37 @@ namespace Medlem_Presentationslager.ViewModel
 
             SparaÄndringarCommand = new RelayCommand(SparaÄndringar);
             TillbakaCommand = new RelayCommand(Tillbaka);
+            VäljBildCommand = new RelayCommand(VäljBild);
         }
 
         #region Metoder
+
+        private void VäljBild(object obj)
+        {
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Filter = "Bilder (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    // Läs in filen som byte-array
+                    byte[] bildBytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
+
+                    // Uppdatera medlemsobjektet
+                    InloggadMedlem.Profilbild = bildBytes;
+
+                    // Meddela UI att bilden har ändrats
+                    OnPropertyChanged(nameof(InloggadMedlem));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Kunde inte ladda bilden: " + ex.Message);
+                }
+            }
+        }
         private void SparaÄndringar(object obj)
         {
             try

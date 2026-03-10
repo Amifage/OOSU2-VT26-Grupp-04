@@ -18,7 +18,7 @@ namespace Entitetslager
         public string Medlemsnivå { get; set; }
         public int? Poäng {  get; set; }         //NY
         public string Betalstatus { get; set; }
-        public byte?[] Profilbild { get; set; }
+        public byte[]? Profilbild { get; set; }
         public DateTime SenastUppdaterad { get; set; }
 
         public string DisplayText => $"{MedlemID} | {Namn} | {Medlemsnivå} | {Betalstatus}"; //Textsträng som underlättar utskrift i wpf fönster
