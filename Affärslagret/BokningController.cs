@@ -78,5 +78,34 @@ namespace Affärslagret
                 return _unitOfWork.bokningar.HämtatUpptagnaBokningar(start, slut);
             }
         }
+        public List<ResursStatistik> HämtaResursStatistik(DateTime startDatum)
+        {
+            using var _unitOfWork = new UnitOfWork(new SamverketContext());
+
+            // Hämta alla resurser och alla bokningar efter valt datum
+            var resurser = _unitOfWork.ResursRepository.GetAll().ToList();
+            var bokningar = _unitOfWork.BokningRepository.Find(b => b.Starttid >= startDatum).ToList();
+
+            var statistikLista = new List<ResursStatistik>();
+
+            foreach (var resurs in resurser)
+            {
+                int antal = bokningar.Count(b => b.ResursID == resurs.ResursID);
+
+                // Exempel på enkel beräkning: (Antal bokningar / totala bokningar i perioden) * 100
+                double totalaBokningar = bokningar.Count;
+                double grad = totalaBokningar > 0 ? (antal / totalaBokningar) * 100 : 0;
+
+                statistikLista.Add(new ResursStatistik
+                {
+                    Namn = resurs.Namn,
+                    Typ = resurs.Typ,
+                    AntalBokningar = antal,
+                    Belaggningsgrad = Math.Round(grad, 1)
+                });
+            }
+
+            return statistikLista.OrderByDescending(s => s.AntalBokningar).ToList();
+        }
     }
 }

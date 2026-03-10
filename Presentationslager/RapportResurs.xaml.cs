@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Affärslagret;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,21 @@ namespace Presentationslager
     /// </summary>
     public partial class RapportResurs : Window
     {
+        private BokningController bokningController = new BokningController();
         public RapportResurs()
         {
             InitializeComponent();
+            dpStartDatum.SelectedDate = DateTime.Now.AddMonths(-1); // Standard: Senaste månaden
+        }
+
+        private void btnUppdatera_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime start = dpStartDatum.SelectedDate ?? DateTime.Now.AddMonths(-1);
+            var statistik = bokningController.HämtaResursStatistik(start);
+
+            dgResursStatistik.ItemsSource = statistik;
+            lblTotaltAntal.Text = statistik.Sum(s => s.AntalBokningar).ToString();
+            lblPopulärastResurs.Text = statistik.FirstOrDefault()?.Namn ?? "-";
         }
     }
 }
