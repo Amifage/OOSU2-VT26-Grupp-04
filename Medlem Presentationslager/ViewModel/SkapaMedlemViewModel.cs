@@ -153,6 +153,7 @@ namespace Medlem_Presentationslager.ViewModel
                     Epost = Epost.Trim().ToLower(),
                     Telefonnummer = telefon,
                     Medlemsnivå = MedlemsNivå.ToLower(),
+                    Poäng = 0,
                     Betalstatus = Betalstatus.ToLower(),
                     Lösenord = Lösenord.ToLower(),
                     SenastUppdaterad = DateTime.Now
