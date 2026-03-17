@@ -69,9 +69,9 @@ namespace Medlem_Presentationslager.ViewModel
 
         private void VäljBild(object obj)
         {
-            var openFileDialog = new Microsoft.Win32.OpenFileDialog
+            var openFileDialog = new Microsoft.Win32.OpenFileDialog //öppnar upp så användaren kan välja en fil på datorn
             {
-                Filter = "Bilder (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png"
+                Filter = "Bilder (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png" //säger vilka typer av filer användaren kan välja
             };
 
             if (openFileDialog.ShowDialog() == true)
@@ -81,10 +81,10 @@ namespace Medlem_Presentationslager.ViewModel
                     // Läs in filen som byte-array
                     byte[] bildBytes = System.IO.File.ReadAllBytes(openFileDialog.FileName);
 
-                    // Uppdatera medlemsobjektet
+                    // Uppdatera medlemen
                     InloggadMedlem.Profilbild = bildBytes;
 
-                    // Meddela UI att bilden har ändrats
+                    // Meddela fönstret att bilden har ändrats
                     OnPropertyChanged(nameof(InloggadMedlem));
                 }
                 catch (Exception ex)
